@@ -1,0 +1,55 @@
+{
+  "common": {
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "success": "Succès",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "create": "Créer",
+    "search": "Rechercher",
+    "name": "Nom",
+    "email": "Email",
+    "role": "Rôle",
+    "actions": "Actions"
+  },
+  "navigation": {
+    "home": "Accueil",
+    "about": "À propos",
+    "contact": "Contact",
+    "login": "Connexion",
+    "register": "Inscription",
+    "profile": "Profil",
+    "logout": "Déconnexion",
+    "dashboard": "Tableau de bord"
+  },
+  "auth": {
+    "welcomeBack": "Bon retour",
+    "loginToAccount": "Connectez-vous à votre compte",
+    "createAccount": "Créer un compte",
+    "password": "Mot de passe",
+    "confirmPassword": "Confirmer le mot de passe",
+    "forgotPassword": "Mot de passe oublié ?",
+    "noAccount": "Vous n'avez pas de compte ?",
+    "hasAccount": "Vous avez déjà un compte ?",
+    "signUp": "S'inscrire",
+    "signIn": "Se connecter",
+    "emailVerification": "Vérification de l'email requise",
+    "checkEmail": "Veuillez vérifier votre email pour le lien de vérification"
+  },
+  "admin": {
+    "dashboard": "Tableau de bord",
+    "users": "Utilisateurs",
+    "settings": "Paramètres",
+    "userManagement": "Gestion des utilisateurs",
+    "totalUsers": "Total des utilisateurs",
+    "activeUsers": "Utilisateurs actifs"
+  },
+  "errors": {
+    "unauthorized": "Accès non autorisé",
+    "notFound": "Page non trouvée",
+    "serverError": "Erreur interne du serveur",
+    "invalidCredentials": "Identifiants invalides"
+  }
+}

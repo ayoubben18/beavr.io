@@ -1,0 +1,55 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "search": "Search",
+    "name": "Name",
+    "email": "Email",
+    "role": "Role",
+    "actions": "Actions"
+  },
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact",
+    "login": "Login",
+    "register": "Register",
+    "profile": "Profile",
+    "logout": "Logout",
+    "dashboard": "Dashboard"
+  },
+  "auth": {
+    "welcomeBack": "Welcome back",
+    "loginToAccount": "Login to your account",
+    "createAccount": "Create an account",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "forgotPassword": "Forgot password?",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "signUp": "Sign up",
+    "signIn": "Sign in",
+    "emailVerification": "Email verification required",
+    "checkEmail": "Please check your email for verification link"
+  },
+  "admin": {
+    "dashboard": "Dashboard",
+    "users": "Users",
+    "settings": "Settings",
+    "userManagement": "User Management",
+    "totalUsers": "Total Users",
+    "activeUsers": "Active Users"
+  },
+  "errors": {
+    "unauthorized": "Unauthorized access",
+    "notFound": "Page not found",
+    "serverError": "Internal server error",
+    "invalidCredentials": "Invalid credentials"
+  }
+}
