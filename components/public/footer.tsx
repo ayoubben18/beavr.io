@@ -85,14 +85,14 @@ const Footer = ({
 
                     <div className=" flex gap-20">
                         {/* Footer Sections */}
-                        {sections.map((section, index) => (
-                            <div key={index}>
+                        {sections.map((section) => (
+                            <div key={section.title}>
                                 <h3 className="font-semibold text-foreground mb-4">
                                     {section.title}
                                 </h3>
                                 <ul className="space-y-3">
-                                    {section.links.map((link, linkIndex) => (
-                                        <li key={linkIndex}>
+                                    {section.links.map((link) => (
+                                        <li key={link.title}>
                                             <a
                                                 href={link.url}
                                                 className="text-sm text-muted-foreground hover:text-primary transition-colors"
@@ -116,9 +116,9 @@ const Footer = ({
 
                         {/* Bottom Links */}
                         <div className="flex flex-wrap items-center gap-6">
-                            {bottomLinks.map((link, index) => (
+                            {bottomLinks.map((link) => (
                                 <a
-                                    key={index}
+                                    key={link.title}
                                     href={link.url}
                                     className="text-sm text-muted-foreground hover:text-primary transition-colors"
                                 >
