@@ -1,11 +1,12 @@
-import React from 'react'
+import HomeNavbar from '@/components/public/home/navbar'
 
-type Props = {}
 
-const page = (props: Props) => {
+const HomePage = () => {
     return (
-        <div>page</div>
+        <div className="flex flex-col">
+            <HomeNavbar />
+        </div>
     )
 }
 
-export default page
+export default HomePage
