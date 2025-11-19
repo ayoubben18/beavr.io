@@ -1,0 +1,70 @@
+name: Deploy to Staging
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # ────────────────────────────────────────────────────────────────
+      # Configure AWS credentials for SST deployment
+      # ────────────────────────────────────────────────────────────────
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-west-2
+
+      # ────────────────────────────────────────────────────────────────
+      # Deploy to staging stage
+      # ────────────────────────────────────────────────────────────────
+      - name: Unlock the staging stage
+        run: pnpm sst unlock --stage staging
+        continue-on-error: true
+
+      - name: Deploy to staging stage
+        env:
+          CI: true
+        run: |
+          echo "🚀 Deploying to staging stage..."
+          pnpm sst deploy --stage staging
+          echo "✅ Staging deployment completed!"
+        timeout-minutes: 30
+
+      - name: Show deployment status
+        if: always()
+        run: echo "Deployment completed with status ${{ job.status }}"
