@@ -1,3 +1,4 @@
+import Footer from '@/components/public/footer'
 
 export default function RootLayout({
     children,
@@ -7,6 +8,7 @@ export default function RootLayout({
     return (
         <div>
             {children}
+            <Footer />
         </div>
     );
 }
