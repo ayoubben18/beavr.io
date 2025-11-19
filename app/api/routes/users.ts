@@ -44,7 +44,7 @@ const usersApp = new Hono<ApiRoutesAuthContext>()
           or(
             ilike(users.name, `%${params.search}%`),
             ilike(users.email, `%${params.search}%`),
-          ),
+          ) as SQL,
         );
       }
 

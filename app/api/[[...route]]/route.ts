@@ -5,7 +5,6 @@ import { logger } from "hono/logger";
 
 import { auth } from "@/auth";
 import usersApp from "../routes/users";
-import pagesApp from "../routes/pages";
 
 // Define the context type for authenticated routes
 export type ApiRoutesAuthContext = {
@@ -110,7 +109,6 @@ const publicApp = new Hono()
 const protectedApp = new Hono<ApiRoutesAuthContext>()
   .use("*", authMiddleware)
   .route("/users", usersApp)
-  .route("/pages", pagesApp)
   .get("/protected", (c) => {
     const user = c.get("user");
     return c.json({
