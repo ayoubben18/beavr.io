@@ -10,7 +10,7 @@ export default $config({
       home: "aws",
       providers: {
         aws: {
-          profile: process.env.CI === "true" ? "my-organization" : undefined,
+          profile: process.env.CI !== "true" ? "my-organization" : undefined,
           region: "eu-west-3",
         }
       }
