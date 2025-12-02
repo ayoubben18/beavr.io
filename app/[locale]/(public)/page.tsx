@@ -1,3 +1,4 @@
+import About from '@/components/public/home/about'
 import HomeFAQ from '@/components/public/home/faq'
 import HomeFeatures from '@/components/public/home/features'
 import HomeHero from '@/components/public/home/hero'
@@ -11,6 +12,7 @@ const HomePage = () => {
             <HomeNavbar />
             <HomeHero />
             <HomeFeatures />
+            <About />
             <HomeFAQ />
             <HomeStats />
         </div>

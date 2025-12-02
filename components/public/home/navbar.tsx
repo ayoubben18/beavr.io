@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { Book, Menu, Sunset, Trees, Zap } from "lucide-react";
+import { Globe, Users, Bot, List, LayoutDashboard, Menu } from "lucide-react";
 import {
     Accordion,
     AccordionContent,
@@ -22,7 +22,7 @@ import {
     SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet";
-import LogoText from "@/public/logo-text.png"
+import Logo from "@/public/logo.svg"
 import Image from "next/image";
 interface MenuItem {
     title: string;
@@ -55,7 +55,7 @@ interface HomeNavbarProps {
 const HomeNavbar = ({
     logo = {
         url: "/",
-        src: LogoText,
+        src: Logo,
         alt: "Beavr.io",
         title: "",
     },
@@ -66,61 +66,40 @@ const HomeNavbar = ({
             url: "#",
             items: [
                 {
-                    title: "Blog",
-                    description: "The latest industry news, updates, and info",
-                    icon: <Book className="size-5 shrink-0" />,
+                    title: "Website builder",
+                    description: "Create your organization's website in minutes",
+                    icon: <Globe className="size-5 shrink-0" />,
                     url: "#",
                 },
                 {
-                    title: "Company",
-                    description: "Our mission is to innovate and empower the world",
-                    icon: <Trees className="size-5 shrink-0" />,
+                    title: "Client management",
+                    description: "Manage your clients database clearly",
+                    icon: <List className="size-5 shrink-0" />,
                     url: "#",
                 },
                 {
-                    title: "Careers",
-                    description: "Browse job listing and discover our workspace",
-                    icon: <Sunset className="size-5 shrink-0" />,
+                    title: "Custom AI assistant",
+                    description: "Get a customized AI assistant for your organization",
+                    icon: <Bot className="size-5 shrink-0" />,
                     url: "#",
                 },
                 {
-                    title: "Support",
-                    description:
-                        "Get in touch with our support team or visit our community forums",
-                    icon: <Zap className="size-5 shrink-0" />,
+                    title: "Centralized dashboard",
+                    description: "Manage your organization's information in a centralized dashboard",
+                    icon: <LayoutDashboard className="size-5 shrink-0" />,
+                    url: "#",
+                },
+                {
+                    title:"Team collaboration",
+                    description: "Collaborate with your organization's members",
+                    icon: <Users className="size-5 shrink-0" />,
                     url: "#",
                 },
             ],
         },
         {
             title: "How it works",
-            url: "#",
-            items: [
-                {
-                    title: "Help Center",
-                    description: "Get all the answers you need right here",
-                    icon: <Zap className="size-5 shrink-0" />,
-                    url: "#",
-                },
-                {
-                    title: "Contact Us",
-                    description: "We are here to help you with any questions you have",
-                    icon: <Sunset className="size-5 shrink-0" />,
-                    url: "#",
-                },
-                {
-                    title: "Status",
-                    description: "Check the current status of our services and APIs",
-                    icon: <Trees className="size-5 shrink-0" />,
-                    url: "#",
-                },
-                {
-                    title: "Terms of Service",
-                    description: "Our terms and conditions for using our services",
-                    icon: <Book className="size-5 shrink-0" />,
-                    url: "#",
-                },
-            ],
+            url: "#"
         },
         {
             title: "Pricing",
@@ -146,16 +125,11 @@ const HomeNavbar = ({
                         <a href={logo.url} className="flex items-center gap-2">
                             <Image
                                 src={logo.src}
-                                width={100}
-                                height={100}
+                                width={180}
+                                height={180}
                                 className="max-h-8 dark:invert"
                                 alt={logo.alt}
                             />
-                            {logo.title && (
-                                <span className="text-lg font-semibold tracking-tighter">
-                                    {logo.title}
-                                </span>
-                            )}
                         </a>
                         <div className="flex items-center">
                             <NavigationMenu>
@@ -217,7 +191,7 @@ const HomeNavbar = ({
                                     </Accordion>
                                     <div className="flex flex-col gap-3">
                                         <Button asChild variant="outline">
-                                            <a href={auth.login.url}>{auth.login.title}</a>
+                                            <a  href={auth.login.url}>{auth.login.title}</a>
                                         </Button>
                                         <Button asChild>
                                             <a href={auth.signup.url}>{auth.signup.title}</a>
@@ -237,7 +211,7 @@ const renderMenuItem = (item: MenuItem) => {
     if (item.items) {
         return (
             <NavigationMenuItem key={item.title}>
-                <NavigationMenuTrigger>{item.title}</NavigationMenuTrigger>
+                <NavigationMenuTrigger className="hover:bg-muted hover:text-primary">{item.title}</NavigationMenuTrigger>
                 <NavigationMenuContent className="bg-popover text-popover-foreground">
                     {item.items.map((subItem) => (
                         <NavigationMenuLink asChild key={subItem.title} className="w-80">

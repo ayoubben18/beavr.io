@@ -29,7 +29,7 @@ const HomeHero = ({
         title: "Our launch article",
         url: "#",
     },
-    heading = "Manage All Your Projects - From One Simple Place",
+    heading = "Manage All Your Projects From One Simple Place",
     subheading = {
         beforeHighlight: "",
         highlight: "Beavr.io",

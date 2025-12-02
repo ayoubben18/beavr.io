@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Image from "next/image";
-import LogoText from "@/public/logo-text.png";
+import Logo from "@/public/logo.svg";
+import {Linkedin, Mail} from "lucide-react";
 
 interface FooterLink {
     title: string;
@@ -31,7 +32,7 @@ interface FooterProps {
 
 const Footer = ({
     logo = {
-        src: LogoText,
+        src: Logo,
         alt: "Beavr.io",
         url: "/",
     },
@@ -64,11 +65,11 @@ const Footer = ({
 }: FooterProps) => {
     return (
         <footer className="border-t border-border bg-primary/10">
-            <div className="max-w-7xl mx-auto px-4 sm:px-8 py-12 sm:py-16">
+            <div className="max-w-7xl mx-auto px-4 sm:px-8 py-12">
                 {/* Main Footer Content */}
                 <div className="mb-12 flex lg:flex-row flex-col gap-10 justify-between">
                     {/* Logo and Description */}
-                    <div className="lg:col-span-2">
+                    <div className="lg:col-span-2 flex flex-col gap-4">
                         <a href={logo.url} className="inline-block mb-4">
                             <Image
                                 src={logo.src}
@@ -81,6 +82,10 @@ const Footer = ({
                         <p className="text-muted-foreground text-sm leading-relaxed">
                             {description}
                         </p>
+                        <div className="flex gap-6">
+                            <Mail className="size-4" />
+                            <Linkedin className="size-4" />
+                        </div>
                     </div>
 
                     <div className=" flex gap-20">
