@@ -24,6 +24,8 @@ import {
 } from "@/components/ui/sheet";
 import Logo from "@/public/logo.svg"
 import Image from "next/image";
+import Link from "next/link";
+import { ROUTES } from "@/routes";
 interface MenuItem {
     title: string;
     url: string;
@@ -90,7 +92,7 @@ const HomeNavbar = ({
                     url: "#",
                 },
                 {
-                    title:"Team collaboration",
+                    title: "Team collaboration",
                     description: "Collaborate with your organization's members",
                     icon: <Users className="size-5 shrink-0" />,
                     url: "#",
@@ -111,8 +113,8 @@ const HomeNavbar = ({
         },
     ],
     auth = {
-        login: { title: "Log In", url: "#" },
-        signup: { title: "Sign Up", url: "#" },
+        login: { title: "Log In", url: ROUTES.auth.login },
+        signup: { title: "Sign Up", url: ROUTES.auth.register },
     },
 }: HomeNavbarProps) => {
     return (
@@ -141,10 +143,10 @@ const HomeNavbar = ({
                     </div>
                     <div className="flex gap-2">
                         <Button asChild variant="outline" size="sm">
-                            <a href={auth.login.url}>{auth.login.title}</a>
+                            <Link href={auth.login.url}>{auth.login.title}</Link>
                         </Button>
                         <Button asChild size="sm">
-                            <a href={auth.signup.url}>{auth.signup.title}</a>
+                            <Link href={auth.signup.url}>{auth.signup.title}</Link>
                         </Button>
                     </div>
                 </nav>
@@ -191,10 +193,10 @@ const HomeNavbar = ({
                                     </Accordion>
                                     <div className="flex flex-col gap-3">
                                         <Button asChild variant="outline">
-                                            <a  href={auth.login.url}>{auth.login.title}</a>
+                                            <Link href={auth.login.url}>{auth.login.title}</Link>
                                         </Button>
                                         <Button asChild>
-                                            <a href={auth.signup.url}>{auth.signup.title}</a>
+                                            <Link href={auth.signup.url}>{auth.signup.title}</Link>
                                         </Button>
                                     </div>
                                 </div>

@@ -5,14 +5,13 @@ import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { NextIntlClientProvider } from "next-intl";
 import { ThemeProvider } from "next-themes";
 import { useState } from "react";
+import { Toaster } from "sonner";
 
 interface ProvidersProps {
   children: React.ReactNode;
-  locale: string;
-  messages: any;
 }
 
-export function Providers({ children, locale, messages }: ProvidersProps) {
+export function Providers({ children }: ProvidersProps) {
   const [queryClient] = useState(
     () =>
       new QueryClient({
@@ -27,18 +26,19 @@ export function Providers({ children, locale, messages }: ProvidersProps) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <NextIntlClientProvider locale={locale} messages={messages}>
-        <NuqsAdapter>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {children}
-          </ThemeProvider>
-        </NuqsAdapter>
-      </NextIntlClientProvider>
+      <NuqsAdapter>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          // enableSystem
+
+          disableTransitionOnChange
+        >
+          <Toaster richColors />
+
+          {children}
+        </ThemeProvider>
+      </NuqsAdapter>
     </QueryClientProvider>
   );
 }

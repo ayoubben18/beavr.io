@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     globalNotFound: true,
-    browserDebugInfoInTerminal: true,
+    // browserDebugInfoInTerminal: true,
   },
 };
 
