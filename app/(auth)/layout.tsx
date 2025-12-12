@@ -18,21 +18,21 @@ export default async function AuthLayout({
     redirect("/dashboard");
   }
   return (
-    <div className="relative min-h-screen overflow-hidden bg-background">
+    <div className="relative min-h-screen overflow-hidden bg-white">
       {/* Decorative gradient ellipses */}
       <div
-        className="pointer-events-none absolute -right-[200px] -top-[330px] size-[939px] opacity-60"
+        className="pointer-events-none absolute right-[-107px] top-[-330px] size-[939px]"
         style={{
           background:
-            "radial-gradient(circle, hsl(var(--primary) / 0.08) 0%, hsl(var(--primary) / 0.15) 40%, transparent 70%)",
+            "radial-gradient(circle, rgba(105, 46, 14, 0.12) 0%, rgba(105, 46, 14, 0.06) 40%, transparent 70%)",
           borderRadius: "50%",
         }}
       />
       <div
-        className="pointer-events-none absolute -bottom-[200px] -left-[337px] size-[939px] opacity-60"
+        className="pointer-events-none absolute left-[-337px] top-[330px] size-[939px]"
         style={{
           background:
-            "radial-gradient(circle, hsl(var(--primary) / 0.08) 0%, hsl(var(--primary) / 0.15) 40%, transparent 70%)",
+            "radial-gradient(circle, rgba(105, 46, 14, 0.12) 0%, rgba(105, 46, 14, 0.06) 40%, transparent 70%)",
           borderRadius: "50%",
         }}
       />
