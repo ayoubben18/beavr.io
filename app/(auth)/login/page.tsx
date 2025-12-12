@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { parseAsBoolean, useQueryState } from "nuqs";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -18,6 +19,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import FormMessageBox from "@/components/ui/form-message";
 import { Input } from "@/components/ui/input";
 import { PasswordInput } from "@/components/ui/password-input";
 import { authClient } from "@/lib/auth-client";
@@ -25,6 +27,7 @@ import { loginSchema, type LoginFormData } from "@/lib/validations/auth";
 
 export default function LoginPage() {
   const router = useRouter();
+  const [isVerified] = useQueryState("verified", parseAsBoolean.withDefault(false));
   const [isLoading, setIsLoading] = useState(false);
 
   const form = useForm<LoginFormData>({
@@ -41,14 +44,19 @@ export default function LoginPage() {
       const result = await authClient.signIn.email({
         email: data.email,
         password: data.password,
-        callbackURL: "/profile",
+        callbackURL: "/dashboard",
       });
 
       if (result.error) {
-        toast.error("Invalid email or password");
+        if (result.error.code === "EMAIL_NOT_VERIFIED") {
+          toast.error("Please verify your email before signing in");
+          router.push("/verify-email");
+        } else {
+          toast.error("Invalid email or password");
+        }
       } else {
         toast.success("Logged in successfully");
-        router.push("/profile");
+        router.push("/dashboard");
       }
     } catch {
       toast.error("Something went wrong. Please try again.");
@@ -67,9 +75,19 @@ export default function LoginPage() {
         </p>
       </div>
 
+      {isVerified && (
+        <div className="mt-6">
+          <FormMessageBox
+            variant="success"
+            message="Email verified successfully"
+            description="You can now sign in to your account"
+          />
+        </div>
+      )}
+
       {/* OAuth */}
       <div className="mt-6">
-        <OAuthButtons callbackURL="/profile" />
+        <OAuthButtons callbackURL="/dashboard" />
       </div>
 
       {/* Separator */}

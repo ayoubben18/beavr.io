@@ -25,6 +25,7 @@ export default $config({
     const POLAR_WEBHOOK_SECRET = new sst.Secret("POLAR_WEBHOOK_SECRET");
     const UPSTASH_REDIS_REST_URL = new sst.Secret("UPSTASH_REDIS_REST_URL");
     const UPSTASH_REDIS_REST_TOKEN = new sst.Secret("UPSTASH_REDIS_REST_TOKEN");
+    const RESEND_API_KEY = new sst.Secret("RESEND_API_KEY");
 
     const secrets = [
       BETTER_AUTH_SECRET,
@@ -35,6 +36,7 @@ export default $config({
       POLAR_WEBHOOK_SECRET,
       UPSTASH_REDIS_REST_URL,
       UPSTASH_REDIS_REST_TOKEN,
+      RESEND_API_KEY
     ];
 
     new sst.aws.Nextjs("Beavr", {
@@ -48,6 +50,7 @@ export default $config({
         POLAR_WEBHOOK_SECRET: POLAR_WEBHOOK_SECRET.value,
         UPSTASH_REDIS_REST_URL: UPSTASH_REDIS_REST_URL.value,
         UPSTASH_REDIS_REST_TOKEN: UPSTASH_REDIS_REST_TOKEN.value,
+        RESEND_API_KEY: RESEND_API_KEY.value
       },
     });
   },

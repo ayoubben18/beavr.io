@@ -33,6 +33,10 @@ declare module "sst" {
       "type": "sst.sst.Secret"
       "value": string
     }
+    "RESEND_API_KEY": {
+      "type": "sst.sst.Secret"
+      "value": string
+    }
     "UPSTASH_REDIS_REST_TOKEN": {
       "type": "sst.sst.Secret"
       "value": string

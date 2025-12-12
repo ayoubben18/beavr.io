@@ -7,6 +7,7 @@ import { polar, checkout, portal, usage, webhooks } from "@polar-sh/better-auth"
 import { Polar } from "@polar-sh/sdk";
 import { config } from "dotenv"
 import { admin } from "better-auth/plugins"
+import { sendPasswordResetEmail, sendVerificationEmail } from "@/lib/email"
 
 config({ path: ".env.local" })
 
@@ -25,20 +26,13 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
     requireEmailVerification: true,
-    sendResetPassword: async ({ user, url, token }, _request) => {
-      // TODO: Implement actual email sending service
-      console.log(`Password reset email for ${user.email}: ${url}`);
-      console.log(`Reset token: ${token}`);
-    },
-    onPasswordReset: async ({ user }, _request) => {
-      console.log(`Password reset completed for user: ${user.email}`);
+    sendResetPassword: async ({ user, url }) => {
+      await sendPasswordResetEmail(user.email, url);
     },
   },
   emailVerification: {
-    sendVerificationEmail: async ({ user, url, token }, _request) => {
-      // TODO: Implement actual email sending service
-      console.log(`Email verification for ${user.email}: ${url}`);
-      console.log(`Verification token: ${token}`);
+    sendVerificationEmail: async ({ user, url }) => {
+      await sendVerificationEmail(user.email, url);
     },
   },
   user: {

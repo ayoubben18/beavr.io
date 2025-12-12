@@ -44,7 +44,7 @@ export default function RegisterPage() {
         name: data.name,
         email: data.email,
         password: data.password,
-        callbackURL: "/verify-email",
+        callbackURL: "/login?verified=true",
       });
 
       if (result.error) {
@@ -76,7 +76,7 @@ export default function RegisterPage() {
 
       {/* OAuth */}
       <div className="mt-6">
-        <OAuthButtons callbackURL="/profile" mode="signup" />
+        <OAuthButtons callbackURL="/dashboard" mode="signup" />
       </div>
 
       {/* Separator */}
