@@ -55,6 +55,7 @@
     "dotenv": "^17.2.3",
     "drizzle-orm": "^0.44.5",
     "embla-carousel-react": "^8.6.0",
+    "framer-motion": "^12.23.25",
     "hono": "^4.9.8",
     "immer": "^11.0.1",
     "input-otp": "^1.4.2",

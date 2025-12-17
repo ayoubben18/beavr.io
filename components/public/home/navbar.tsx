@@ -118,7 +118,7 @@ const HomeNavbar = ({
     },
 }: HomeNavbarProps) => {
     return (
-        <section className="py-4 px-4 sm:px-8">
+        <section className="py-8 px-4 sm:px-8">
             <div >
                 {/* Desktop Menu */}
                 <nav className="hidden items-center justify-between lg:flex">
@@ -213,7 +213,7 @@ const renderMenuItem = (item: MenuItem) => {
     if (item.items) {
         return (
             <NavigationMenuItem key={item.title}>
-                <NavigationMenuTrigger className="hover:bg-muted hover:text-primary">{item.title}</NavigationMenuTrigger>
+                <NavigationMenuTrigger>{item.title}</NavigationMenuTrigger>
                 <NavigationMenuContent className="bg-popover text-popover-foreground">
                     {item.items.map((subItem) => (
                         <NavigationMenuLink asChild key={subItem.title} className="w-80">
@@ -228,7 +228,7 @@ const renderMenuItem = (item: MenuItem) => {
         <NavigationMenuItem key={item.title}>
             <NavigationMenuLink
                 href={item.url}
-                className="bg-background hover:bg-muted hover:text-primary group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors"
+                className="bg-background hover:bg-primary/10 hover:text-primary group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors"
             >
                 {item.title}
             </NavigationMenuLink>
@@ -261,14 +261,14 @@ const renderMobileMenuItem = (item: MenuItem) => {
 const SubMenuLink = ({ item }: { item: MenuItem }) => {
     return (
         <a
-            className="hover:bg-muted hover:text-primary flex min-w-80 select-none flex-row gap-4 rounded-md p-3 leading-none no-underline outline-none transition-colors"
+            className="hover:bg-primary/10 text-foreground hover:text-primary flex min-w-80 select-none flex-row gap-4 rounded-md p-3 leading-none no-underline outline-none transition-colors"
             href={item.url}
         >
-            <div className="text-foreground">{item.icon}</div>
+            <div className="text-primary">{item.icon}</div>
             <div>
                 <div className="text-sm font-semibold">{item.title}</div>
                 {item.description && (
-                    <p className="text-muted-foreground text-sm leading-snug">
+                    <p className="text-sm leading-snug">
                         {item.description}
                     </p>
                 )}

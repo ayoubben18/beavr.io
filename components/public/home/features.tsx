@@ -66,7 +66,7 @@ const HomeFeatures = ({
                     {features.map((feature) => (
                         <div
                             key={feature.title}
-                            className="bg-muted rounded-2xl p-8 hover:bg-muted/70 transition-colors"
+                            className="bg-primary/5 rounded-2xl p-8 transition-colors"
                         >
                             {/* Icon */}
                             <div className="mb-6 inline-flex items-center justify-center w-12 h-12 rounded-full border border-primary/20 bg-background text-primary">
@@ -79,7 +79,7 @@ const HomeFeatures = ({
                             </h3>
 
                             {/* Description */}
-                            <p className="text-muted-foreground leading-relaxed">
+                            <p className="text-foreground/80 leading-relaxed">
                                 {feature.description}
                             </p>
                         </div>

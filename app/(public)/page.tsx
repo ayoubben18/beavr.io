@@ -1,3 +1,4 @@
+
 import About from '@/components/public/home/about'
 import HomeFAQ from '@/components/public/home/faq'
 import HomeFeatures from '@/components/public/home/features'
@@ -8,6 +9,7 @@ import HomeStats from '@/components/public/home/stats'
 
 const HomePage = () => {
     return (
+        
         <div className="flex flex-col">
             <HomeNavbar />
             <HomeHero />
@@ -15,6 +17,7 @@ const HomePage = () => {
             <About />
             <HomeFAQ />
             <HomeStats />
+        
         </div>
     )
 }

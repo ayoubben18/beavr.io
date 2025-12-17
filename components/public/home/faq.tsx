@@ -73,7 +73,7 @@ const HomeFAQ = ({
                         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 tracking-tight">
                             {heading}
                         </h2>
-                        <p className="text-2xl sm:text-3xl text-secondary mb-6">
+                        <p className="text-2xl sm:text-3xl text-primary/50 mb-6">
                             {subheading}
                         </p>
                         <p className="text-base sm:text-lg text-foreground">
@@ -136,7 +136,7 @@ const HomeFAQ = ({
                                     <AccordionTrigger className="text-left text-base sm:text-lg font-medium hover:no-underline">
                                         {faq.question}
                                     </AccordionTrigger>
-                                    <AccordionContent className="text-muted-foreground text-base">
+                                    <AccordionContent className="text-secondary-foreground/80 text-base">
                                         {faq.answer}
                                     </AccordionContent>
                                 </AccordionItem>

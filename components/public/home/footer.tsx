@@ -79,7 +79,7 @@ const Footer = ({
                                 alt={logo.alt}
                             />
                         </a>
-                        <p className="text-muted-foreground text-sm leading-relaxed">
+                        <p className="text-foreground text-sm leading-relaxed">
                             {description}
                         </p>
                         <div className="flex gap-6">
@@ -100,7 +100,7 @@ const Footer = ({
                                         <li key={link.title}>
                                             <a
                                                 href={link.url}
-                                                className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                                                className="text-sm text-foreground hover:text-primary transition-colors"
                                             >
                                                 {link.title}
                                             </a>
@@ -115,7 +115,7 @@ const Footer = ({
                 <div className="pt-8 border-t border-primary">
                     <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
                         {/* Copyright */}
-                        <p className="text-sm text-muted-foreground">
+                        <p className="text-sm text-foreground">
                             {copyright}
                         </p>
 
@@ -125,7 +125,7 @@ const Footer = ({
                                 <a
                                     key={link.title}
                                     href={link.url}
-                                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                                    className="text-sm text-foreground hover:text-primary transition-colors"
                                 >
                                     {link.title}
                                 </a>

@@ -1,5 +1,8 @@
+
+
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+
 
 interface HeroProps {
     launchArticle?: {
@@ -41,13 +44,14 @@ const HomeHero = ({
     },
 }: HeroProps) => {
     return (
+        
         <section className="py-20 px-4 sm:px-8">
             <div className="max-w-5xl mx-auto">
                 {/* Launch Article Link */}
                 <div className="flex justify-center mb-8">
                     <a
                         href={launchArticle.url}
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-background hover:bg-muted transition-colors text-sm"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-background hover:bg-primary/10 hover:text-primary transition-colors text-sm"
                     >
                         <span>{launchArticle.title}</span>
                         <ArrowRight className="size-4" />
@@ -55,12 +59,12 @@ const HomeHero = ({
                 </div>
 
                 {/* Main Heading */}
-                <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-center mb-6 tracking-tight">
+                <h1 className="text-4xl text-foreground sm:text-5xl md:text-6xl font-bold text-center mb-6 tracking-tight">
                     {heading}
                 </h1>
 
                 {/* Subheading */}
-                <p className="text-lg sm:text-xl text-center text-muted-foreground max-w-3xl mx-auto mb-10">
+                <p className="text-lg sm:text-xl text-center text-foreground max-w-3xl mx-auto mb-10">
                     {subheading.beforeHighlight}
                     <span className="font-semibold text-foreground">
                         {subheading.highlight}
@@ -79,6 +83,7 @@ const HomeHero = ({
                 </div>
             </div>
         </section>
+        
     );
 };
 

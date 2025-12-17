@@ -4,15 +4,15 @@ const About = () => {
 
       <div className="py-16 px-6 lg:py-36 lg:px-24 flex flex-col justify-center items-center gap-12 max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-top w-full gap-6 md:gap-12">
-              <h1 className="text-xl md:text-2xl font-light md:w-1/3 text-secondary shrink-0">
+              <h2 className="text-xl md:text-2xl font-light md:w-1/3 shrink-0 text-primary">
                   About Us
-              </h1>
+              </h2>
               <p className="text-base md:text-lg md:w-2/3">
                   Beavr is the fruit of a team dedicated to leveraging the ease and access the internet brought to our lives. We believe fiercely in the power of the human intelligent mind and the value of individual autonomy. However, we also deeply perceive the strength of unified teamwork.
               </p>
           </div>
           <div className="flex flex-col md:flex-row justify-between items-top w-full gap-6 md:gap-12">
-              <h2 className="text-xl md:text-2xl font-light md:w-1/3 text-secondary shrink-0">
+              <h2 className="text-xl md:text-2xl font-light md:w-1/3 shrink-0 text-primary">
                   Our Mission
               </h2>
               <p className="text-base md:text-lg md:w-2/3">
@@ -20,7 +20,7 @@ const About = () => {
               </p>
           </div>
           <div className="flex flex-col md:flex-row justify-between items-top w-full gap-6 md:gap-12">
-              <h2 className="text-xl md:text-2xl font-light md:w-1/3 text-secondary shrink-0">
+              <h2 className="text-xl md:text-2xl font-light md:w-1/3 shrink-0 text-primary">
                   Our Vision
               </h2>
               <p className="text-base md:text-lg md:w-2/3">
