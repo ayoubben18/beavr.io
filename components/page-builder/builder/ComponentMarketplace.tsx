@@ -53,7 +53,7 @@ export function ComponentMarketplace() {
   };
 
   return (
-    <div className="w-72 border-r bg-background flex flex-col">
+    <div className="w-72 border-r bg-card flex flex-col">
       {/* Search */}
       <div className="p-4 border-b">
         <div className="relative">

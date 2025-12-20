@@ -65,7 +65,7 @@ export function PropertiesPanel() {
   };
 
   return (
-    <div className="w-80 border-l bg-background flex flex-col">
+    <div className="w-80 border-l bg-card flex flex-col">
       {/* Header */}
       <div className="p-4 border-b flex items-center justify-between">
         <h3 className="font-medium text-sm">{schema.label}</h3>
@@ -460,18 +460,16 @@ function FieldRenderer({
             <button
               type="button"
               onClick={() => onChange("ltr")}
-              className={`flex-1 px-3 py-1.5 text-xs font-medium ${
-                value === "ltr" ? "bg-primary text-primary-foreground" : "hover:bg-muted"
-              }`}
+              className={`flex-1 px-3 py-1.5 text-xs font-medium ${value === "ltr" ? "bg-primary text-primary-foreground" : "hover:bg-muted"
+                }`}
             >
               LTR
             </button>
             <button
               type="button"
               onClick={() => onChange("rtl")}
-              className={`flex-1 px-3 py-1.5 text-xs font-medium ${
-                value === "rtl" ? "bg-primary text-primary-foreground" : "hover:bg-muted"
-              }`}
+              className={`flex-1 px-3 py-1.5 text-xs font-medium ${value === "rtl" ? "bg-primary text-primary-foreground" : "hover:bg-muted"
+                }`}
             >
               RTL
             </button>

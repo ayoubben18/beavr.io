@@ -37,7 +37,7 @@ export function BuilderTopBar() {
   ];
 
   return (
-    <div className="h-16 border-b bg-background flex items-center justify-between px-4">
+    <div className="h-16 border-b bg-card flex items-center justify-between px-4">
       {/* Left: Page info */}
       <div className="flex items-center gap-3">
         <div>
@@ -56,11 +56,10 @@ export function BuilderTopBar() {
           <button
             key={size}
             onClick={() => setViewport(size)}
-            className={`p-2 rounded ${
-              viewport === size
+            className={`p-2 rounded ${viewport === size
                 ? "bg-primary text-primary-foreground"
                 : "text-muted-foreground hover:text-foreground hover:bg-muted"
-            }`}
+              }`}
             title={label}
           >
             <Icon className="h-4 w-4" />
