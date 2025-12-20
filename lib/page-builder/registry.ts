@@ -22,15 +22,16 @@ import type { ComponentType } from "react";
 import type { ComponentCategory, ComponentSchema, RegistryEntry } from "./types";
 
 // Schemas
-import { navbar1Schema } from "./schemas/navbar";
+import { navbar1Schema, navbar2Schema } from "./schemas/navbar";
 import { hero1Schema } from "./schemas/hero";
 
-// Components (will be created next)
+// Components
 import { Navbar1 } from "@/components/page-builder/components/Navbar1";
+import { Navbar2 } from "@/components/page-builder/components/Navbar2";
 import { Hero1 } from "@/components/page-builder/components/Hero1";
 
 // Props types
-import type { Navbar1Props, Hero1Props } from "./component-props";
+import type { Navbar1Props, Navbar2Props, Hero1Props } from "./component-props";
 
 // ============================================================================
 // REGISTRY STRUCTURE
@@ -47,6 +48,10 @@ export const componentRegistry = {
       schema: navbar1Schema,
       component: Navbar1,
     } as RegistryEntry<Navbar1Props>,
+    2: {
+      schema: navbar2Schema,
+      component: Navbar2,
+    } as RegistryEntry<Navbar2Props>,
   },
   hero: {
     1: {

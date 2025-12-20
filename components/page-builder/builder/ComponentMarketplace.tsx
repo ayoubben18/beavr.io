@@ -7,12 +7,14 @@
 
 "use client";
 
-import { useState } from "react";
-import { usePageBuilderStore } from "@/lib/page-builder";
-import { getMarketplaceComponentsByCategory, getDefaults } from "@/lib/page-builder/registry";
-import type { ComponentCategory } from "@/lib/page-builder/types";
-import { Input } from "@/components/ui/input";
 import { ChevronDown, ChevronUp, Search } from "lucide-react";
+import Image from "next/image";
+import { useState } from "react";
+
+import { Input } from "@/components/ui/input";
+import { usePageBuilderStore } from "@/lib/page-builder";
+import { getDefaults, getMarketplaceComponentsByCategory } from "@/lib/page-builder/registry";
+import type { ComponentCategory } from "@/lib/page-builder/types";
 
 export function ComponentMarketplace() {
   const [search, setSearch] = useState("");
@@ -73,6 +75,7 @@ export function ComponentMarketplace() {
           <div key={category}>
             {/* Category header */}
             <button
+              type="button"
               onClick={() => toggleCategory(category)}
               className="flex items-center justify-between w-full text-sm font-medium text-foreground mb-2 hover:text-primary"
             >
@@ -124,36 +127,47 @@ function ComponentCard({
 }) {
   return (
     <button
+      type="button"
       onClick={onClick}
-      className="group flex flex-col border rounded-lg overflow-hidden hover:border-primary hover:shadow-sm transition-all"
+      className="group flex flex-col rounded-lg overflow-hidden"
     >
-      {/* Thumbnail placeholder */}
-      <div className="aspect-[4/3] bg-muted flex items-center justify-center">
-        <div className="w-full h-full p-2">
-          <div className="w-full h-full border-2 border-dashed border-muted-foreground/20 rounded flex items-center justify-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="text-muted-foreground/40"
-            >
-              <rect width="18" height="18" x="3" y="3" rx="2" />
-              <path d="M3 9h18" />
-              <path d="M9 21V9" />
-            </svg>
-          </div>
-        </div>
+      {/* Label */}
+      <div className="px-2 py-2 text-sm text-muted-foreground text-left">
+        {label}
       </div>
 
-      {/* Label */}
-      <div className="px-2 py-1.5 text-xs text-muted-foreground group-hover:text-foreground text-center">
-        {label}
+      {/* Thumbnail */}
+      <div className="aspect-[4/3] bg-muted flex items-center justify-center relative rounded-lg group-hover:bg-muted/80">
+        {thumbnail ? (
+          <Image
+            src={thumbnail}
+            alt={label}
+            fill
+            className="object-contain p-1"
+          />
+        ) : (
+          <div className="w-full h-full p-2">
+            <div className="w-full h-full border-2 border-dashed border-muted-foreground/20 rounded flex items-center justify-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="text-muted-foreground/40"
+                aria-hidden="true"
+              >
+                <rect width="18" height="18" x="3" y="3" rx="2" />
+                <path d="M3 9h18" />
+                <path d="M9 21V9" />
+              </svg>
+            </div>
+          </div>
+        )}
       </div>
     </button>
   );

@@ -201,10 +201,20 @@ export type Navbar1Props = {
 /**
  * Navbar 2 Props
  *
- * Similar to Navbar1 but with different layout/styling.
- * (Define specific differences based on your Figma design)
+ * Floating centered navbar with rounded container.
+ * Includes config for container background and border colors.
  */
-export type Navbar2Props = Navbar1Props;
+export type Navbar2Props = Navbar1Props & {
+  /**
+   * Container configuration.
+   */
+  config: {
+    /** Container background color */
+    bgColor: HexColor;
+    /** Container border color */
+    borderColor: HexColor;
+  };
+};
 
 /**
  * Navbar 3 Props

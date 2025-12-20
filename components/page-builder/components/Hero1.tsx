@@ -3,11 +3,20 @@
  *
  * Full hero section with title, description, CTAs, and image.
  * Supports LTR/RTL layout direction.
+ *
+ * Uses CSS Container Queries (@container) for responsiveness based on
+ * parent container width, not browser viewport. This is essential for
+ * the page builder preview to work correctly at different viewport sizes.
  */
+
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
+
+import { Button } from "@/components/ui/button";
 import type { Hero1Props } from "@/lib/page-builder/component-props";
+import { cn } from "@/lib/utils";
 
 export function Hero1({ config, title, description, cta, image }: Hero1Props) {
   const isRtl = config.direction === "rtl";
@@ -15,39 +24,40 @@ export function Hero1({ config, title, description, cta, image }: Hero1Props) {
   return (
     <section
       style={{ backgroundColor: config.bgColor }}
-      className="px-6 py-16 md:py-24"
+      className="@container px-6 py-12 @3xl:py-24"
     >
       <div
-        className={`
-          max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-12
-          ${isRtl ? "md:flex-row-reverse" : ""}
-        `}
+        className={cn(
+          "max-w-6xl mx-auto flex flex-col items-center gap-8",
+          "@3xl:flex-row @3xl:gap-12",
+          isRtl && "@3xl:flex-row-reverse"
+        )}
       >
         {/* Content */}
-        <div className="flex-1 space-y-6 text-center md:text-left">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
+        <div className="flex-1 space-y-6 text-center @3xl:text-left">
+          <h1 className="text-3xl @3xl:text-4xl @5xl:text-5xl font-bold text-foreground">
             {title.label}
           </h1>
 
-          <p className="text-base md:text-lg text-muted-foreground max-w-xl">
+          <p className="text-base @3xl:text-lg text-muted-foreground max-w-xl mx-auto @3xl:mx-0">
             {description.content}
           </p>
 
           {/* CTA Buttons */}
           {cta.items.length > 0 && (
-            <div className="flex flex-wrap gap-3 justify-center md:justify-start">
-              {cta.items.map((button, index) => (
-                <Link
-                  key={index}
-                  href={button.href}
+            <div className="flex flex-wrap gap-3 justify-center @3xl:justify-start">
+              {cta.items.map((button) => (
+                <Button
+                  key={button.label}
+                  asChild
                   style={{
                     color: button.textColor,
                     backgroundColor: button.bgColor,
                   }}
-                  className="px-6 py-3 rounded-lg text-sm font-medium transition-opacity hover:opacity-90"
+                  className="px-6 py-3 h-auto"
                 >
-                  {button.label}
-                </Link>
+                  <Link href={button.href}>{button.label}</Link>
+                </Button>
               ))}
             </div>
           )}

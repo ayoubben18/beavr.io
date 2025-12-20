@@ -170,32 +170,50 @@ export const navbar2Schema: ComponentSchema<Navbar2Props> = {
   thumbnail: "/thumbnails/navbar-2.png",
 
   groups: {
+    config: {
+      kind: "group",
+      label: "Container",
+      collapsible: true,
+      fields: {
+        bgColor: {
+          type: "color",
+          label: "Background",
+        },
+        borderColor: {
+          type: "color",
+          label: "Border",
+        },
+      },
+    },
     ...navbar1Schema.groups,
   },
 
   defaults: {
+    config: {
+      bgColor: "#f5f5f5",
+      borderColor: "#e3e3e3",
+    },
     logo: {
       url: "",
-      width: 40,
-      height: 40,
+      width: 32,
+      height: 32,
     },
     links: {
       color: "#141414",
       items: [
-        { label: "Home", href: "/" },
-        { label: "About", href: "/about" },
-        { label: "Services", href: "/services" },
-        { label: "Contact", href: "/contact" },
+        { label: "Products", href: "#products" },
+        { label: "Resources", href: "#resources" },
+        { label: "Integration", href: "#integration" },
       ],
     },
     buttons: {
       items: [
         {
-          label: "Get Started",
-          href: "#",
-          textColor: "#ffffff",
-          bgColor: "#692e0e",
-          borderColor: "#692e0e",
+          label: "Log in",
+          href: "/login",
+          textColor: "#141414",
+          bgColor: "#ffffff",
+          borderColor: "#e3e3e3",
         },
       ],
     },
