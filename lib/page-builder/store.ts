@@ -159,6 +159,16 @@ type PageBuilderState = {
    * Whether a save operation is in progress.
    */
   isSaving: boolean;
+
+  /**
+   * Whether the marketplace sidebar is visible.
+   */
+  isMarketplaceOpen: boolean;
+
+  /**
+   * Whether the properties panel is visible.
+   */
+  isPropertiesPanelOpen: boolean;
 };
 
 /**
@@ -357,6 +367,20 @@ type PageBuilderActions = {
    * @param isSaving - Whether save is in progress
    */
   setIsSaving: (isSaving: boolean) => void;
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // PANEL VISIBILITY ACTIONS
+  // ─────────────────────────────────────────────────────────────────────────
+
+  /**
+   * Toggle the marketplace sidebar visibility.
+   */
+  toggleMarketplace: () => void;
+
+  /**
+   * Toggle the properties panel visibility.
+   */
+  togglePropertiesPanel: () => void;
 };
 
 /**
@@ -380,6 +404,8 @@ const initialState: PageBuilderState = {
   future: [],
   isDirty: false,
   isSaving: false,
+  isMarketplaceOpen: true,
+  isPropertiesPanelOpen: true,
 };
 
 // ============================================================================
@@ -847,6 +873,22 @@ export const usePageBuilderStore = create<PageBuilderStore>()(
       setIsSaving: (isSaving) => {
         set((state) => {
           state.isSaving = isSaving;
+        });
+      },
+
+      // ─────────────────────────────────────────────────────────────────────
+      // PANEL VISIBILITY ACTIONS
+      // ─────────────────────────────────────────────────────────────────────
+
+      toggleMarketplace: () => {
+        set((state) => {
+          state.isMarketplaceOpen = !state.isMarketplaceOpen;
+        });
+      },
+
+      togglePropertiesPanel: () => {
+        set((state) => {
+          state.isPropertiesPanelOpen = !state.isPropertiesPanelOpen;
         });
       },
     }))

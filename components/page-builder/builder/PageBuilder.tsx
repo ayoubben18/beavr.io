@@ -29,6 +29,8 @@ type PageBuilderProps = {
 export function PageBuilder({ initialPage }: PageBuilderProps) {
   const initializePage = usePageBuilderStore((s) => s.initializePage);
   const resetStore = usePageBuilderStore((s) => s.resetStore);
+  const isMarketplaceOpen = usePageBuilderStore((s) => s.isMarketplaceOpen);
+  const isPropertiesPanelOpen = usePageBuilderStore((s) => s.isPropertiesPanelOpen);
 
   // Initialize the store with the page data
   useEffect(() => {
@@ -48,13 +50,13 @@ export function PageBuilder({ initialPage }: PageBuilderProps) {
       {/* Main Content */}
       <div className="flex-1 flex overflow-hidden">
         {/* Left: Component Marketplace */}
-        <ComponentMarketplace />
+        {isMarketplaceOpen && <ComponentMarketplace />}
 
         {/* Center: Canvas */}
         <BuilderCanvas />
 
         {/* Right: Properties Panel */}
-        <PropertiesPanel />
+        {isPropertiesPanelOpen && <PropertiesPanel />}
       </div>
     </div>
   );

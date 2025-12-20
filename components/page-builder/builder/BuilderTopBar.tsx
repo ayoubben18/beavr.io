@@ -16,6 +16,8 @@ import {
   Redo2,
   Play,
   Download,
+  PanelLeft,
+  PanelRight,
 } from "lucide-react";
 import type { ViewportSize } from "@/lib/page-builder/types";
 
@@ -29,6 +31,10 @@ export function BuilderTopBar() {
   const canRedo = usePageBuilderStore((s) => s.canRedo);
   const isDirty = usePageBuilderStore((s) => s.isDirty);
   const isSaving = usePageBuilderStore((s) => s.isSaving);
+  const isMarketplaceOpen = usePageBuilderStore((s) => s.isMarketplaceOpen);
+  const isPropertiesPanelOpen = usePageBuilderStore((s) => s.isPropertiesPanelOpen);
+  const toggleMarketplace = usePageBuilderStore((s) => s.toggleMarketplace);
+  const togglePropertiesPanel = usePageBuilderStore((s) => s.togglePropertiesPanel);
 
   const viewportButtons: { size: ViewportSize; icon: typeof Monitor; label: string }[] = [
     { size: "mobile", icon: Smartphone, label: "Mobile" },
@@ -38,8 +44,32 @@ export function BuilderTopBar() {
 
   return (
     <div className="h-16 border-b bg-card flex items-center justify-between px-4">
-      {/* Left: Page info */}
+      {/* Left: Page info + Panel toggles */}
       <div className="flex items-center gap-3">
+        {/* Marketplace toggle */}
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={toggleMarketplace}
+          className={`h-8 w-8 ${!isMarketplaceOpen ? 'text-muted-foreground' : ''}`}
+          title={isMarketplaceOpen ? "Hide marketplace" : "Show marketplace"}
+        >
+          <PanelLeft className="h-4 w-4" />
+        </Button>
+
+        {/* Properties panel toggle */}
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={togglePropertiesPanel}
+          className={`h-8 w-8 ${!isPropertiesPanelOpen ? 'text-muted-foreground' : ''}`}
+          title={isPropertiesPanelOpen ? "Hide properties" : "Show properties"}
+        >
+          <PanelRight className="h-4 w-4" />
+        </Button>
+
+        <div className="h-6 w-px bg-border" />
+
         <div>
           <div className="flex items-center gap-2">
             <span className="text-sm text-muted-foreground">Organization -</span>
@@ -54,6 +84,7 @@ export function BuilderTopBar() {
       <div className="flex items-center gap-1 border rounded-lg p-1">
         {viewportButtons.map(({ size, icon: Icon, label }) => (
           <button
+            type="button"
             key={size}
             onClick={() => setViewport(size)}
             className={`p-2 rounded ${viewport === size
