@@ -293,8 +293,8 @@ export type Hero2Props = Hero1Props;
 /**
  * Hero 3 Props
  *
- * Hero without image - text-focused layout.
- * Centered content with title, description, and CTAs.
+ * Centered hero with title, description, image, and CTAs.
+ * Vertical layout: Title -> Description -> Image -> CTAs
  */
 export type Hero3Props = {
   /**
@@ -319,6 +319,14 @@ export type Hero3Props = {
   description: {
     /** Description text */
     content: string;
+  };
+
+  /**
+   * Hero image.
+   */
+  image: {
+    /** Image URL */
+    url: string;
   };
 
   /**

@@ -1,8 +1,8 @@
 /**
  * Hero 3 Component
  *
- * Text-only centered hero section with title, description, and CTAs.
- * No image - designed for bold, text-focused landing sections.
+ * Centered hero section with vertical layout.
+ * Title -> Description -> Image -> CTAs
  *
  * Uses CSS Container Queries (@container) for responsiveness based on
  * parent container width, not browser viewport. This is essential for
@@ -11,18 +11,20 @@
 
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import type { Hero3Props } from "@/lib/page-builder/component-props";
+import { ImagePlaceholder } from "./ImagePlaceholder";
 
-export function Hero3({ config, title, description, cta }: Hero3Props) {
+export function Hero3({ config, title, description, image, cta }: Hero3Props) {
   return (
     <section
       style={{ backgroundColor: config.bgColor }}
       className="@container px-6 py-16 @3xl:py-24"
     >
-      <div className="max-w-3xl mx-auto text-center space-y-6">
+      <div className="max-w-4xl mx-auto text-center space-y-8">
         {/* Title */}
         <h1 className="text-3xl @3xl:text-4xl @5xl:text-5xl font-bold text-foreground">
           {title.label}
@@ -32,6 +34,20 @@ export function Hero3({ config, title, description, cta }: Hero3Props) {
         <p className="text-base @3xl:text-lg text-muted-foreground max-w-2xl mx-auto">
           {description.content}
         </p>
+
+        {/* Image */}
+        {image.url ? (
+          <div className="relative w-full aspect-video rounded-xl overflow-hidden">
+            <Image
+              src={image.url}
+              alt={title.label}
+              fill
+              className="object-cover"
+            />
+          </div>
+        ) : (
+          <ImagePlaceholder aspectRatio="aspect-video" className="rounded-xl" />
+        )}
 
         {/* CTA Buttons */}
         {cta.items.length > 0 && (

@@ -51,8 +51,9 @@ export function Navbar4({ logo, links, buttons }: Navbar4Props) {
             )}
           </Link>
 
-          {/* Centered Links */}
-          <div className="flex items-center gap-1 absolute left-1/2 -translate-x-1/2">
+
+          {/* Button */}
+          <div className="flex items-center gap-2 shrink-0">
             {links.items.map((link) => (
               <Link
                 key={link.label}
@@ -67,10 +68,6 @@ export function Navbar4({ logo, links, buttons }: Navbar4Props) {
                 {link.label}
               </Link>
             ))}
-          </div>
-
-          {/* Button */}
-          <div className="flex gap-2 shrink-0">
             {buttons.items.slice(0, 1).map((button) => (
               <Button
                 key={button.label}

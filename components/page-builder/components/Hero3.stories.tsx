@@ -1,12 +1,13 @@
 /**
  * Hero3 Stories
  *
- * Text-only centered hero section - no image.
- * Perfect for bold, impactful landing sections where imagery isn't needed.
+ * Centered hero section with vertical layout.
+ * Title -> Description -> Image -> CTAs
  *
  * Key features:
  * - Configurable background color
  * - Centered title and description
+ * - Full-width image with rounded corners
  * - Multiple CTA buttons with individual colors
  * - Container query responsive (not viewport-based)
  */
@@ -23,15 +24,15 @@ const meta = {
     docs: {
       description: {
         component: `
-A text-focused hero section component for landing pages.
+A centered hero section component with vertical layout.
 
 ## Features
 
 - **Background Color**: Customizable section background
 - **Title**: Bold centered headline text with responsive sizing
 - **Description**: Supporting paragraph text, centered
+- **Image**: Full-width image with rounded corners (16:9 aspect ratio)
 - **CTA Buttons**: Up to multiple buttons with individual color customization
-- **No Image**: Clean, text-only design for impact
 
 ## Responsive Behavior
 
@@ -56,6 +57,9 @@ type Hero3Props = {
   };
   description: {
     content: string;         // Supporting text
+  };
+  image: {
+    url: string;             // Image URL
   };
   cta: {
     items: Array<{
@@ -85,7 +89,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 /**
- * Default hero with white background.
+ * Default hero with white background and image.
  */
 export const Default: Story = {
   args: {
@@ -97,6 +101,9 @@ export const Default: Story = {
     },
     description: {
       content: 'Create stunning, conversion-focused landing pages with our intuitive drag-and-drop builder. No coding required.',
+    },
+    image: {
+      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=675&fit=crop',
     },
     cta: {
       items: [
@@ -130,6 +137,9 @@ export const BrandBackground: Story = {
     },
     description: {
       content: 'Our platform has helped businesses of all sizes achieve their goals faster and more efficiently.',
+    },
+    image: {
+      url: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&h=675&fit=crop',
     },
     cta: {
       items: [
@@ -170,6 +180,9 @@ export const DarkBackground: Story = {
     },
     description: {
       content: 'Experience next-generation tools that make creating websites faster and more intuitive than ever before.',
+    },
+    image: {
+      url: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&h=675&fit=crop',
     },
     cta: {
       items: [

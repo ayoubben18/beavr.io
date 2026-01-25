@@ -216,8 +216,8 @@ export const hero2Schema: ComponentSchema<Hero2Props> = {
 /**
  * Hero 3 Schema
  *
- * Text-only hero without image.
- * Centered content layout.
+ * Centered hero with vertical layout.
+ * Title -> Description -> Image -> CTAs
  */
 export const hero3Schema: ComponentSchema<Hero3Props> = {
   type: "hero",
@@ -264,12 +264,25 @@ export const hero3Schema: ComponentSchema<Hero3Props> = {
       },
     },
 
+    image: {
+      kind: "group",
+      label: "Image",
+      collapsible: true,
+      deletable: true,
+      fields: {
+        url: {
+          type: "image",
+          label: "Asset",
+        },
+      },
+    },
+
     cta: ctaArrayGroup,
   },
 
   defaults: {
     config: {
-      bgColor: "#692e0e",
+      bgColor: "#ffffff",
     },
     title: {
       label: "Welcome to our platform",
@@ -278,13 +291,22 @@ export const hero3Schema: ComponentSchema<Hero3Props> = {
       content:
         "Join thousands of satisfied customers who have transformed their business with our solution.",
     },
+    image: {
+      url: "",
+    },
     cta: {
       items: [
         {
           label: "Start Free Trial",
           href: "#",
+          bgColor: "#692e0e",
+          textColor: "#ffffff",
+        },
+        {
+          label: "Learn More",
+          href: "#",
           bgColor: "#ffffff",
-          textColor: "#692e0e",
+          textColor: "#141414",
         },
       ],
     },

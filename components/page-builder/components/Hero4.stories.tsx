@@ -1,14 +1,15 @@
 /**
  * Hero4 Stories
  *
- * Centered hero with bordered sections and decorative elements.
- * Features a boxed design with optional image.
+ * Centered hero section with vertical layout.
+ * Title -> Description -> CTAs -> Image
+ * (Inverse of Hero3 which has Image before CTAs)
  *
  * Key features:
- * - Bordered container with rounded corners
- * - Decorative diagonal line elements
- * - Title, description, and CTAs
- * - Optional image (shows placeholder when empty)
+ * - Configurable background color
+ * - Centered title and description
+ * - Full-width image with rounded corners
+ * - Multiple CTA buttons with individual colors
  * - Container query responsive (not viewport-based)
  */
 
@@ -24,16 +25,21 @@ const meta = {
     docs: {
       description: {
         component: `
-A bordered hero section component with decorative elements.
+A centered hero section component with vertical layout (inverse of Hero3).
 
 ## Features
 
 - **Background Color**: Customizable section background
-- **Bordered Container**: Rounded border with decorative patterns
-- **Title**: Bold headline text with responsive sizing
-- **Description**: Supporting paragraph text
-- **CTA Buttons**: Multiple buttons with individual color customization
-- **Image**: Optional image with placeholder fallback
+- **Title**: Bold centered headline text with responsive sizing
+- **Description**: Supporting paragraph text, centered
+- **CTA Buttons**: Multiple buttons before the image
+- **Image**: Full-width image with rounded corners (16:9 aspect ratio)
+
+## Layout Order
+
+Title → Description → **CTAs** → Image
+
+(Hero3 has: Title → Description → **Image** → CTAs)
 
 ## Responsive Behavior
 
@@ -42,8 +48,9 @@ This ensures the component responds to its parent container width.
 
 | Container Width | Layout |
 |-----------------|--------|
-| < 768px | Stacked layout, centered text |
-| ≥ 768px (@3xl) | Side-by-side layout |
+| < 768px | Smaller text, tighter spacing |
+| ≥ 768px (@3xl) | Medium text |
+| ≥ 1024px (@5xl) | Larger heading text |
 
 ## Props Structure
 
@@ -67,7 +74,7 @@ type Hero4Props = {
     }>;
   };
   image: {
-    url: string;             // Image URL (optional)
+    url: string;             // Image URL
   };
 };
 \`\`\`
@@ -89,7 +96,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 /**
- * Default hero with bordered container and placeholder image.
+ * Default hero with white background and image.
  */
 export const Default: Story = {
   args: {
@@ -114,24 +121,24 @@ export const Default: Story = {
           label: 'View Pricing',
           href: '/pricing',
           textColor: '#141414',
-          bgColor: '#ffffff',
+          bgColor: '#f5f5f5',
         },
       ],
     },
     image: {
-      url: '',
+      url: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&h=675&fit=crop',
     },
   },
 };
 
 /**
- * Hero with an actual image.
+ * Hero with no image (shows placeholder).
  */
-export const WithImage: Story = {
+export const NoImage: Story = {
   args: {
     ...Default.args,
     image: {
-      url: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&h=450&fit=crop',
+      url: '',
     },
   },
 };
@@ -216,7 +223,7 @@ export const TabletView: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Shows the tablet layout at 768px (@3xl breakpoint) with side-by-side layout.',
+        story: 'Shows the tablet layout at 768px (@3xl breakpoint).',
       },
     },
   },
