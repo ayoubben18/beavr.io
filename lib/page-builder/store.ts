@@ -44,6 +44,13 @@ import type {
  */
 const MAX_HISTORY_LENGTH = 50;
 
+/**
+ * Stable empty array reference for selectors.
+ * Prevents infinite loop errors during SSR hydration by avoiding
+ * creating new array references on every selector call.
+ */
+const EMPTY_COMPONENTS: ComponentInstance[] = [];
+
 // ============================================================================
 // STORE TYPES
 // ============================================================================
@@ -938,7 +945,7 @@ export const selectSelectedComponentIndex = (
 export const selectComponents = (
   state: PageBuilderStore
 ): ComponentInstance[] => {
-  return state.page?.components ?? [];
+  return state.page?.components ?? EMPTY_COMPONENTS;
 };
 
 /**

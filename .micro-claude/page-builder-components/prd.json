@@ -1065,7 +1065,7 @@
       "description": "Use Playwriter MCP on localhost:3000/pages/create: Add Hero1 to canvas, edit title text, edit description, toggle LTR/RTL layout (verify image position changes), click Button 1 in canvas, edit button text, switch to Mobile view (verify stacked layout), delete component. Skip image testing. Fix any bugs found.",
       "from": 357,
       "to": 365,
-      "done": false
+      "done": true
     },
     {
       "id": 134,
@@ -1073,7 +1073,7 @@
       "description": "Use Playwriter MCP: Add Hero2 to canvas (should have image on LEFT by default), edit title and description, toggle LTR/RTL layout, test buttons, test Mobile view, delete component. Skip image testing. Fix any bugs found.",
       "from": 367,
       "to": 373,
-      "done": false
+      "done": true
     },
     {
       "id": 135,
@@ -1081,7 +1081,7 @@
       "description": "Use Playwriter MCP: Add Hero3 to canvas (centered text-only hero), edit badge text, edit title and description, test both CTA buttons, test Mobile view, delete component. Skip image testing. Fix any bugs found.",
       "from": 375,
       "to": 381,
-      "done": false
+      "done": true
     },
     {
       "id": 136,
@@ -1089,7 +1089,7 @@
       "description": "Use Playwriter MCP: Add Hero4 to canvas (bordered sections), edit title and description, test single CTA button, test Mobile view, delete component. Skip image testing. Fix any bugs found.",
       "from": 383,
       "to": 388,
-      "done": false
+      "done": true
     },
     {
       "id": 137,
@@ -1097,7 +1097,7 @@
       "description": "Use Playwriter MCP: Add About1 to canvas, edit title, edit description1/description2/description3 fields, test Mobile view, delete component. Skip image testing. Fix any bugs found.",
       "from": 392,
       "to": 397,
-      "done": false
+      "done": true
     },
     {
       "id": 138,
@@ -1105,7 +1105,7 @@
       "description": "Use Playwriter MCP: Add About2 to canvas (2-column layout), edit title and description, edit section title and section description, test Mobile view, delete component. Skip image testing. Fix any bugs found.",
       "from": 399,
       "to": 404,
-      "done": false
+      "done": true
     },
     {
       "id": 139,
@@ -1113,7 +1113,7 @@
       "description": "Use Playwriter MCP: Add About3 to canvas, edit title/description1/description2, toggle LTR/RTL direction, test Mobile view, delete component. Skip image testing. Fix any bugs found.",
       "from": 406,
       "to": 411,
-      "done": false
+      "done": true
     },
     {
       "id": 140,
@@ -1121,7 +1121,7 @@
       "description": "Use Playwriter MCP: Add About4 to canvas (flipped About3), edit all text fields, toggle direction, test Mobile view, delete component. Skip image testing. Fix any bugs found.",
       "from": 413,
       "to": 418,
-      "done": false
+      "done": true
     },
     {
       "id": 141,

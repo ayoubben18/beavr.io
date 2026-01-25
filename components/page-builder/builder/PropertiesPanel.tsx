@@ -202,18 +202,24 @@ function ArrayGroupRenderer({
   onChangeRoot,
 }: {
   group: ArrayGroup;
-  value: Record<string, unknown> | undefined;
+  value: Record<string, unknown> | unknown[] | undefined;
   isExpanded: boolean;
   onToggle: () => void;
   onChange: (path: string, value: unknown) => void;
   onChangeRoot: (value: unknown) => void;
 }) {
-  const items = (value?.items as Array<Record<string, unknown>>) || [];
+  // Handle both direct arrays and { items: [...] } structure
+  const items = Array.isArray(value)
+    ? value
+    : ((value as Record<string, unknown>)?.items as Array<Record<string, unknown>>) || [];
   const [expandedItems, setExpandedItems] = useState<Record<number, boolean>>({});
 
   const toggleItem = (index: number) => {
     setExpandedItems((prev) => ({ ...prev, [index]: !prev[index] }));
   };
+
+  // Check if value is a direct array or object with items property
+  const isDirectArray = Array.isArray(value);
 
   const addItem = () => {
     // Create new item with empty values
@@ -228,18 +234,19 @@ function ArrayGroupRenderer({
     });
 
     const newItems = [...items, newItem];
-    onChangeRoot({ ...value, items: newItems });
+    // Preserve the original structure (direct array or { items: [...] })
+    onChangeRoot(isDirectArray ? newItems : { ...value, items: newItems });
   };
 
   const removeItem = (index: number) => {
     const newItems = items.filter((_, i) => i !== index);
-    onChangeRoot({ ...value, items: newItems });
+    onChangeRoot(isDirectArray ? newItems : { ...value, items: newItems });
   };
 
   const updateItem = (index: number, fieldKey: string, fieldValue: unknown) => {
     const newItems = [...items];
     newItems[index] = { ...newItems[index], [fieldKey]: fieldValue };
-    onChangeRoot({ ...value, items: newItems });
+    onChangeRoot(isDirectArray ? newItems : { ...value, items: newItems });
   };
 
   const canAdd = group.maxItems === undefined || items.length < group.maxItems;

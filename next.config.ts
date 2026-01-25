@@ -9,15 +9,15 @@ const nextConfig: NextConfig = {
     globalNotFound: true,
     // browserDebugInfoInTerminal: true,
   },
-  // images: {
-  //   remotePatterns: [
-  //     {
-  //       protocol: 'https',
-  //       hostname: 'example.com',
-  //       pathname: '/images/**',
-  //     },
-  //   ],
-  // }
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '*',
+        // pathname: '/images/**',
+      },
+    ],
+  }
 };
 
 export default nextConfig;

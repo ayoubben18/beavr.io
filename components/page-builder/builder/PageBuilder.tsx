@@ -10,13 +10,20 @@
 
 "use client";
 
+import dynamic from "next/dynamic";
 import { useEffect } from "react";
+
 import { usePageBuilderStore } from "@/lib/page-builder";
 import type { PageDocument } from "@/lib/page-builder/types";
 import { BuilderTopBar } from "./BuilderTopBar";
 import { ComponentMarketplace } from "./ComponentMarketplace";
-import { BuilderCanvas } from "./BuilderCanvas";
 import { PropertiesPanel } from "./PropertiesPanel";
+
+// Disable SSR for BuilderCanvas to avoid Zustand hydration issues
+const BuilderCanvas = dynamic(
+  () => import("./BuilderCanvas").then((mod) => mod.BuilderCanvas),
+  { ssr: false }
+);
 
 type PageBuilderProps = {
   /**
