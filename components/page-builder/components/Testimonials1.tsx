@@ -1,23 +1,22 @@
 /**
  * Testimonials 1 Component
  *
- * Testimonial carousel with title centered and 3 cards in a row.
- * Each card displays a quote and author name.
- * Navigation arrows allow cycling through testimonials.
+ * Testimonial carousel with smooth horizontal scrolling.
+ * Shows 3 cards on desktop, 2 on tablet, 1 on mobile.
+ * Navigation arrows scroll the carousel with animation.
  *
  * Uses CSS Container Queries (@container) for responsiveness based on
- * parent container width, not browser viewport. This is essential for
- * the page builder preview to work correctly at different viewport sizes.
+ * parent container width, not browser viewport.
  */
 
 "use client";
 
-import { useState } from "react";
+import { useRef } from "react";
+import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import type { Testimonial1Props } from "@/lib/page-builder/component-props";
-import { cn } from "@/lib/utils";
 
 export function Testimonials1({
   config,
@@ -25,22 +24,19 @@ export function Testimonials1({
   navigation,
   testimonials,
 }: Testimonial1Props) {
-  const [currentPage, setCurrentPage] = useState(0);
-  const itemsPerPage = 3;
-  const totalPages = Math.ceil(testimonials.length / itemsPerPage);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
-  const startIndex = currentPage * itemsPerPage;
-  const visibleTestimonials = testimonials.slice(
-    startIndex,
-    startIndex + itemsPerPage
-  );
+  const scroll = (direction: "left" | "right") => {
+    if (!scrollRef.current) return;
+    const container = scrollRef.current;
+    const cardWidth = container.querySelector("div")?.offsetWidth || 300;
+    const gap = 24; // gap-6 = 1.5rem = 24px
+    const scrollAmount = cardWidth + gap;
 
-  const handlePrev = () => {
-    setCurrentPage((prev) => (prev > 0 ? prev - 1 : totalPages - 1));
-  };
-
-  const handleNext = () => {
-    setCurrentPage((prev) => (prev < totalPages - 1 ? prev + 1 : 0));
+    container.scrollBy({
+      left: direction === "left" ? -scrollAmount : scrollAmount,
+      behavior: "smooth",
+    });
   };
 
   return (
@@ -56,90 +52,83 @@ export function Testimonials1({
           </h2>
 
           {/* Navigation arrows */}
-          {totalPages > 1 && (
-            <div className="flex items-center justify-center gap-2">
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={handlePrev}
-                className="rounded-full h-10 w-10"
-                style={{
-                  backgroundColor: navigation.bgColor,
-                  borderColor: navigation.borderColor,
-                  color: navigation.iconColor,
-                }}
-              >
-                <ChevronLeft className="h-5 w-5" />
-                <span className="sr-only">Previous</span>
-              </Button>
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={handleNext}
-                className="rounded-full h-10 w-10"
-                style={{
-                  backgroundColor: navigation.bgColor,
-                  borderColor: navigation.borderColor,
-                  color: navigation.iconColor,
-                }}
-              >
-                <ChevronRight className="h-5 w-5" />
-                <span className="sr-only">Next</span>
-              </Button>
-            </div>
-          )}
+          <div className="flex items-center justify-center gap-2">
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={() => scroll("left")}
+              className="rounded-full h-10 w-10"
+              style={{
+                backgroundColor: navigation.bgColor,
+                borderColor: navigation.borderColor,
+                color: navigation.iconColor,
+              }}
+            >
+              <ChevronLeft className="h-5 w-5" />
+              <span className="sr-only">Previous</span>
+            </Button>
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={() => scroll("right")}
+              className="rounded-full h-10 w-10"
+              style={{
+                backgroundColor: navigation.bgColor,
+                borderColor: navigation.borderColor,
+                color: navigation.iconColor,
+              }}
+            >
+              <ChevronRight className="h-5 w-5" />
+              <span className="sr-only">Next</span>
+            </Button>
+          </div>
         </div>
 
-        {/* Testimonial cards */}
+        {/* Testimonial cards - horizontal scroll */}
         <div
-          className={cn(
-            "grid gap-6",
-            "@3xl:grid-cols-2 @5xl:grid-cols-3"
-          )}
+          ref={scrollRef}
+          className="flex gap-6 overflow-x-auto scroll-smooth scrollbar-hide snap-x snap-mandatory"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
-          {visibleTestimonials.map((testimonial, index) => (
+          {testimonials.map((testimonial, index) => (
             <div
-              key={`${testimonial.name}-${startIndex + index}`}
-              className="bg-muted/30 border border-border rounded-xl p-6 @3xl:p-8"
+              key={`${testimonial.name}-${index}`}
+              className="flex-shrink-0 w-full @3xl:w-[calc(50%-12px)] @5xl:w-[calc(33.333%-16px)] bg-background border border-border rounded-xl p-6 @3xl:p-8 flex flex-col snap-start"
             >
-              {/* Quote icon */}
-              <svg
-                className="h-8 w-8 text-muted-foreground/30 mb-4"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z" />
-              </svg>
-
               {/* Quote text */}
-              <p className="text-foreground/80 text-base @3xl:text-lg mb-6 leading-relaxed">
-                {testimonial.description}
+              <p className="text-foreground text-base @3xl:text-lg mb-6 leading-relaxed flex-1">
+                "{testimonial.description}"
               </p>
 
-              {/* Author */}
-              <p className="text-foreground font-semibold">{testimonial.name}</p>
+              {/* Author with avatar */}
+              <div className="flex items-center gap-3">
+                {testimonial.image ? (
+                  <Image
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    width={40}
+                    height={40}
+                    className="rounded-full object-cover w-10 h-10"
+                  />
+                ) : (
+                  <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center">
+                    <svg
+                      className="w-5 h-5 text-muted-foreground"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                    </svg>
+                  </div>
+                )}
+                <div>
+                  <p className="text-foreground font-semibold">{testimonial.name}</p>
+                  <p className="text-muted-foreground text-sm">{testimonial.role}</p>
+                </div>
+              </div>
             </div>
           ))}
         </div>
-
-        {/* Pagination dots */}
-        {totalPages > 1 && (
-          <div className="flex items-center justify-center gap-2 mt-8">
-            {Array.from({ length: totalPages }).map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => setCurrentPage(idx)}
-                className={cn(
-                  "h-2 rounded-full transition-all",
-                  currentPage === idx
-                    ? "w-8 bg-foreground"
-                    : "w-2 bg-muted-foreground/30"
-                )}
-                aria-label={`Go to page ${idx + 1}`}
-              />
-            ))}
-          </div>
-        )}
       </div>
     </section>
   );

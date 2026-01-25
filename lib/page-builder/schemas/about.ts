@@ -198,11 +198,6 @@ export const about2Schema: ComponentSchema<About2Props> = {
       label: "Highlight Section",
       collapsible: true,
       fields: {
-        title: {
-          type: "text",
-          label: "Title",
-          placeholder: "Section title...",
-        },
         description: {
           type: "textarea",
           label: "Description",
@@ -226,7 +221,6 @@ export const about2Schema: ComponentSchema<About2Props> = {
       url: "",
     },
     section: {
-      title: "Our Mission",
       description: "To empower businesses with innovative digital solutions that drive growth and create lasting impact.",
     },
   },
@@ -321,7 +315,7 @@ export const about3Schema: ComponentSchema<About3Props> = {
   defaults: {
     config: {
       bgColor: "#ffffff",
-      direction: "rtl",
+      direction: "ltr",
     },
     title: {
       label: "Our Story",

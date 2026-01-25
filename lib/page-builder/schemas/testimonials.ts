@@ -43,7 +43,7 @@ const navigationGroup = {
 };
 
 /**
- * Testimonials array group for text-only testimonials.
+ * Testimonials array group with avatar, name, and role.
  */
 const testimonialsArrayGroup = {
   kind: "array" as const,
@@ -54,6 +54,10 @@ const testimonialsArrayGroup = {
   maxItems: 10,
   addLabel: "Add testimonial",
   itemFields: {
+    image: {
+      type: "image" as const,
+      label: "Avatar",
+    },
     description: {
       type: "textarea" as const,
       label: "Quote",
@@ -63,6 +67,11 @@ const testimonialsArrayGroup = {
       type: "text" as const,
       label: "Name",
       placeholder: "Author name",
+    },
+    role: {
+      type: "text" as const,
+      label: "Role",
+      placeholder: "Job title",
     },
   },
 };
@@ -152,19 +161,25 @@ export const testimonial1Schema: ComponentSchema<Testimonial1Props> = {
     },
     testimonials: [
       {
+        image: "",
         description:
           "This product has completely transformed our workflow. The results speak for themselves.",
         name: "Sarah Johnson",
+        role: "Tech Lead",
       },
       {
+        image: "",
         description:
           "I was skeptical at first, but now I can't imagine running my business without it.",
         name: "Michael Chen",
+        role: "Designer",
       },
       {
+        image: "",
         description:
           "Exceptional quality and outstanding customer support. Highly recommended!",
         name: "Emily Davis",
+        role: "Developer",
       },
     ],
   },

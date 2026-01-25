@@ -92,10 +92,14 @@ export type CtaItem = {
  * Testimonial item for testimonial sections.
  */
 export type TestimonialItem = {
+  /** Avatar/profile image URL */
+  image: string;
   /** Testimonial text/quote */
   description: string;
   /** Person's name */
   name: string;
+  /** Person's role/job title */
+  role: string;
 };
 
 /**
@@ -488,8 +492,6 @@ export type About2Props = {
    * Highlight section block.
    */
   section: {
-    /** Section block title */
-    title: string;
     /** Section block description */
     description: string;
   };
