@@ -1,0 +1,1063 @@
+{
+  "project": "Page Builder Components",
+  "document": "plan.md",
+  "granularity": "full",
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Create ImageUploadField component",
+      "description": "Create new component with tabbed UI (Upload | URL), dropzone for upload tab, text input for URL tab, image preview with delete button. Reference: temp/image-uploader-image.png, temp/image-uploader-link.png",
+      "from": 22,
+      "to": 39,
+      "done": false
+    },
+    {
+      "id": 2,
+      "title": "Integrate ImageUploadField into PropertiesPanel",
+      "description": "Replace the existing case 'image': in PropertiesPanel.tsx to use the new ImageUploadField component",
+      "from": 37,
+      "to": 39,
+      "done": false
+    },
+    {
+      "id": 3,
+      "title": "Create LinkSelectorField component",
+      "description": "Create dropdown/popover component with Sections list (from page store), Pages placeholder section, and URL text input",
+      "from": 43,
+      "to": 61,
+      "done": false
+    },
+    {
+      "id": 4,
+      "title": "Integrate LinkSelectorField into PropertiesPanel",
+      "description": "Modify case 'url': in PropertiesPanel.tsx to use the new LinkSelectorField component",
+      "from": 58,
+      "to": 61,
+      "done": false
+    },
+    {
+      "id": 5,
+      "title": "Add Hero2Props type definition",
+      "description": "Add Hero2Props type to component-props.ts - same as Hero1Props with config.direction supporting RTL default",
+      "from": 85,
+      "to": 89,
+      "done": false
+    },
+    {
+      "id": 6,
+      "title": "Add hero2Schema definition",
+      "description": "Add hero2Schema to schemas/hero.ts with direction field defaulting to RTL, same groups as hero1Schema",
+      "from": 85,
+      "to": 89,
+      "done": false
+    },
+    {
+      "id": 7,
+      "title": "Create Hero2 component",
+      "description": "Create Hero2.tsx - variation of Hero1 with image on LEFT by default (direction: rtl), title, description, 2 CTAs",
+      "from": 85,
+      "to": 89,
+      "done": false
+    },
+    {
+      "id": 8,
+      "title": "Create Hero2 Storybook stories",
+      "description": "Create Hero2.stories.tsx with Default, MobileView, TabletView, and RTL/LTR direction variations",
+      "from": 85,
+      "to": 89,
+      "done": false
+    },
+    {
+      "id": 9,
+      "title": "Register Hero2 in registry",
+      "description": "Add Hero2 import and registration to registry.ts under hero category variant 2",
+      "from": 85,
+      "to": 89,
+      "done": false
+    },
+    {
+      "id": 10,
+      "title": "Add Hero3Props type definition",
+      "description": "Add Hero3Props to component-props.ts with config.bgColor, badge, title, description, cta array (no image)",
+      "from": 91,
+      "to": 95,
+      "done": false
+    },
+    {
+      "id": 11,
+      "title": "Add hero3Schema definition",
+      "description": "Add hero3Schema to schemas/hero.ts with badge field, centered layout groups, no image field",
+      "from": 91,
+      "to": 95,
+      "done": false
+    },
+    {
+      "id": 12,
+      "title": "Create Hero3 component",
+      "description": "Create Hero3.tsx - centered text hero with badge on top, headline, description, 2 horizontal buttons, NO image",
+      "from": 91,
+      "to": 95,
+      "done": false
+    },
+    {
+      "id": 13,
+      "title": "Create Hero3 Storybook stories",
+      "description": "Create Hero3.stories.tsx with Default, MobileView, different badge variations",
+      "from": 91,
+      "to": 95,
+      "done": false
+    },
+    {
+      "id": 14,
+      "title": "Register Hero3 in registry",
+      "description": "Add Hero3 import and registration to registry.ts under hero category variant 3",
+      "from": 91,
+      "to": 95,
+      "done": false
+    },
+    {
+      "id": 15,
+      "title": "Add Hero4Props type definition",
+      "description": "Add Hero4Props to component-props.ts with config.bgColor, title, description, cta, optional image",
+      "from": 97,
+      "to": 101,
+      "done": false
+    },
+    {
+      "id": 16,
+      "title": "Add hero4Schema definition",
+      "description": "Add hero4Schema to schemas/hero.ts with bordered section styling, single CTA with icon support",
+      "from": 97,
+      "to": 101,
+      "done": false
+    },
+    {
+      "id": 17,
+      "title": "Create Hero4 component",
+      "description": "Create Hero4.tsx - centered layout with bordered sections, decorative patterns, headline, description, single CTA",
+      "from": 97,
+      "to": 101,
+      "done": false
+    },
+    {
+      "id": 18,
+      "title": "Create Hero4 Storybook stories",
+      "description": "Create Hero4.stories.tsx with Default, MobileView, with/without image variations",
+      "from": 97,
+      "to": 101,
+      "done": false
+    },
+    {
+      "id": 19,
+      "title": "Register Hero4 in registry",
+      "description": "Add Hero4 import and registration to registry.ts under hero category variant 4",
+      "from": 97,
+      "to": 101,
+      "done": false
+    },
+    {
+      "id": 20,
+      "title": "Add About1Props type definition",
+      "description": "Add About1Props to component-props.ts with config.bgColor, title, description1, image, description2, description3",
+      "from": 107,
+      "to": 111,
+      "done": false
+    },
+    {
+      "id": 21,
+      "title": "Create about.ts schema file with about1Schema",
+      "description": "Create new schemas/about.ts file with about1Schema - title, image, multiple description fields",
+      "from": 107,
+      "to": 111,
+      "done": false
+    },
+    {
+      "id": 22,
+      "title": "Create About1 component",
+      "description": "Create About1.tsx - title at top, large image below, text content below image, multi-section layout",
+      "from": 107,
+      "to": 111,
+      "done": false
+    },
+    {
+      "id": 23,
+      "title": "Create About1 Storybook stories",
+      "description": "Create About1.stories.tsx with Default, MobileView, different content variations",
+      "from": 107,
+      "to": 111,
+      "done": false
+    },
+    {
+      "id": 24,
+      "title": "Register About1 in registry",
+      "description": "Add About1 import and registration to registry.ts, create about category with variant 1",
+      "from": 107,
+      "to": 111,
+      "done": false
+    },
+    {
+      "id": 25,
+      "title": "Add About2Props type definition",
+      "description": "Add About2Props to component-props.ts with config.bgColor, title, description, image, section.title, section.description",
+      "from": 113,
+      "to": 117,
+      "done": false
+    },
+    {
+      "id": 26,
+      "title": "Add about2Schema to schemas/about.ts",
+      "description": "Add about2Schema with 2-column layout groups, image field, nested section group",
+      "from": 113,
+      "to": 117,
+      "done": false
+    },
+    {
+      "id": 27,
+      "title": "Create About2 component",
+      "description": "Create About2.tsx - 2-column layout with image left, text sections right, additional sub-section",
+      "from": 113,
+      "to": 117,
+      "done": false
+    },
+    {
+      "id": 28,
+      "title": "Create About2 Storybook stories",
+      "description": "Create About2.stories.tsx with Default, MobileView, TabletView variations",
+      "from": 113,
+      "to": 117,
+      "done": false
+    },
+    {
+      "id": 29,
+      "title": "Register About2 in registry",
+      "description": "Add About2 import and registration to registry.ts under about category variant 2",
+      "from": 113,
+      "to": 117,
+      "done": false
+    },
+    {
+      "id": 30,
+      "title": "Add About3Props type definition",
+      "description": "Add About3Props to component-props.ts with config.bgColor, config.direction, title, description1, image, description2",
+      "from": 119,
+      "to": 123,
+      "done": false
+    },
+    {
+      "id": 31,
+      "title": "Add about3Schema to schemas/about.ts",
+      "description": "Add about3Schema with direction field, image group, multiple description fields",
+      "from": 119,
+      "to": 123,
+      "done": false
+    },
+    {
+      "id": 32,
+      "title": "Create About3 component",
+      "description": "Create About3.tsx - image on left, text content on right, supports direction flip",
+      "from": 119,
+      "to": 123,
+      "done": false
+    },
+    {
+      "id": 33,
+      "title": "Create About3 Storybook stories",
+      "description": "Create About3.stories.tsx with Default, MobileView, LTR/RTL direction variations",
+      "from": 119,
+      "to": 123,
+      "done": false
+    },
+    {
+      "id": 34,
+      "title": "Register About3 in registry",
+      "description": "Add About3 import and registration to registry.ts under about category variant 3",
+      "from": 119,
+      "to": 123,
+      "done": false
+    },
+    {
+      "id": 35,
+      "title": "Add About4Props type definition",
+      "description": "Add About4Props to component-props.ts - same as About3Props (uses direction for flip)",
+      "from": 125,
+      "to": 129,
+      "done": false
+    },
+    {
+      "id": 36,
+      "title": "Add about4Schema to schemas/about.ts",
+      "description": "Add about4Schema - same structure as about3Schema with different default direction (text left, image right)",
+      "from": 125,
+      "to": 129,
+      "done": false
+    },
+    {
+      "id": 37,
+      "title": "Create About4 component",
+      "description": "Create About4.tsx - text on left, image on right (flipped About3), supports direction",
+      "from": 125,
+      "to": 129,
+      "done": false
+    },
+    {
+      "id": 38,
+      "title": "Create About4 Storybook stories",
+      "description": "Create About4.stories.tsx with Default, MobileView, direction variations",
+      "from": 125,
+      "to": 129,
+      "done": false
+    },
+    {
+      "id": 39,
+      "title": "Register About4 in registry",
+      "description": "Add About4 import and registration to registry.ts under about category variant 4",
+      "from": 125,
+      "to": 129,
+      "done": false
+    },
+    {
+      "id": 40,
+      "title": "Add Testimonial1Props type definition",
+      "description": "Add Testimonial1Props to component-props.ts with config.bgColor, title, navigation style, testimonials array",
+      "from": 135,
+      "to": 139,
+      "done": false
+    },
+    {
+      "id": 41,
+      "title": "Create testimonials.ts schema file with testimonial1Schema",
+      "description": "Create new schemas/testimonials.ts file with testimonial1Schema - title, navigation group, testimonials array",
+      "from": 135,
+      "to": 139,
+      "done": false
+    },
+    {
+      "id": 42,
+      "title": "Create Testimonials1 component",
+      "description": "Create Testimonials1.tsx - title centered, 3 testimonial cards in a row, navigation dots",
+      "from": 135,
+      "to": 139,
+      "done": false
+    },
+    {
+      "id": 43,
+      "title": "Create Testimonials1 Storybook stories",
+      "description": "Create Testimonials1.stories.tsx with Default, MobileView, different card counts",
+      "from": 135,
+      "to": 139,
+      "done": false
+    },
+    {
+      "id": 44,
+      "title": "Register Testimonials1 in registry",
+      "description": "Add Testimonials1 import and registration to registry.ts, create testimonials category",
+      "from": 135,
+      "to": 139,
+      "done": false
+    },
+    {
+      "id": 45,
+      "title": "Add Testimonial2Props type definition",
+      "description": "Add Testimonial2Props to component-props.ts with config.bgColor/direction, title, description, testimonials with images, cta",
+      "from": 141,
+      "to": 145,
+      "done": false
+    },
+    {
+      "id": 46,
+      "title": "Add testimonial2Schema to schemas/testimonials.ts",
+      "description": "Add testimonial2Schema with 2-column layout, direction field, testimonials with avatar images, CTA group",
+      "from": 141,
+      "to": 145,
+      "done": false
+    },
+    {
+      "id": 47,
+      "title": "Create Testimonials2 component",
+      "description": "Create Testimonials2.tsx - 2-column with title/description/CTA left, stacked testimonial cards with avatars right",
+      "from": 141,
+      "to": 145,
+      "done": false
+    },
+    {
+      "id": 48,
+      "title": "Create Testimonials2 Storybook stories",
+      "description": "Create Testimonials2.stories.tsx with Default, MobileView, LTR/RTL direction variations",
+      "from": 141,
+      "to": 145,
+      "done": false
+    },
+    {
+      "id": 49,
+      "title": "Register Testimonials2 in registry",
+      "description": "Add Testimonials2 import and registration to registry.ts under testimonials category variant 2",
+      "from": 141,
+      "to": 145,
+      "done": false
+    },
+    {
+      "id": 50,
+      "title": "Add Testimonial3Props type definition",
+      "description": "Add Testimonial3Props to component-props.ts with config.bgColor, title, testimonials with images, navigation",
+      "from": 147,
+      "to": 151,
+      "done": false
+    },
+    {
+      "id": 51,
+      "title": "Add testimonial3Schema to schemas/testimonials.ts",
+      "description": "Add testimonial3Schema with centered layout, large quote styling, pagination navigation",
+      "from": 147,
+      "to": 151,
+      "done": false
+    },
+    {
+      "id": 52,
+      "title": "Create Testimonials3 component",
+      "description": "Create Testimonials3.tsx - large centered quote, centered text, pagination dots below (no avatar visible)",
+      "from": 147,
+      "to": 151,
+      "done": false
+    },
+    {
+      "id": 53,
+      "title": "Create Testimonials3 Storybook stories",
+      "description": "Create Testimonials3.stories.tsx with Default, MobileView, carousel navigation demo",
+      "from": 147,
+      "to": 151,
+      "done": false
+    },
+    {
+      "id": 54,
+      "title": "Register Testimonials3 in registry",
+      "description": "Add Testimonials3 import and registration to registry.ts under testimonials category variant 3",
+      "from": 147,
+      "to": 151,
+      "done": false
+    },
+    {
+      "id": 55,
+      "title": "Add Testimonial4Props type definition",
+      "description": "Add Testimonial4Props to component-props.ts - similar to Testimonial3Props with overlapping avatars support",
+      "from": 153,
+      "to": 157,
+      "done": false
+    },
+    {
+      "id": 56,
+      "title": "Add testimonial4Schema to schemas/testimonials.ts",
+      "description": "Add testimonial4Schema with overlapping avatars group, centered quote, navigation dots",
+      "from": 153,
+      "to": 157,
+      "done": false
+    },
+    {
+      "id": 57,
+      "title": "Create Testimonials4 component",
+      "description": "Create Testimonials4.tsx - centered with overlapping avatars at top, single quote below, navigation dots",
+      "from": 153,
+      "to": 157,
+      "done": false
+    },
+    {
+      "id": 58,
+      "title": "Create Testimonials4 Storybook stories",
+      "description": "Create Testimonials4.stories.tsx with Default, MobileView, different avatar counts",
+      "from": 153,
+      "to": 157,
+      "done": false
+    },
+    {
+      "id": 59,
+      "title": "Register Testimonials4 in registry",
+      "description": "Add Testimonials4 import and registration to registry.ts under testimonials category variant 4",
+      "from": 153,
+      "to": 157,
+      "done": false
+    },
+    {
+      "id": 60,
+      "title": "Add Faq1Props type definition",
+      "description": "Add Faq1Props to component-props.ts with config.bgColor, title, questions array (question/answer)",
+      "from": 163,
+      "to": 167,
+      "done": false
+    },
+    {
+      "id": 61,
+      "title": "Create faq.ts schema file with faq1Schema",
+      "description": "Create new schemas/faq.ts file with faq1Schema - title, questions array with accordion fields",
+      "from": 163,
+      "to": 167,
+      "done": false
+    },
+    {
+      "id": 62,
+      "title": "Create Faq1 component",
+      "description": "Create Faq1.tsx - title at top, full-width accordion items below, expand/collapse functionality",
+      "from": 163,
+      "to": 167,
+      "done": false
+    },
+    {
+      "id": 63,
+      "title": "Create Faq1 Storybook stories",
+      "description": "Create Faq1.stories.tsx with Default, MobileView, expanded/collapsed states",
+      "from": 163,
+      "to": 167,
+      "done": false
+    },
+    {
+      "id": 64,
+      "title": "Register Faq1 in registry",
+      "description": "Add Faq1 import and registration to registry.ts, create faq category with variant 1",
+      "from": 163,
+      "to": 167,
+      "done": false
+    },
+    {
+      "id": 65,
+      "title": "Add Faq2Props type definition",
+      "description": "Add Faq2Props to component-props.ts with config.bgColor/direction, title, description, cta, questions array",
+      "from": 169,
+      "to": 173,
+      "done": false
+    },
+    {
+      "id": 66,
+      "title": "Add faq2Schema to schemas/faq.ts",
+      "description": "Add faq2Schema with 2-column layout, direction field, CTA group, accordion questions",
+      "from": 169,
+      "to": 173,
+      "done": false
+    },
+    {
+      "id": 67,
+      "title": "Create Faq2 component",
+      "description": "Create Faq2.tsx - 2-column with title/description/CTA left, accordion FAQ items right",
+      "from": 169,
+      "to": 173,
+      "done": false
+    },
+    {
+      "id": 68,
+      "title": "Create Faq2 Storybook stories",
+      "description": "Create Faq2.stories.tsx with Default, MobileView, LTR/RTL direction variations",
+      "from": 169,
+      "to": 173,
+      "done": false
+    },
+    {
+      "id": 69,
+      "title": "Register Faq2 in registry",
+      "description": "Add Faq2 import and registration to registry.ts under faq category variant 2",
+      "from": 169,
+      "to": 173,
+      "done": false
+    },
+    {
+      "id": 70,
+      "title": "Add Faq3Props type definition",
+      "description": "Add Faq3Props to component-props.ts with config.bgColor, title, questions array (no accordion, grid layout)",
+      "from": 175,
+      "to": 179,
+      "done": false
+    },
+    {
+      "id": 71,
+      "title": "Add faq3Schema to schemas/faq.ts",
+      "description": "Add faq3Schema with centered title, 2-column grid questions layout",
+      "from": 175,
+      "to": 179,
+      "done": false
+    },
+    {
+      "id": 72,
+      "title": "Create Faq3 component",
+      "description": "Create Faq3.tsx - title centered, 2-column grid of Q&A items (not accordion, always visible answers)",
+      "from": 175,
+      "to": 179,
+      "done": false
+    },
+    {
+      "id": 73,
+      "title": "Create Faq3 Storybook stories",
+      "description": "Create Faq3.stories.tsx with Default, MobileView, numbered/plain variations",
+      "from": 175,
+      "to": 179,
+      "done": false
+    },
+    {
+      "id": 74,
+      "title": "Register Faq3 in registry",
+      "description": "Add Faq3 import and registration to registry.ts under faq category variant 3",
+      "from": 175,
+      "to": 179,
+      "done": false
+    },
+    {
+      "id": 75,
+      "title": "Add Faq4Props type definition",
+      "description": "Add Faq4Props to component-props.ts - same as Faq1Props (simple rows layout)",
+      "from": 181,
+      "to": 185,
+      "done": false
+    },
+    {
+      "id": 76,
+      "title": "Add faq4Schema to schemas/faq.ts",
+      "description": "Add faq4Schema with bordered row layout, question bold, answer muted styling",
+      "from": 181,
+      "to": 185,
+      "done": false
+    },
+    {
+      "id": 77,
+      "title": "Create Faq4 component",
+      "description": "Create Faq4.tsx - title at top, simple rows with question/answer separated by borders",
+      "from": 181,
+      "to": 185,
+      "done": false
+    },
+    {
+      "id": 78,
+      "title": "Create Faq4 Storybook stories",
+      "description": "Create Faq4.stories.tsx with Default, MobileView, different question counts",
+      "from": 181,
+      "to": 185,
+      "done": false
+    },
+    {
+      "id": 79,
+      "title": "Register Faq4 in registry",
+      "description": "Add Faq4 import and registration to registry.ts under faq category variant 4",
+      "from": 181,
+      "to": 185,
+      "done": false
+    },
+    {
+      "id": 80,
+      "title": "Add Services1Props type definition",
+      "description": "Add Services1Props to component-props.ts with config.bgColor/direction, title, description, cta, services array with image/title/description",
+      "from": 191,
+      "to": 195,
+      "done": false
+    },
+    {
+      "id": 81,
+      "title": "Create services.ts schema file with services1Schema",
+      "description": "Create new schemas/services.ts file with services1Schema - 2-column layout, CTA, services array with images",
+      "from": 191,
+      "to": 195,
+      "done": false
+    },
+    {
+      "id": 82,
+      "title": "Create Services1 component",
+      "description": "Create Services1.tsx - title/description/CTA left, 4 service cards in 2x2 grid right",
+      "from": 191,
+      "to": 195,
+      "done": false
+    },
+    {
+      "id": 83,
+      "title": "Create Services1 Storybook stories",
+      "description": "Create Services1.stories.tsx with Default, MobileView, LTR/RTL direction variations",
+      "from": 191,
+      "to": 195,
+      "done": false
+    },
+    {
+      "id": 84,
+      "title": "Register Services1 in registry",
+      "description": "Add Services1 import and registration to registry.ts, create services category with variant 1",
+      "from": 191,
+      "to": 195,
+      "done": false
+    },
+    {
+      "id": 85,
+      "title": "Add Services2Props type definition",
+      "description": "Add Services2Props to component-props.ts with config.bgColor, title, navigation style, services array",
+      "from": 197,
+      "to": 201,
+      "done": false
+    },
+    {
+      "id": 86,
+      "title": "Add services2Schema to schemas/services.ts",
+      "description": "Add services2Schema with carousel layout, navigation dots, services array fields",
+      "from": 197,
+      "to": 201,
+      "done": false
+    },
+    {
+      "id": 87,
+      "title": "Create Services2 component",
+      "description": "Create Services2.tsx - title centered, 4 cards in a row (like Testimonials1), navigation dots",
+      "from": 197,
+      "to": 201,
+      "done": false
+    },
+    {
+      "id": 88,
+      "title": "Create Services2 Storybook stories",
+      "description": "Create Services2.stories.tsx with Default, MobileView, carousel navigation demo",
+      "from": 197,
+      "to": 201,
+      "done": false
+    },
+    {
+      "id": 89,
+      "title": "Register Services2 in registry",
+      "description": "Add Services2 import and registration to registry.ts under services category variant 2",
+      "from": 197,
+      "to": 201,
+      "done": false
+    },
+    {
+      "id": 90,
+      "title": "Add Services3Props type definition",
+      "description": "Add Services3Props to component-props.ts with config.bgColor, title, services array with title/description",
+      "from": 203,
+      "to": 207,
+      "done": false
+    },
+    {
+      "id": 91,
+      "title": "Add services3Schema to schemas/services.ts",
+      "description": "Add services3Schema with large card layout, services with checkmark feature lists",
+      "from": 203,
+      "to": 207,
+      "done": false
+    },
+    {
+      "id": 92,
+      "title": "Create Services3 component",
+      "description": "Create Services3.tsx - title at top, 2 large service cards below with title, description, feature list with checkmarks",
+      "from": 203,
+      "to": 207,
+      "done": false
+    },
+    {
+      "id": 93,
+      "title": "Create Services3 Storybook stories",
+      "description": "Create Services3.stories.tsx with Default, MobileView, different service counts",
+      "from": 203,
+      "to": 207,
+      "done": false
+    },
+    {
+      "id": 94,
+      "title": "Register Services3 in registry",
+      "description": "Add Services3 import and registration to registry.ts under services category variant 3",
+      "from": 203,
+      "to": 207,
+      "done": false
+    },
+    {
+      "id": 95,
+      "title": "Add Services4Props type definition",
+      "description": "Add Services4Props to component-props.ts with config.bgColor, title, services array (simple, no images)",
+      "from": 209,
+      "to": 213,
+      "done": false
+    },
+    {
+      "id": 96,
+      "title": "Add services4Schema to schemas/services.ts",
+      "description": "Add services4Schema with text-only list layout, simple services array fields",
+      "from": 209,
+      "to": 213,
+      "done": false
+    },
+    {
+      "id": 97,
+      "title": "Create Services4 component",
+      "description": "Create Services4.tsx - title/description at top, list of text-only service items below",
+      "from": 209,
+      "to": 213,
+      "done": false
+    },
+    {
+      "id": 98,
+      "title": "Create Services4 Storybook stories",
+      "description": "Create Services4.stories.tsx with Default, MobileView, different content variations",
+      "from": 209,
+      "to": 213,
+      "done": false
+    },
+    {
+      "id": 99,
+      "title": "Register Services4 in registry",
+      "description": "Add Services4 import and registration to registry.ts under services category variant 4",
+      "from": 209,
+      "to": 213,
+      "done": false
+    },
+    {
+      "id": 100,
+      "title": "Add Navbar3Props type definition",
+      "description": "Add Navbar3Props to component-props.ts - same as Navbar1Props (logo, links, buttons)",
+      "from": 69,
+      "to": 73,
+      "done": false
+    },
+    {
+      "id": 101,
+      "title": "Add navbar3Schema to schemas/navbar.ts",
+      "description": "Add navbar3Schema with rounded container border styling, dropdown menu support",
+      "from": 69,
+      "to": 73,
+      "done": false
+    },
+    {
+      "id": 102,
+      "title": "Create Navbar3 component",
+      "description": "Create Navbar3.tsx - centered navigation with logo left, links center, buttons right, rounded container with border",
+      "from": 69,
+      "to": 73,
+      "done": false
+    },
+    {
+      "id": 103,
+      "title": "Create Navbar3 Storybook stories",
+      "description": "Create Navbar3.stories.tsx with Default, MobileView, dropdown menu demo",
+      "from": 69,
+      "to": 73,
+      "done": false
+    },
+    {
+      "id": 104,
+      "title": "Register Navbar3 in registry",
+      "description": "Add Navbar3 import and registration to registry.ts under navbar category variant 3",
+      "from": 69,
+      "to": 73,
+      "done": false
+    },
+    {
+      "id": 105,
+      "title": "Add Navbar4Props type definition",
+      "description": "Add Navbar4Props to component-props.ts - same as Navbar1Props",
+      "from": 75,
+      "to": 79,
+      "done": false
+    },
+    {
+      "id": 106,
+      "title": "Add navbar4Schema to schemas/navbar.ts",
+      "description": "Add navbar4Schema with full-width simple bar styling, no dropdown menus",
+      "from": 75,
+      "to": 79,
+      "done": false
+    },
+    {
+      "id": 107,
+      "title": "Create Navbar4 component",
+      "description": "Create Navbar4.tsx - simple horizontal bar, logo left, links center, button right, no floating/border, mobile hamburger",
+      "from": 75,
+      "to": 79,
+      "done": false
+    },
+    {
+      "id": 108,
+      "title": "Create Navbar4 Storybook stories",
+      "description": "Create Navbar4.stories.tsx with Default, MobileView, minimal design showcase",
+      "from": 75,
+      "to": 79,
+      "done": false
+    },
+    {
+      "id": 109,
+      "title": "Register Navbar4 in registry",
+      "description": "Add Navbar4 import and registration to registry.ts under navbar category variant 4",
+      "from": 75,
+      "to": 79,
+      "done": false
+    },
+    {
+      "id": 110,
+      "title": "Add Footer1Props type definition",
+      "description": "Add Footer1Props to component-props.ts with config.bgColor, logo, description, links array, socials array, copyright",
+      "from": 219,
+      "to": 223,
+      "done": false
+    },
+    {
+      "id": 111,
+      "title": "Create footer.ts schema file with footer1Schema",
+      "description": "Create new schemas/footer.ts file with footer1Schema - logo, description, link columns array, socials array, copyright",
+      "from": 219,
+      "to": 223,
+      "done": false
+    },
+    {
+      "id": 112,
+      "title": "Create Footer1 component",
+      "description": "Create Footer1.tsx - logo/description left, 3 link columns right, socials + copyright bottom",
+      "from": 219,
+      "to": 223,
+      "done": false
+    },
+    {
+      "id": 113,
+      "title": "Create Footer1 Storybook stories",
+      "description": "Create Footer1.stories.tsx with Default, MobileView, different link column counts",
+      "from": 219,
+      "to": 223,
+      "done": false
+    },
+    {
+      "id": 114,
+      "title": "Register Footer1 in registry",
+      "description": "Add Footer1 import and registration to registry.ts, create footer category with variant 1",
+      "from": 219,
+      "to": 223,
+      "done": false
+    },
+    {
+      "id": 115,
+      "title": "Add Footer2Props type definition",
+      "description": "Add Footer2Props to component-props.ts - same as Footer1Props",
+      "from": 225,
+      "to": 229,
+      "done": false
+    },
+    {
+      "id": 116,
+      "title": "Add footer2Schema to schemas/footer.ts",
+      "description": "Add footer2Schema - same as footer1Schema with centered bottom section styling",
+      "from": 225,
+      "to": 229,
+      "done": false
+    },
+    {
+      "id": 117,
+      "title": "Create Footer2 component",
+      "description": "Create Footer2.tsx - same as Footer1 but with socials and copyright centered",
+      "from": 225,
+      "to": 229,
+      "done": false
+    },
+    {
+      "id": 118,
+      "title": "Create Footer2 Storybook stories",
+      "description": "Create Footer2.stories.tsx with Default, MobileView, centered bottom demo",
+      "from": 225,
+      "to": 229,
+      "done": false
+    },
+    {
+      "id": 119,
+      "title": "Register Footer2 in registry",
+      "description": "Add Footer2 import and registration to registry.ts under footer category variant 2",
+      "from": 225,
+      "to": 229,
+      "done": false
+    },
+    {
+      "id": 120,
+      "title": "Add Footer3Props type definition",
+      "description": "Add Footer3Props to component-props.ts with newsletter (title/placeholder/buttonText), plus Footer1 fields",
+      "from": 231,
+      "to": 235,
+      "done": false
+    },
+    {
+      "id": 121,
+      "title": "Add footer3Schema to schemas/footer.ts",
+      "description": "Add footer3Schema with newsletter group (title, input placeholder, button text) plus footer fields",
+      "from": 231,
+      "to": 235,
+      "done": false
+    },
+    {
+      "id": 122,
+      "title": "Create Footer3 component",
+      "description": "Create Footer3.tsx - newsletter section at top (input + button), then logo/links/socials/copyright",
+      "from": 231,
+      "to": 235,
+      "done": false
+    },
+    {
+      "id": 123,
+      "title": "Create Footer3 Storybook stories",
+      "description": "Create Footer3.stories.tsx with Default, MobileView, newsletter focus demo",
+      "from": 231,
+      "to": 235,
+      "done": false
+    },
+    {
+      "id": 124,
+      "title": "Register Footer3 in registry",
+      "description": "Add Footer3 import and registration to registry.ts under footer category variant 3",
+      "from": 231,
+      "to": 235,
+      "done": false
+    },
+    {
+      "id": 125,
+      "title": "Add Footer4Props type definition",
+      "description": "Add Footer4Props to component-props.ts - same as Footer3Props",
+      "from": 237,
+      "to": 241,
+      "done": false
+    },
+    {
+      "id": 126,
+      "title": "Add footer4Schema to schemas/footer.ts",
+      "description": "Add footer4Schema - same as footer3Schema with prominent newsletter styling variation",
+      "from": 237,
+      "to": 241,
+      "done": false
+    },
+    {
+      "id": 127,
+      "title": "Create Footer4 component",
+      "description": "Create Footer4.tsx - similar to Footer3 with newsletter more prominent, footer links, socials",
+      "from": 237,
+      "to": 241,
+      "done": false
+    },
+    {
+      "id": 128,
+      "title": "Create Footer4 Storybook stories",
+      "description": "Create Footer4.stories.tsx with Default, MobileView, prominent newsletter demo",
+      "from": 237,
+      "to": 241,
+      "done": false
+    },
+    {
+      "id": 129,
+      "title": "Register Footer4 in registry",
+      "description": "Add Footer4 import and registration to registry.ts under footer category variant 4",
+      "from": 237,
+      "to": 241,
+      "done": false
+    },
+    {
+      "id": 130,
+      "title": "Export all new schemas from schemas/index.ts",
+      "description": "Update schemas/index.ts to export about, testimonials, faq, services, and footer schemas",
+      "from": 327,
+      "to": 335,
+      "done": false
+    },
+    {
+      "id": 131,
+      "title": "Test Phase 0 components with Playwriter",
+      "description": "Use Playwriter MCP to test ImageUploadField and LinkSelectorField on localhost:3000/pages/create",
+      "from": 341,
+      "to": 347,
+      "done": false
+    },
+    {
+      "id": 132,
+      "title": "Test all components in marketplace with Playwriter",
+      "description": "Use Playwriter MCP to verify all 25 components appear in marketplace and can be dragged to canvas",
+      "from": 349,
+      "to": 356,
+      "done": false
+    }
+  ]
+}
