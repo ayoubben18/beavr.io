@@ -49,6 +49,7 @@ export type {
   DirectionField,
   SelectField,
   SelectOption,
+  NestedArrayField,
 
   // Group types
   Group,

@@ -105,6 +105,7 @@ export const CATEGORY_LABELS: Record<ComponentCategory, string> = {
  * - url: URL input with validation
  * - direction: LTR/RTL toggle switch
  * - select: Dropdown selection from predefined options
+ * - nestedArray: Array of items within an array (e.g., links within columns)
  */
 export type FieldType =
   | "text"
@@ -114,7 +115,8 @@ export type FieldType =
   | "image"
   | "url"
   | "direction"
-  | "select";
+  | "select"
+  | "nestedArray";
 
 // ============================================================================
 // SCHEMA FIELD DEFINITIONS
@@ -268,6 +270,37 @@ export type SelectField = BaseField & {
 };
 
 /**
+ * Nested array field for arrays within arrays.
+ *
+ * Used for: links within linkColumns, items within categories.
+ * Enables editing arrays inside ArrayGroup items.
+ *
+ * @example
+ * links: {
+ *   type: "nestedArray",
+ *   label: "Links",
+ *   itemLabel: "Link",
+ *   itemFields: {
+ *     label: { type: "text", label: "Label" },
+ *     href: { type: "url", label: "URL" }
+ *   }
+ * }
+ */
+export type NestedArrayField = BaseField & {
+  type: "nestedArray";
+  /** Singular name for each nested item (e.g., "Link") */
+  itemLabel: string;
+  /** Minimum items required */
+  minItems?: number;
+  /** Maximum items allowed */
+  maxItems?: number;
+  /** Custom add button text */
+  addLabel?: string;
+  /** Fields for each nested item */
+  itemFields: Record<string, Field>;
+};
+
+/**
  * Union of all possible field types.
  *
  * Used when defining schema groups to allow any field type.
@@ -280,7 +313,8 @@ export type Field =
   | ImageField
   | UrlField
   | DirectionField
-  | SelectField;
+  | SelectField
+  | NestedArrayField;
 
 // ============================================================================
 // SCHEMA GROUP DEFINITIONS

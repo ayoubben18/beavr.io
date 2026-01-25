@@ -1,100 +1,77 @@
 /**
  * Footer 4 Component
  *
- * Footer with prominent newsletter section at top, followed by logo/description,
- * navigation links, and copyright at the bottom. The newsletter is more visually
- * prominent than Footer3.
+ * Footer with logo/brand/socials and link columns at top,
+ * and a full-width newsletter banner at bottom.
  *
  * Uses CSS Container Queries (@container) for responsiveness based on
- * parent container width, not browser viewport. This is essential for
- * the page builder preview to work correctly at different viewport sizes.
+ * parent container width, not browser viewport.
  */
 
 "use client";
 
 import Image from "next/image";
 import Link from "next/link";
+import {
+  Twitter,
+  Linkedin,
+  Facebook,
+  Instagram,
+  Github,
+  Youtube,
+} from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import type { Footer3Props } from "@/lib/page-builder/component-props";
+import type { Footer4Props } from "@/lib/page-builder/component-props";
+
+/**
+ * Map of social platform names to their icons.
+ */
+const socialIcons: Record<string, React.ElementType> = {
+  twitter: Twitter,
+  linkedin: Linkedin,
+  facebook: Facebook,
+  instagram: Instagram,
+  github: Github,
+  youtube: Youtube,
+};
 
 export function Footer4({
   config,
-  newsletter,
   logo,
-  description,
-  links,
+  brandName,
+  socials,
+  linkColumns,
+  newsletter,
   copyright,
-}: Footer3Props) {
-  // Determine if using light or dark theme based on background
-  const isLightBg =
-    config.bgColor.toLowerCase() === "#ffffff" ||
-    config.bgColor.toLowerCase() === "#fff" ||
-    config.bgColor.toLowerCase() === "#f5f5f5";
-
+}: Footer4Props) {
   return (
     <footer
       style={{ backgroundColor: config.bgColor }}
       className="@container px-6 py-12 @3xl:py-16"
     >
       <div className="max-w-6xl mx-auto">
-        {/* Prominent newsletter section */}
-        <div className="mb-12 pb-12 border-b border-current/10">
-          <div className="flex flex-col @3xl:flex-row @3xl:items-center @3xl:justify-between gap-8">
-            {/* Newsletter text */}
-            <div className="@3xl:max-w-md">
-              <h3
-                className="text-2xl @3xl:text-3xl font-bold mb-2"
-                style={{ color: links.color }}
-              >
-                {newsletter.title}
-              </h3>
-              <p
-                className="text-sm"
-                style={{ color: copyright.color }}
-              >
-                {description.content}
-              </p>
-            </div>
-
-            {/* Newsletter form */}
-            <div className="flex flex-col @xl:flex-row gap-3 @3xl:min-w-[400px]">
-              <Input
-                type="email"
-                placeholder={newsletter.placeholder}
-                className={`flex-1 ${
-                  isLightBg
-                    ? "bg-white border-border"
-                    : "bg-white/10 border-white/20 text-white placeholder:text-white/50"
-                }`}
-              />
-              <Button className="whitespace-nowrap px-8">
-                {newsletter.buttonText}
-              </Button>
-            </div>
-          </div>
-        </div>
-
-        {/* Footer content - logo and links side by side */}
-        <div className="flex flex-col gap-10 @3xl:flex-row @3xl:justify-between @3xl:items-start mb-12">
-          {/* Logo */}
-          <div>
+        {/* Top: Branding + Link Columns */}
+        <div className="flex flex-col @3xl:flex-row @3xl:justify-between gap-10 mb-12">
+          {/* Left: Logo + Brand Name + Socials */}
+          <div className="flex flex-col gap-4">
+            {/* Logo */}
             {logo.url ? (
               <Image
                 src={logo.url}
                 alt="Logo"
                 width={logo.width}
                 height={logo.height}
-                className="object-contain"
+                className="object-contain rounded-full"
               />
             ) : (
               <div
-                className="bg-muted/20 rounded flex items-center justify-center"
+                className="bg-[#e8ddd4] rounded-full flex items-center justify-center"
                 style={{ width: logo.width, height: logo.height }}
               >
                 <svg
-                  className="w-8 h-8 text-muted-foreground/30"
+                  className="w-5 h-5 text-[#c4a882]"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -108,26 +85,80 @@ export function Footer4({
                 </svg>
               </div>
             )}
+
+            {/* Brand Name */}
+            <span className="font-medium text-foreground">
+              {brandName.label}
+            </span>
+
+            {/* Social Icons */}
+            <div className="flex items-center gap-3">
+              {socials.map((social, index) => {
+                const Icon = socialIcons[social.platform] || Github;
+                return (
+                  <Link
+                    key={index}
+                    href={social.url}
+                    className="w-8 h-8 rounded-full bg-[#e8ddd4] flex items-center justify-center text-[#8d7b6a] hover:bg-[#d4c4b5] transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Icon className="w-4 h-4" />
+                  </Link>
+                );
+              })}
+            </div>
           </div>
 
-          {/* Navigation links */}
-          <nav className="flex flex-wrap gap-x-8 gap-y-3">
-            {links.items.map((link, index) => (
-              <Link
-                key={index}
-                href={link.href}
-                style={{ color: links.color }}
-                className="text-sm hover:opacity-80 transition-opacity"
-              >
-                {link.label}
-              </Link>
+          {/* Right: Link Columns */}
+          <div className="grid grid-cols-2 @xl:grid-cols-4 gap-8">
+            {linkColumns.map((column, colIndex) => (
+              <div key={colIndex}>
+                <h4 className="font-semibold text-sm text-foreground mb-4">
+                  {column.heading}
+                </h4>
+                <ul className="space-y-3">
+                  {column.links.map((link, linkIndex) => (
+                    <li key={linkIndex}>
+                      <Link
+                        href={link.href}
+                        className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
-          </nav>
+          </div>
         </div>
 
-        {/* Bottom section - copyright */}
-        <div className="border-t border-current/10 pt-8">
-          <p className="text-sm text-center" style={{ color: copyright.color }}>
+        {/* Bottom: Newsletter Banner */}
+        <div className="bg-[#e8ddd4] rounded-2xl p-6 @3xl:p-10">
+          <div className="max-w-xl mx-auto text-center">
+            <h3 className="text-lg @3xl:text-xl font-semibold text-foreground mb-2">
+              {newsletter.title}
+            </h3>
+            <p className="text-sm text-muted-foreground mb-6">
+              {newsletter.subtitle}
+            </p>
+            <div className="flex flex-col @sm:flex-row gap-3 justify-center">
+              <Input
+                type="email"
+                placeholder={newsletter.placeholder}
+                className="@sm:max-w-xs bg-white border-[#d4c4b5]"
+              />
+              <Button className="whitespace-nowrap bg-[#8d7b6a] hover:bg-[#7a6a5b] text-white">
+                {newsletter.buttonText}
+              </Button>
+            </div>
+          </div>
+        </div>
+
+        {/* Copyright */}
+        <div className="pt-8 text-center">
+          <p className="text-sm" style={{ color: copyright.color }}>
             {copyright.text}
           </p>
         </div>

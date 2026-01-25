@@ -8,7 +8,7 @@
  */
 
 import type { ComponentSchema } from "../types";
-import type { Footer1Props, Footer2Props, Footer3Props } from "../component-props";
+import type { Footer1Props, Footer2Props, Footer3Props, Footer4Props } from "../component-props";
 
 // ============================================================================
 // SHARED FIELD DEFINITIONS
@@ -170,8 +170,26 @@ export const footer1Schema: ComponentSchema<Footer1Props> = {
           label: "Heading",
           placeholder: "Column title...",
         },
-        // Note: links array is managed within the component
-        // For now, links can be edited through default values
+        links: {
+          type: "nestedArray",
+          label: "Links",
+          itemLabel: "Link",
+          minItems: 1,
+          maxItems: 10,
+          addLabel: "Add link",
+          itemFields: {
+            label: {
+              type: "text",
+              label: "Label",
+              placeholder: "Link text...",
+            },
+            href: {
+              type: "url",
+              label: "URL",
+              placeholder: "https://...",
+            },
+          },
+        },
       },
     },
 
@@ -375,6 +393,26 @@ export const footer2Schema: ComponentSchema<Footer2Props> = {
           label: "Heading",
           placeholder: "Column title...",
         },
+        links: {
+          type: "nestedArray",
+          label: "Links",
+          itemLabel: "Link",
+          minItems: 1,
+          maxItems: 10,
+          addLabel: "Add link",
+          itemFields: {
+            label: {
+              type: "text",
+              label: "Label",
+              placeholder: "Link text...",
+            },
+            href: {
+              type: "url",
+              label: "URL",
+              placeholder: "https://...",
+            },
+          },
+        },
       },
     },
 
@@ -461,7 +499,8 @@ export const footer2Schema: ComponentSchema<Footer2Props> = {
 /**
  * Footer 3 Schema
  *
- * Footer with newsletter section at top, then logo/links/copyright.
+ * Footer with newsletter banner at top, logo/brand/socials on left,
+ * and 4 link columns on right.
  */
 export const footer3Schema: ComponentSchema<Footer3Props> = {
   type: "footer",
@@ -484,13 +523,18 @@ export const footer3Schema: ComponentSchema<Footer3Props> = {
 
     newsletter: {
       kind: "group",
-      label: "Newsletter",
+      label: "Newsletter Banner",
       collapsible: true,
       fields: {
         title: {
           type: "text",
           label: "Title",
-          placeholder: "Subscribe to our newsletter",
+          placeholder: "Join our newsletter",
+        },
+        subtitle: {
+          type: "text",
+          label: "Subtitle",
+          placeholder: "Get the latest updates...",
         },
         placeholder: {
           type: "text",
@@ -517,7 +561,7 @@ export const footer3Schema: ComponentSchema<Footer3Props> = {
         width: {
           type: "number",
           label: "Width",
-          placeholder: "120",
+          placeholder: "40",
         },
         height: {
           type: "number",
@@ -527,25 +571,74 @@ export const footer3Schema: ComponentSchema<Footer3Props> = {
       },
     },
 
-    description: {
+    brandName: {
       kind: "group",
-      label: "Description",
+      label: "Brand",
       collapsible: true,
       fields: {
-        content: {
-          type: "textarea",
-          label: "Text",
-          placeholder: "Company description...",
+        label: {
+          type: "text",
+          label: "Name",
+          placeholder: "Company name...",
         },
       },
     },
 
-    links: {
-      ...linksArrayGroup,
-      sharedFields: {
-        color: {
-          type: "color",
-          label: "Link Color",
+    socials: {
+      kind: "array",
+      label: "Social Media",
+      collapsible: true,
+      itemLabel: "Social",
+      minItems: 0,
+      maxItems: 6,
+      addLabel: "Add social",
+      itemFields: {
+        platform: {
+          type: "select",
+          label: "Platform",
+          options: socialPlatformOptions,
+        },
+        url: {
+          type: "url",
+          label: "URL",
+          placeholder: "https://...",
+        },
+      },
+    },
+
+    linkColumns: {
+      kind: "array",
+      label: "Link Columns",
+      collapsible: true,
+      itemLabel: "Column",
+      minItems: 1,
+      maxItems: 4,
+      addLabel: "Add column",
+      itemFields: {
+        heading: {
+          type: "text",
+          label: "Heading",
+          placeholder: "Column title...",
+        },
+        links: {
+          type: "nestedArray",
+          label: "Links",
+          itemLabel: "Link",
+          minItems: 1,
+          maxItems: 10,
+          addLabel: "Add link",
+          itemFields: {
+            label: {
+              type: "text",
+              label: "Label",
+              placeholder: "Link text...",
+            },
+            href: {
+              type: "url",
+              label: "URL",
+              placeholder: "https://...",
+            },
+          },
         },
       },
     },
@@ -570,32 +663,63 @@ export const footer3Schema: ComponentSchema<Footer3Props> = {
 
   defaults: {
     config: {
-      bgColor: "#141414",
+      bgColor: "#f5f5f4",
     },
     newsletter: {
-      title: "Subscribe to our newsletter",
+      title: "Join our newsletter",
+      subtitle: "Stay up to date with the latest news and updates.",
       placeholder: "Enter your email",
       buttonText: "Subscribe",
     },
     logo: {
       url: "",
-      width: 120,
+      width: 40,
       height: 40,
     },
-    description: {
-      content: "Stay connected with us for the latest updates and news.",
+    brandName: {
+      label: "Company",
     },
-    links: {
-      color: "#ffffff",
-      items: [
-        { label: "Home", href: "/" },
-        { label: "About", href: "/about" },
-        { label: "Services", href: "/services" },
-        { label: "Contact", href: "/contact" },
-      ],
-    },
+    socials: [
+      { platform: "twitter", url: "https://twitter.com" },
+      { platform: "linkedin", url: "https://linkedin.com" },
+      { platform: "github", url: "https://github.com" },
+    ],
+    linkColumns: [
+      {
+        heading: "Products",
+        links: [
+          { label: "Features", href: "/features" },
+          { label: "Pricing", href: "/pricing" },
+          { label: "Integrations", href: "/integrations" },
+        ],
+      },
+      {
+        heading: "Company",
+        links: [
+          { label: "About", href: "/about" },
+          { label: "Blog", href: "/blog" },
+          { label: "Careers", href: "/careers" },
+        ],
+      },
+      {
+        heading: "Resources",
+        links: [
+          { label: "Documentation", href: "/docs" },
+          { label: "Help Center", href: "/help" },
+          { label: "Contact", href: "/contact" },
+        ],
+      },
+      {
+        heading: "Legal",
+        links: [
+          { label: "Privacy", href: "/privacy" },
+          { label: "Terms", href: "/terms" },
+          { label: "Cookies", href: "/cookies" },
+        ],
+      },
+    ],
     copyright: {
-      text: "© 2024 Company Name. All rights reserved.",
+      text: "© 2024 Company. All rights reserved.",
       color: "#8d8d8d",
     },
   },
@@ -608,9 +732,10 @@ export const footer3Schema: ComponentSchema<Footer3Props> = {
 /**
  * Footer 4 Schema
  *
- * Footer with prominent newsletter section and simplified links.
+ * Footer with link columns at top, centered newsletter in middle,
+ * and logo/socials at bottom.
  */
-export const footer4Schema: ComponentSchema<Footer3Props> = {
+export const footer4Schema: ComponentSchema<Footer4Props> = {
   type: "footer",
   variant: 4,
   label: "Footer 4",
@@ -629,29 +754,6 @@ export const footer4Schema: ComponentSchema<Footer3Props> = {
       },
     },
 
-    newsletter: {
-      kind: "group",
-      label: "Newsletter",
-      collapsible: true,
-      fields: {
-        title: {
-          type: "text",
-          label: "Title",
-          placeholder: "Join our newsletter",
-        },
-        placeholder: {
-          type: "text",
-          label: "Input Placeholder",
-          placeholder: "Enter your email",
-        },
-        buttonText: {
-          type: "text",
-          label: "Button Text",
-          placeholder: "Subscribe",
-        },
-      },
-    },
-
     logo: {
       kind: "group",
       label: "Logo",
@@ -664,7 +766,7 @@ export const footer4Schema: ComponentSchema<Footer3Props> = {
         width: {
           type: "number",
           label: "Width",
-          placeholder: "120",
+          placeholder: "40",
         },
         height: {
           type: "number",
@@ -674,25 +776,102 @@ export const footer4Schema: ComponentSchema<Footer3Props> = {
       },
     },
 
-    description: {
+    brandName: {
       kind: "group",
-      label: "Description",
+      label: "Brand",
       collapsible: true,
       fields: {
-        content: {
-          type: "textarea",
-          label: "Text",
-          placeholder: "Company description...",
+        label: {
+          type: "text",
+          label: "Name",
+          placeholder: "Company name...",
         },
       },
     },
 
-    links: {
-      ...linksArrayGroup,
-      sharedFields: {
-        color: {
-          type: "color",
-          label: "Link Color",
+    socials: {
+      kind: "array",
+      label: "Social Media",
+      collapsible: true,
+      itemLabel: "Social",
+      minItems: 0,
+      maxItems: 6,
+      addLabel: "Add social",
+      itemFields: {
+        platform: {
+          type: "select",
+          label: "Platform",
+          options: socialPlatformOptions,
+        },
+        url: {
+          type: "url",
+          label: "URL",
+          placeholder: "https://...",
+        },
+      },
+    },
+
+    linkColumns: {
+      kind: "array",
+      label: "Link Columns",
+      collapsible: true,
+      itemLabel: "Column",
+      minItems: 1,
+      maxItems: 4,
+      addLabel: "Add column",
+      itemFields: {
+        heading: {
+          type: "text",
+          label: "Heading",
+          placeholder: "Column title...",
+        },
+        links: {
+          type: "nestedArray",
+          label: "Links",
+          itemLabel: "Link",
+          minItems: 1,
+          maxItems: 10,
+          addLabel: "Add link",
+          itemFields: {
+            label: {
+              type: "text",
+              label: "Label",
+              placeholder: "Link text...",
+            },
+            href: {
+              type: "url",
+              label: "URL",
+              placeholder: "https://...",
+            },
+          },
+        },
+      },
+    },
+
+    newsletter: {
+      kind: "group",
+      label: "Newsletter",
+      collapsible: true,
+      fields: {
+        title: {
+          type: "text",
+          label: "Title",
+          placeholder: "Join our newsletter",
+        },
+        subtitle: {
+          type: "text",
+          label: "Subtitle",
+          placeholder: "Get the latest updates...",
+        },
+        placeholder: {
+          type: "text",
+          label: "Input Placeholder",
+          placeholder: "Enter your email",
+        },
+        buttonText: {
+          type: "text",
+          label: "Button Text",
+          placeholder: "Subscribe",
         },
       },
     },
@@ -717,31 +896,63 @@ export const footer4Schema: ComponentSchema<Footer3Props> = {
 
   defaults: {
     config: {
-      bgColor: "#ffffff",
-    },
-    newsletter: {
-      title: "Join our newsletter",
-      placeholder: "Enter your email address",
-      buttonText: "Get Started",
+      bgColor: "#f5f5f4",
     },
     logo: {
       url: "",
-      width: 120,
+      width: 40,
       height: 40,
     },
-    description: {
-      content: "Join our newsletter and never miss an update.",
+    brandName: {
+      label: "Company",
     },
-    links: {
-      color: "#141414",
-      items: [
-        { label: "Home", href: "/" },
-        { label: "About", href: "/about" },
-        { label: "Contact", href: "/contact" },
-      ],
+    socials: [
+      { platform: "twitter", url: "https://twitter.com" },
+      { platform: "linkedin", url: "https://linkedin.com" },
+      { platform: "github", url: "https://github.com" },
+    ],
+    linkColumns: [
+      {
+        heading: "Products",
+        links: [
+          { label: "Features", href: "/features" },
+          { label: "Pricing", href: "/pricing" },
+          { label: "Integrations", href: "/integrations" },
+        ],
+      },
+      {
+        heading: "Company",
+        links: [
+          { label: "About", href: "/about" },
+          { label: "Blog", href: "/blog" },
+          { label: "Careers", href: "/careers" },
+        ],
+      },
+      {
+        heading: "Resources",
+        links: [
+          { label: "Documentation", href: "/docs" },
+          { label: "Help Center", href: "/help" },
+          { label: "Contact", href: "/contact" },
+        ],
+      },
+      {
+        heading: "Legal",
+        links: [
+          { label: "Privacy", href: "/privacy" },
+          { label: "Terms", href: "/terms" },
+          { label: "Cookies", href: "/cookies" },
+        ],
+      },
+    ],
+    newsletter: {
+      title: "Join our newsletter",
+      subtitle: "Stay up to date with the latest news and updates.",
+      placeholder: "Enter your email",
+      buttonText: "Subscribe",
     },
     copyright: {
-      text: "© 2024 Company Name. All rights reserved.",
+      text: "© 2024 Company. All rights reserved.",
       color: "#8d8d8d",
     },
   },

@@ -14,7 +14,7 @@ import {
   isArrayGroup,
 } from "@/lib/page-builder";
 import { getSchema } from "@/lib/page-builder/registry";
-import type { Field, Group, ArrayGroup, FieldGroup, SelectField } from "@/lib/page-builder/types";
+import type { Field, Group, ArrayGroup, FieldGroup, SelectField, NestedArrayField } from "@/lib/page-builder/types";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -210,8 +210,8 @@ function ArrayGroupRenderer({
   onChangeRoot: (value: unknown) => void;
 }) {
   // Handle both direct arrays and { items: [...] } structure
-  const items = Array.isArray(value)
-    ? value
+  const items: Array<Record<string, unknown>> = Array.isArray(value)
+    ? (value as Array<Record<string, unknown>>)
     : ((value as Record<string, unknown>)?.items as Array<Record<string, unknown>>) || [];
   const [expandedItems, setExpandedItems] = useState<Record<number, boolean>>({});
 
@@ -338,6 +338,156 @@ function ArrayGroupRenderer({
           )}
         </div>
       )}
+    </div>
+  );
+}
+
+/**
+ * Renders a nested array (array within an array item)
+ */
+function NestedArrayRenderer({
+  field,
+  items,
+  onChange,
+}: {
+  field: NestedArrayField;
+  items: Array<Record<string, unknown>>;
+  onChange: (value: unknown) => void;
+}) {
+  const [expandedItems, setExpandedItems] = useState<Record<number, boolean>>({});
+
+  const toggleItem = (index: number) => {
+    setExpandedItems((prev) => ({ ...prev, [index]: !prev[index] }));
+  };
+
+  const addItem = () => {
+    const newItem: Record<string, unknown> = {};
+    Object.keys(field.itemFields).forEach((key) => {
+      const itemField = field.itemFields[key];
+      if (itemField.type === "color") {
+        newItem[key] = "#141414";
+      } else {
+        newItem[key] = "";
+      }
+    });
+    onChange([...items, newItem]);
+  };
+
+  const removeItem = (index: number) => {
+    const newItems = items.filter((_, i) => i !== index);
+    onChange(newItems);
+  };
+
+  const updateItem = (index: number, fieldKey: string, fieldValue: unknown) => {
+    const newItems = [...items];
+    newItems[index] = { ...newItems[index], [fieldKey]: fieldValue };
+    onChange(newItems);
+  };
+
+  const canAdd = field.maxItems === undefined || items.length < field.maxItems;
+  const canRemove = field.minItems === undefined || items.length > field.minItems;
+
+  return (
+    <div className="space-y-2 pl-2 border-l-2 border-muted">
+      {items.map((item, index) => (
+        <div key={index} className="border rounded-md bg-muted/30">
+          {/* Item header */}
+          <div className="flex items-center justify-between px-2 py-1.5">
+            <button
+              type="button"
+              onClick={() => toggleItem(index)}
+              className="flex items-center gap-1.5 text-xs font-medium hover:text-primary"
+            >
+              <span>
+                {field.itemLabel} {index + 1}
+              </span>
+              {expandedItems[index] !== false ? (
+                <ChevronUp className="h-3 w-3" />
+              ) : (
+                <ChevronDown className="h-3 w-3" />
+              )}
+            </button>
+
+            {canRemove && (
+              <button
+                type="button"
+                onClick={() => removeItem(index)}
+                className="text-muted-foreground hover:text-destructive"
+              >
+                <Trash2 className="h-3 w-3" />
+              </button>
+            )}
+          </div>
+
+          {/* Item fields */}
+          {expandedItems[index] !== false && (
+            <div className="px-2 pb-2 space-y-2">
+              {Object.entries(field.itemFields).map(([fieldKey, itemField]) => (
+                <NestedFieldRenderer
+                  key={fieldKey}
+                  field={itemField}
+                  value={item[fieldKey]}
+                  onChange={(val) => updateItem(index, fieldKey, val)}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+      ))}
+
+      {/* Add button */}
+      {canAdd && (
+        <Button variant="outline" size="sm" onClick={addItem} className="w-full h-7 text-xs">
+          <Plus className="h-3 w-3 mr-1" />
+          {field.addLabel || `Add ${field.itemLabel.toLowerCase()}`}
+        </Button>
+      )}
+    </div>
+  );
+}
+
+/**
+ * Renders a field inside a nested array (simplified version without nestedArray support)
+ */
+function NestedFieldRenderer({
+  field,
+  value,
+  onChange,
+}: {
+  field: Field;
+  value: unknown;
+  onChange: (value: unknown) => void;
+}) {
+  const renderInput = () => {
+    switch (field.type) {
+      case "text":
+        return (
+          <Input
+            value={(value as string) || ""}
+            onChange={(e) => onChange(e.target.value)}
+            placeholder={field.placeholder}
+            className="h-7 text-xs"
+          />
+        );
+
+      case "url":
+        return (
+          <LinkSelectorField
+            value={(value as string) || ""}
+            onChange={onChange}
+            placeholder={field.placeholder || "Select link..."}
+          />
+        );
+
+      default:
+        return <div className="text-xs text-muted-foreground">Unsupported field type</div>;
+    }
+  };
+
+  return (
+    <div className="space-y-1">
+      {field.label && <span className="text-[10px] text-muted-foreground block">{field.label}</span>}
+      {renderInput()}
     </div>
   );
 }
@@ -471,6 +621,18 @@ function FieldRenderer({
             onChange={(val) => onChange(val)}
             options={selectField.options}
             placeholder={selectField.placeholder}
+          />
+        );
+      }
+
+      case "nestedArray": {
+        const nestedField = field as NestedArrayField;
+        const nestedItems = (value as Array<Record<string, unknown>>) || [];
+        return (
+          <NestedArrayRenderer
+            field={nestedField}
+            items={nestedItems}
+            onChange={onChange}
           />
         );
       }

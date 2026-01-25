@@ -1119,7 +1119,8 @@ export type Footer2Props = {
 /**
  * Footer 3 Props
  *
- * Footer with newsletter section at top.
+ * Footer with newsletter banner at top, logo/brand/socials on left,
+ * and 4 link columns on right.
  */
 export type Footer3Props = {
   /**
@@ -1131,11 +1132,13 @@ export type Footer3Props = {
   };
 
   /**
-   * Newsletter section.
+   * Newsletter banner section (styling only - not editable).
    */
   newsletter: {
     /** Newsletter section title */
     title: string;
+    /** Subtitle/description text */
+    subtitle: string;
     /** Input placeholder text */
     placeholder: string;
     /** Subscribe button text */
@@ -1155,22 +1158,22 @@ export type Footer3Props = {
   };
 
   /**
-   * Footer description/tagline.
+   * Brand name displayed next to logo.
    */
-  description: {
-    /** Description text */
-    content: string;
+  brandName: {
+    /** Brand/company name */
+    label: string;
   };
 
   /**
-   * Footer link columns.
+   * Social media links.
    */
-  links: {
-    /** Link text color */
-    color: HexColor;
-    /** Array of link items */
-    items: LinkItem[];
-  };
+  socials: SocialItem[];
+
+  /**
+   * Footer link columns (4 columns with headers and links).
+   */
+  linkColumns: LinkColumn[];
 
   /**
    * Copyright text.
@@ -1186,9 +1189,72 @@ export type Footer3Props = {
 /**
  * Footer 4 Props
  *
- * Same as Footer3 with prominent newsletter variation.
+ * Footer with logo/brand/socials and link columns at top,
+ * and newsletter banner at bottom.
  */
-export type Footer4Props = Footer3Props;
+export type Footer4Props = {
+  /**
+   * General configuration.
+   */
+  config: {
+    /** Section background color */
+    bgColor: HexColor;
+  };
+
+  /**
+   * Logo configuration.
+   */
+  logo: {
+    /** Logo image URL */
+    url: string;
+    /** Logo display width */
+    width: number;
+    /** Logo display height */
+    height: number;
+  };
+
+  /**
+   * Brand name displayed below logo.
+   */
+  brandName: {
+    /** Brand/company name */
+    label: string;
+  };
+
+  /**
+   * Social media links.
+   */
+  socials: SocialItem[];
+
+  /**
+   * Footer link columns (4 columns with headers and links).
+   */
+  linkColumns: LinkColumn[];
+
+  /**
+   * Newsletter section (centered banner at bottom).
+   */
+  newsletter: {
+    /** Newsletter section title */
+    title: string;
+    /** Subtitle/description text */
+    subtitle: string;
+    /** Input placeholder text */
+    placeholder: string;
+    /** Subscribe button text */
+    buttonText: string;
+  };
+
+  /**
+   * Copyright text.
+   */
+  copyright: {
+    /** Copyright text */
+    text: string;
+    /** Text color */
+    color: HexColor;
+  };
+};
 
 // ============================================================================
 // PROPS TYPE MAP
