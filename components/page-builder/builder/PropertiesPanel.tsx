@@ -366,11 +366,6 @@ function FieldRenderer({
               placeholder={field.placeholder}
               className="flex-1"
             />
-            {showExternalLink && (
-              <Button variant="ghost" size="icon" className="h-9 w-9 shrink-0">
-                <ExternalLink className="h-4 w-4" />
-              </Button>
-            )}
           </div>
         );
 
