@@ -30,6 +30,8 @@ import {
 } from "@/components/ui/color-picker";
 import ActionDialog from "@/components/shared/action-dialog";
 import { ChevronDown, ChevronUp, Trash2, Plus, ExternalLink } from "lucide-react";
+import { ImageUploadField } from "./ImageUploadField";
+import { LinkSelectorField } from "./LinkSelectorField";
 
 export function PropertiesPanel() {
   const selectedComponent = usePageBuilderStore(selectSelectedComponent);
@@ -420,38 +422,20 @@ function FieldRenderer({
 
       case "image":
         return (
-          <div className="space-y-2">
-            <Input
-              value={(value as string) || ""}
-              onChange={(e) => onChange(e.target.value)}
-              placeholder="Image URL"
-            />
-            <div className="flex gap-2">
-              <Button variant="outline" size="sm" className="flex-1 text-xs">
-                From device
-              </Button>
-              <Button variant="outline" size="sm" className="flex-1 text-xs">
-                From the web
-              </Button>
-            </div>
-          </div>
+          <ImageUploadField
+            value={(value as string) || ""}
+            onChange={onChange}
+            placeholder={field.placeholder}
+          />
         );
 
       case "url":
         return (
-          <div className="flex gap-2">
-            <Input
-              value={(value as string) || ""}
-              onChange={(e) => onChange(e.target.value)}
-              placeholder={field.placeholder || "https://..."}
-              className="flex-1"
-            />
-            {showExternalLink && (
-              <Button variant="ghost" size="icon" className="h-9 w-9 shrink-0">
-                <ExternalLink className="h-4 w-4" />
-              </Button>
-            )}
-          </div>
+          <LinkSelectorField
+            value={(value as string) || ""}
+            onChange={onChange}
+            placeholder={field.placeholder || "Select link..."}
+          />
         );
 
       case "direction":

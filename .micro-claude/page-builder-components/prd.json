@@ -9,7 +9,7 @@
       "description": "Create new component with tabbed UI (Upload | URL), dropzone for upload tab, text input for URL tab, image preview with delete button. Reference: temp/image-uploader-image.png, temp/image-uploader-link.png",
       "from": 22,
       "to": 39,
-      "done": false
+      "done": true
     },
     {
       "id": 2,
@@ -17,7 +17,7 @@
       "description": "Replace the existing case 'image': in PropertiesPanel.tsx to use the new ImageUploadField component",
       "from": 37,
       "to": 39,
-      "done": false
+      "done": true
     },
     {
       "id": 3,
@@ -25,7 +25,7 @@
       "description": "Create dropdown/popover component with Sections list (from page store), Pages placeholder section, and URL text input",
       "from": 43,
       "to": 61,
-      "done": false
+      "done": true
     },
     {
       "id": 4,
@@ -33,7 +33,7 @@
       "description": "Modify case 'url': in PropertiesPanel.tsx to use the new LinkSelectorField component",
       "from": 58,
       "to": 61,
-      "done": false
+      "done": true
     },
     {
       "id": 5,
@@ -41,7 +41,7 @@
       "description": "Add Hero2Props type to component-props.ts - same as Hero1Props with config.direction supporting RTL default",
       "from": 85,
       "to": 89,
-      "done": false
+      "done": true
     },
     {
       "id": 6,
@@ -49,7 +49,7 @@
       "description": "Add hero2Schema to schemas/hero.ts with direction field defaulting to RTL, same groups as hero1Schema",
       "from": 85,
       "to": 89,
-      "done": false
+      "done": true
     },
     {
       "id": 7,
@@ -57,7 +57,7 @@
       "description": "Create Hero2.tsx - variation of Hero1 with image on LEFT by default (direction: rtl), title, description, 2 CTAs",
       "from": 85,
       "to": 89,
-      "done": false
+      "done": true
     },
     {
       "id": 8,
@@ -65,7 +65,7 @@
       "description": "Create Hero2.stories.tsx with Default, MobileView, TabletView, and RTL/LTR direction variations",
       "from": 85,
       "to": 89,
-      "done": false
+      "done": true
     },
     {
       "id": 9,
@@ -73,7 +73,7 @@
       "description": "Add Hero2 import and registration to registry.ts under hero category variant 2",
       "from": 85,
       "to": 89,
-      "done": false
+      "done": true
     },
     {
       "id": 10,
@@ -81,7 +81,7 @@
       "description": "Add Hero3Props to component-props.ts with config.bgColor, badge, title, description, cta array (no image)",
       "from": 91,
       "to": 95,
-      "done": false
+      "done": true
     },
     {
       "id": 11,
@@ -89,7 +89,7 @@
       "description": "Add hero3Schema to schemas/hero.ts with badge field, centered layout groups, no image field",
       "from": 91,
       "to": 95,
-      "done": false
+      "done": true
     },
     {
       "id": 12,
@@ -97,7 +97,7 @@
       "description": "Create Hero3.tsx - centered text hero with badge on top, headline, description, 2 horizontal buttons, NO image",
       "from": 91,
       "to": 95,
-      "done": false
+      "done": true
     },
     {
       "id": 13,
@@ -105,7 +105,7 @@
       "description": "Create Hero3.stories.tsx with Default, MobileView, different badge variations",
       "from": 91,
       "to": 95,
-      "done": false
+      "done": true
     },
     {
       "id": 14,
@@ -113,7 +113,7 @@
       "description": "Add Hero3 import and registration to registry.ts under hero category variant 3",
       "from": 91,
       "to": 95,
-      "done": false
+      "done": true
     },
     {
       "id": 15,
@@ -121,7 +121,7 @@
       "description": "Add Hero4Props to component-props.ts with config.bgColor, title, description, cta, optional image",
       "from": 97,
       "to": 101,
-      "done": false
+      "done": true
     },
     {
       "id": 16,
@@ -129,7 +129,7 @@
       "description": "Add hero4Schema to schemas/hero.ts with bordered section styling, single CTA with icon support",
       "from": 97,
       "to": 101,
-      "done": false
+      "done": true
     },
     {
       "id": 17,
@@ -137,7 +137,7 @@
       "description": "Create Hero4.tsx - centered layout with bordered sections, decorative patterns, headline, description, single CTA",
       "from": 97,
       "to": 101,
-      "done": false
+      "done": true
     },
     {
       "id": 18,
@@ -145,7 +145,7 @@
       "description": "Create Hero4.stories.tsx with Default, MobileView, with/without image variations",
       "from": 97,
       "to": 101,
-      "done": false
+      "done": true
     },
     {
       "id": 19,
@@ -153,7 +153,7 @@
       "description": "Add Hero4 import and registration to registry.ts under hero category variant 4",
       "from": 97,
       "to": 101,
-      "done": false
+      "done": true
     },
     {
       "id": 20,
@@ -161,7 +161,7 @@
       "description": "Add About1Props to component-props.ts with config.bgColor, title, description1, image, description2, description3",
       "from": 107,
       "to": 111,
-      "done": false
+      "done": true
     },
     {
       "id": 21,
@@ -169,7 +169,7 @@
       "description": "Create new schemas/about.ts file with about1Schema - title, image, multiple description fields",
       "from": 107,
       "to": 111,
-      "done": false
+      "done": true
     },
     {
       "id": 22,
@@ -177,7 +177,7 @@
       "description": "Create About1.tsx - title at top, large image below, text content below image, multi-section layout",
       "from": 107,
       "to": 111,
-      "done": false
+      "done": true
     },
     {
       "id": 23,
@@ -185,7 +185,7 @@
       "description": "Create About1.stories.tsx with Default, MobileView, different content variations",
       "from": 107,
       "to": 111,
-      "done": false
+      "done": true
     },
     {
       "id": 24,
@@ -193,7 +193,7 @@
       "description": "Add About1 import and registration to registry.ts, create about category with variant 1",
       "from": 107,
       "to": 111,
-      "done": false
+      "done": true
     },
     {
       "id": 25,
@@ -201,7 +201,7 @@
       "description": "Add About2Props to component-props.ts with config.bgColor, title, description, image, section.title, section.description",
       "from": 113,
       "to": 117,
-      "done": false
+      "done": true
     },
     {
       "id": 26,
@@ -209,7 +209,7 @@
       "description": "Add about2Schema with 2-column layout groups, image field, nested section group",
       "from": 113,
       "to": 117,
-      "done": false
+      "done": true
     },
     {
       "id": 27,
@@ -217,7 +217,7 @@
       "description": "Create About2.tsx - 2-column layout with image left, text sections right, additional sub-section",
       "from": 113,
       "to": 117,
-      "done": false
+      "done": true
     },
     {
       "id": 28,
@@ -225,7 +225,7 @@
       "description": "Create About2.stories.tsx with Default, MobileView, TabletView variations",
       "from": 113,
       "to": 117,
-      "done": false
+      "done": true
     },
     {
       "id": 29,
@@ -233,7 +233,7 @@
       "description": "Add About2 import and registration to registry.ts under about category variant 2",
       "from": 113,
       "to": 117,
-      "done": false
+      "done": true
     },
     {
       "id": 30,
@@ -241,7 +241,7 @@
       "description": "Add About3Props to component-props.ts with config.bgColor, config.direction, title, description1, image, description2",
       "from": 119,
       "to": 123,
-      "done": false
+      "done": true
     },
     {
       "id": 31,
@@ -249,7 +249,7 @@
       "description": "Add about3Schema with direction field, image group, multiple description fields",
       "from": 119,
       "to": 123,
-      "done": false
+      "done": true
     },
     {
       "id": 32,
@@ -257,7 +257,7 @@
       "description": "Create About3.tsx - image on left, text content on right, supports direction flip",
       "from": 119,
       "to": 123,
-      "done": false
+      "done": true
     },
     {
       "id": 33,
@@ -265,7 +265,7 @@
       "description": "Create About3.stories.tsx with Default, MobileView, LTR/RTL direction variations",
       "from": 119,
       "to": 123,
-      "done": false
+      "done": true
     },
     {
       "id": 34,
@@ -273,7 +273,7 @@
       "description": "Add About3 import and registration to registry.ts under about category variant 3",
       "from": 119,
       "to": 123,
-      "done": false
+      "done": true
     },
     {
       "id": 35,
@@ -281,7 +281,7 @@
       "description": "Add About4Props to component-props.ts - same as About3Props (uses direction for flip)",
       "from": 125,
       "to": 129,
-      "done": false
+      "done": true
     },
     {
       "id": 36,
@@ -289,7 +289,7 @@
       "description": "Add about4Schema - same structure as about3Schema with different default direction (text left, image right)",
       "from": 125,
       "to": 129,
-      "done": false
+      "done": true
     },
     {
       "id": 37,
@@ -297,7 +297,7 @@
       "description": "Create About4.tsx - text on left, image on right (flipped About3), supports direction",
       "from": 125,
       "to": 129,
-      "done": false
+      "done": true
     },
     {
       "id": 38,
@@ -305,7 +305,7 @@
       "description": "Create About4.stories.tsx with Default, MobileView, direction variations",
       "from": 125,
       "to": 129,
-      "done": false
+      "done": true
     },
     {
       "id": 39,
@@ -313,7 +313,7 @@
       "description": "Add About4 import and registration to registry.ts under about category variant 4",
       "from": 125,
       "to": 129,
-      "done": false
+      "done": true
     },
     {
       "id": 40,
@@ -321,7 +321,7 @@
       "description": "Add Testimonial1Props to component-props.ts with config.bgColor, title, navigation style, testimonials array",
       "from": 135,
       "to": 139,
-      "done": false
+      "done": true
     },
     {
       "id": 41,
@@ -329,7 +329,7 @@
       "description": "Create new schemas/testimonials.ts file with testimonial1Schema - title, navigation group, testimonials array",
       "from": 135,
       "to": 139,
-      "done": false
+      "done": true
     },
     {
       "id": 42,
@@ -337,7 +337,7 @@
       "description": "Create Testimonials1.tsx - title centered, 3 testimonial cards in a row, navigation dots",
       "from": 135,
       "to": 139,
-      "done": false
+      "done": true
     },
     {
       "id": 43,
@@ -345,7 +345,7 @@
       "description": "Create Testimonials1.stories.tsx with Default, MobileView, different card counts",
       "from": 135,
       "to": 139,
-      "done": false
+      "done": true
     },
     {
       "id": 44,
@@ -353,7 +353,7 @@
       "description": "Add Testimonials1 import and registration to registry.ts, create testimonials category",
       "from": 135,
       "to": 139,
-      "done": false
+      "done": true
     },
     {
       "id": 45,
@@ -361,7 +361,7 @@
       "description": "Add Testimonial2Props to component-props.ts with config.bgColor/direction, title, description, testimonials with images, cta",
       "from": 141,
       "to": 145,
-      "done": false
+      "done": true
     },
     {
       "id": 46,
@@ -369,7 +369,7 @@
       "description": "Add testimonial2Schema with 2-column layout, direction field, testimonials with avatar images, CTA group",
       "from": 141,
       "to": 145,
-      "done": false
+      "done": true
     },
     {
       "id": 47,
@@ -377,7 +377,7 @@
       "description": "Create Testimonials2.tsx - 2-column with title/description/CTA left, stacked testimonial cards with avatars right",
       "from": 141,
       "to": 145,
-      "done": false
+      "done": true
     },
     {
       "id": 48,
@@ -385,7 +385,7 @@
       "description": "Create Testimonials2.stories.tsx with Default, MobileView, LTR/RTL direction variations",
       "from": 141,
       "to": 145,
-      "done": false
+      "done": true
     },
     {
       "id": 49,
@@ -393,7 +393,7 @@
       "description": "Add Testimonials2 import and registration to registry.ts under testimonials category variant 2",
       "from": 141,
       "to": 145,
-      "done": false
+      "done": true
     },
     {
       "id": 50,
@@ -401,7 +401,7 @@
       "description": "Add Testimonial3Props to component-props.ts with config.bgColor, title, testimonials with images, navigation",
       "from": 147,
       "to": 151,
-      "done": false
+      "done": true
     },
     {
       "id": 51,
@@ -409,7 +409,7 @@
       "description": "Add testimonial3Schema with centered layout, large quote styling, pagination navigation",
       "from": 147,
       "to": 151,
-      "done": false
+      "done": true
     },
     {
       "id": 52,
@@ -417,7 +417,7 @@
       "description": "Create Testimonials3.tsx - large centered quote, centered text, pagination dots below (no avatar visible)",
       "from": 147,
       "to": 151,
-      "done": false
+      "done": true
     },
     {
       "id": 53,
@@ -425,7 +425,7 @@
       "description": "Create Testimonials3.stories.tsx with Default, MobileView, carousel navigation demo",
       "from": 147,
       "to": 151,
-      "done": false
+      "done": true
     },
     {
       "id": 54,
@@ -433,7 +433,7 @@
       "description": "Add Testimonials3 import and registration to registry.ts under testimonials category variant 3",
       "from": 147,
       "to": 151,
-      "done": false
+      "done": true
     },
     {
       "id": 55,
@@ -441,7 +441,7 @@
       "description": "Add Testimonial4Props to component-props.ts - similar to Testimonial3Props with overlapping avatars support",
       "from": 153,
       "to": 157,
-      "done": false
+      "done": true
     },
     {
       "id": 56,
@@ -449,7 +449,7 @@
       "description": "Add testimonial4Schema with overlapping avatars group, centered quote, navigation dots",
       "from": 153,
       "to": 157,
-      "done": false
+      "done": true
     },
     {
       "id": 57,
@@ -457,7 +457,7 @@
       "description": "Create Testimonials4.tsx - centered with overlapping avatars at top, single quote below, navigation dots",
       "from": 153,
       "to": 157,
-      "done": false
+      "done": true
     },
     {
       "id": 58,
@@ -465,7 +465,7 @@
       "description": "Create Testimonials4.stories.tsx with Default, MobileView, different avatar counts",
       "from": 153,
       "to": 157,
-      "done": false
+      "done": true
     },
     {
       "id": 59,
@@ -473,7 +473,7 @@
       "description": "Add Testimonials4 import and registration to registry.ts under testimonials category variant 4",
       "from": 153,
       "to": 157,
-      "done": false
+      "done": true
     },
     {
       "id": 60,
@@ -481,7 +481,7 @@
       "description": "Add Faq1Props to component-props.ts with config.bgColor, title, questions array (question/answer)",
       "from": 163,
       "to": 167,
-      "done": false
+      "done": true
     },
     {
       "id": 61,
@@ -489,7 +489,7 @@
       "description": "Create new schemas/faq.ts file with faq1Schema - title, questions array with accordion fields",
       "from": 163,
       "to": 167,
-      "done": false
+      "done": true
     },
     {
       "id": 62,
@@ -497,7 +497,7 @@
       "description": "Create Faq1.tsx - title at top, full-width accordion items below, expand/collapse functionality",
       "from": 163,
       "to": 167,
-      "done": false
+      "done": true
     },
     {
       "id": 63,
@@ -505,7 +505,7 @@
       "description": "Create Faq1.stories.tsx with Default, MobileView, expanded/collapsed states",
       "from": 163,
       "to": 167,
-      "done": false
+      "done": true
     },
     {
       "id": 64,
@@ -513,7 +513,7 @@
       "description": "Add Faq1 import and registration to registry.ts, create faq category with variant 1",
       "from": 163,
       "to": 167,
-      "done": false
+      "done": true
     },
     {
       "id": 65,
@@ -521,7 +521,7 @@
       "description": "Add Faq2Props to component-props.ts with config.bgColor/direction, title, description, cta, questions array",
       "from": 169,
       "to": 173,
-      "done": false
+      "done": true
     },
     {
       "id": 66,
@@ -529,7 +529,7 @@
       "description": "Add faq2Schema with 2-column layout, direction field, CTA group, accordion questions",
       "from": 169,
       "to": 173,
-      "done": false
+      "done": true
     },
     {
       "id": 67,
@@ -537,7 +537,7 @@
       "description": "Create Faq2.tsx - 2-column with title/description/CTA left, accordion FAQ items right",
       "from": 169,
       "to": 173,
-      "done": false
+      "done": true
     },
     {
       "id": 68,
@@ -545,7 +545,7 @@
       "description": "Create Faq2.stories.tsx with Default, MobileView, LTR/RTL direction variations",
       "from": 169,
       "to": 173,
-      "done": false
+      "done": true
     },
     {
       "id": 69,
@@ -553,7 +553,7 @@
       "description": "Add Faq2 import and registration to registry.ts under faq category variant 2",
       "from": 169,
       "to": 173,
-      "done": false
+      "done": true
     },
     {
       "id": 70,
@@ -561,7 +561,7 @@
       "description": "Add Faq3Props to component-props.ts with config.bgColor, title, questions array (no accordion, grid layout)",
       "from": 175,
       "to": 179,
-      "done": false
+      "done": true
     },
     {
       "id": 71,
@@ -569,7 +569,7 @@
       "description": "Add faq3Schema with centered title, 2-column grid questions layout",
       "from": 175,
       "to": 179,
-      "done": false
+      "done": true
     },
     {
       "id": 72,
@@ -577,7 +577,7 @@
       "description": "Create Faq3.tsx - title centered, 2-column grid of Q&A items (not accordion, always visible answers)",
       "from": 175,
       "to": 179,
-      "done": false
+      "done": true
     },
     {
       "id": 73,
@@ -585,7 +585,7 @@
       "description": "Create Faq3.stories.tsx with Default, MobileView, numbered/plain variations",
       "from": 175,
       "to": 179,
-      "done": false
+      "done": true
     },
     {
       "id": 74,
@@ -593,7 +593,7 @@
       "description": "Add Faq3 import and registration to registry.ts under faq category variant 3",
       "from": 175,
       "to": 179,
-      "done": false
+      "done": true
     },
     {
       "id": 75,
@@ -601,7 +601,7 @@
       "description": "Add Faq4Props to component-props.ts - same as Faq1Props (simple rows layout)",
       "from": 181,
       "to": 185,
-      "done": false
+      "done": true
     },
     {
       "id": 76,
@@ -609,7 +609,7 @@
       "description": "Add faq4Schema with bordered row layout, question bold, answer muted styling",
       "from": 181,
       "to": 185,
-      "done": false
+      "done": true
     },
     {
       "id": 77,
@@ -617,7 +617,7 @@
       "description": "Create Faq4.tsx - title at top, simple rows with question/answer separated by borders",
       "from": 181,
       "to": 185,
-      "done": false
+      "done": true
     },
     {
       "id": 78,
@@ -625,7 +625,7 @@
       "description": "Create Faq4.stories.tsx with Default, MobileView, different question counts",
       "from": 181,
       "to": 185,
-      "done": false
+      "done": true
     },
     {
       "id": 79,
@@ -633,7 +633,7 @@
       "description": "Add Faq4 import and registration to registry.ts under faq category variant 4",
       "from": 181,
       "to": 185,
-      "done": false
+      "done": true
     },
     {
       "id": 80,
@@ -641,7 +641,7 @@
       "description": "Add Services1Props to component-props.ts with config.bgColor/direction, title, description, cta, services array with image/title/description",
       "from": 191,
       "to": 195,
-      "done": false
+      "done": true
     },
     {
       "id": 81,
@@ -649,7 +649,7 @@
       "description": "Create new schemas/services.ts file with services1Schema - 2-column layout, CTA, services array with images",
       "from": 191,
       "to": 195,
-      "done": false
+      "done": true
     },
     {
       "id": 82,
@@ -657,7 +657,7 @@
       "description": "Create Services1.tsx - title/description/CTA left, 4 service cards in 2x2 grid right",
       "from": 191,
       "to": 195,
-      "done": false
+      "done": true
     },
     {
       "id": 83,
@@ -665,7 +665,7 @@
       "description": "Create Services1.stories.tsx with Default, MobileView, LTR/RTL direction variations",
       "from": 191,
       "to": 195,
-      "done": false
+      "done": true
     },
     {
       "id": 84,
@@ -673,7 +673,7 @@
       "description": "Add Services1 import and registration to registry.ts, create services category with variant 1",
       "from": 191,
       "to": 195,
-      "done": false
+      "done": true
     },
     {
       "id": 85,
@@ -681,7 +681,7 @@
       "description": "Add Services2Props to component-props.ts with config.bgColor, title, navigation style, services array",
       "from": 197,
       "to": 201,
-      "done": false
+      "done": true
     },
     {
       "id": 86,
@@ -689,7 +689,7 @@
       "description": "Add services2Schema with carousel layout, navigation dots, services array fields",
       "from": 197,
       "to": 201,
-      "done": false
+      "done": true
     },
     {
       "id": 87,
@@ -697,7 +697,7 @@
       "description": "Create Services2.tsx - title centered, 4 cards in a row (like Testimonials1), navigation dots",
       "from": 197,
       "to": 201,
-      "done": false
+      "done": true
     },
     {
       "id": 88,
@@ -705,7 +705,7 @@
       "description": "Create Services2.stories.tsx with Default, MobileView, carousel navigation demo",
       "from": 197,
       "to": 201,
-      "done": false
+      "done": true
     },
     {
       "id": 89,
@@ -713,7 +713,7 @@
       "description": "Add Services2 import and registration to registry.ts under services category variant 2",
       "from": 197,
       "to": 201,
-      "done": false
+      "done": true
     },
     {
       "id": 90,
@@ -721,7 +721,7 @@
       "description": "Add Services3Props to component-props.ts with config.bgColor, title, services array with title/description",
       "from": 203,
       "to": 207,
-      "done": false
+      "done": true
     },
     {
       "id": 91,
@@ -729,7 +729,7 @@
       "description": "Add services3Schema with large card layout, services with checkmark feature lists",
       "from": 203,
       "to": 207,
-      "done": false
+      "done": true
     },
     {
       "id": 92,
@@ -737,7 +737,7 @@
       "description": "Create Services3.tsx - title at top, 2 large service cards below with title, description, feature list with checkmarks",
       "from": 203,
       "to": 207,
-      "done": false
+      "done": true
     },
     {
       "id": 93,
@@ -745,7 +745,7 @@
       "description": "Create Services3.stories.tsx with Default, MobileView, different service counts",
       "from": 203,
       "to": 207,
-      "done": false
+      "done": true
     },
     {
       "id": 94,
@@ -753,7 +753,7 @@
       "description": "Add Services3 import and registration to registry.ts under services category variant 3",
       "from": 203,
       "to": 207,
-      "done": false
+      "done": true
     },
     {
       "id": 95,
@@ -761,7 +761,7 @@
       "description": "Add Services4Props to component-props.ts with config.bgColor, title, services array (simple, no images)",
       "from": 209,
       "to": 213,
-      "done": false
+      "done": true
     },
     {
       "id": 96,
@@ -769,7 +769,7 @@
       "description": "Add services4Schema with text-only list layout, simple services array fields",
       "from": 209,
       "to": 213,
-      "done": false
+      "done": true
     },
     {
       "id": 97,
@@ -777,7 +777,7 @@
       "description": "Create Services4.tsx - title/description at top, list of text-only service items below",
       "from": 209,
       "to": 213,
-      "done": false
+      "done": true
     },
     {
       "id": 98,
@@ -785,7 +785,7 @@
       "description": "Create Services4.stories.tsx with Default, MobileView, different content variations",
       "from": 209,
       "to": 213,
-      "done": false
+      "done": true
     },
     {
       "id": 99,
@@ -793,7 +793,7 @@
       "description": "Add Services4 import and registration to registry.ts under services category variant 4",
       "from": 209,
       "to": 213,
-      "done": false
+      "done": true
     },
     {
       "id": 100,
@@ -801,7 +801,7 @@
       "description": "Add Navbar3Props to component-props.ts - same as Navbar1Props (logo, links, buttons)",
       "from": 69,
       "to": 73,
-      "done": false
+      "done": true
     },
     {
       "id": 101,
@@ -809,7 +809,7 @@
       "description": "Add navbar3Schema with rounded container border styling, dropdown menu support",
       "from": 69,
       "to": 73,
-      "done": false
+      "done": true
     },
     {
       "id": 102,
@@ -817,7 +817,7 @@
       "description": "Create Navbar3.tsx - centered navigation with logo left, links center, buttons right, rounded container with border",
       "from": 69,
       "to": 73,
-      "done": false
+      "done": true
     },
     {
       "id": 103,
@@ -825,7 +825,7 @@
       "description": "Create Navbar3.stories.tsx with Default, MobileView, dropdown menu demo",
       "from": 69,
       "to": 73,
-      "done": false
+      "done": true
     },
     {
       "id": 104,
@@ -833,7 +833,7 @@
       "description": "Add Navbar3 import and registration to registry.ts under navbar category variant 3",
       "from": 69,
       "to": 73,
-      "done": false
+      "done": true
     },
     {
       "id": 105,
@@ -841,7 +841,7 @@
       "description": "Add Navbar4Props to component-props.ts - same as Navbar1Props",
       "from": 75,
       "to": 79,
-      "done": false
+      "done": true
     },
     {
       "id": 106,
@@ -849,7 +849,7 @@
       "description": "Add navbar4Schema with full-width simple bar styling, no dropdown menus",
       "from": 75,
       "to": 79,
-      "done": false
+      "done": true
     },
     {
       "id": 107,
@@ -857,7 +857,7 @@
       "description": "Create Navbar4.tsx - simple horizontal bar, logo left, links center, button right, no floating/border, mobile hamburger",
       "from": 75,
       "to": 79,
-      "done": false
+      "done": true
     },
     {
       "id": 108,
@@ -865,7 +865,7 @@
       "description": "Create Navbar4.stories.tsx with Default, MobileView, minimal design showcase",
       "from": 75,
       "to": 79,
-      "done": false
+      "done": true
     },
     {
       "id": 109,
@@ -873,7 +873,7 @@
       "description": "Add Navbar4 import and registration to registry.ts under navbar category variant 4",
       "from": 75,
       "to": 79,
-      "done": false
+      "done": true
     },
     {
       "id": 110,
@@ -881,7 +881,7 @@
       "description": "Add Footer1Props to component-props.ts with config.bgColor, logo, description, links array, socials array, copyright",
       "from": 219,
       "to": 223,
-      "done": false
+      "done": true
     },
     {
       "id": 111,
@@ -889,7 +889,7 @@
       "description": "Create new schemas/footer.ts file with footer1Schema - logo, description, link columns array, socials array, copyright",
       "from": 219,
       "to": 223,
-      "done": false
+      "done": true
     },
     {
       "id": 112,
@@ -897,7 +897,7 @@
       "description": "Create Footer1.tsx - logo/description left, 3 link columns right, socials + copyright bottom",
       "from": 219,
       "to": 223,
-      "done": false
+      "done": true
     },
     {
       "id": 113,
@@ -905,7 +905,7 @@
       "description": "Create Footer1.stories.tsx with Default, MobileView, different link column counts",
       "from": 219,
       "to": 223,
-      "done": false
+      "done": true
     },
     {
       "id": 114,
@@ -913,7 +913,7 @@
       "description": "Add Footer1 import and registration to registry.ts, create footer category with variant 1",
       "from": 219,
       "to": 223,
-      "done": false
+      "done": true
     },
     {
       "id": 115,
@@ -921,7 +921,7 @@
       "description": "Add Footer2Props to component-props.ts - same as Footer1Props",
       "from": 225,
       "to": 229,
-      "done": false
+      "done": true
     },
     {
       "id": 116,
@@ -929,7 +929,7 @@
       "description": "Add footer2Schema - same as footer1Schema with centered bottom section styling",
       "from": 225,
       "to": 229,
-      "done": false
+      "done": true
     },
     {
       "id": 117,
@@ -937,7 +937,7 @@
       "description": "Create Footer2.tsx - same as Footer1 but with socials and copyright centered",
       "from": 225,
       "to": 229,
-      "done": false
+      "done": true
     },
     {
       "id": 118,
@@ -945,7 +945,7 @@
       "description": "Create Footer2.stories.tsx with Default, MobileView, centered bottom demo",
       "from": 225,
       "to": 229,
-      "done": false
+      "done": true
     },
     {
       "id": 119,
@@ -953,7 +953,7 @@
       "description": "Add Footer2 import and registration to registry.ts under footer category variant 2",
       "from": 225,
       "to": 229,
-      "done": false
+      "done": true
     },
     {
       "id": 120,
@@ -961,7 +961,7 @@
       "description": "Add Footer3Props to component-props.ts with newsletter (title/placeholder/buttonText), plus Footer1 fields",
       "from": 231,
       "to": 235,
-      "done": false
+      "done": true
     },
     {
       "id": 121,
@@ -969,7 +969,7 @@
       "description": "Add footer3Schema with newsletter group (title, input placeholder, button text) plus footer fields",
       "from": 231,
       "to": 235,
-      "done": false
+      "done": true
     },
     {
       "id": 122,
@@ -977,7 +977,7 @@
       "description": "Create Footer3.tsx - newsletter section at top (input + button), then logo/links/socials/copyright",
       "from": 231,
       "to": 235,
-      "done": false
+      "done": true
     },
     {
       "id": 123,
@@ -985,7 +985,7 @@
       "description": "Create Footer3.stories.tsx with Default, MobileView, newsletter focus demo",
       "from": 231,
       "to": 235,
-      "done": false
+      "done": true
     },
     {
       "id": 124,
@@ -993,7 +993,7 @@
       "description": "Add Footer3 import and registration to registry.ts under footer category variant 3",
       "from": 231,
       "to": 235,
-      "done": false
+      "done": true
     },
     {
       "id": 125,
@@ -1001,7 +1001,7 @@
       "description": "Add Footer4Props to component-props.ts - same as Footer3Props",
       "from": 237,
       "to": 241,
-      "done": false
+      "done": true
     },
     {
       "id": 126,
@@ -1009,7 +1009,7 @@
       "description": "Add footer4Schema - same as footer3Schema with prominent newsletter styling variation",
       "from": 237,
       "to": 241,
-      "done": false
+      "done": true
     },
     {
       "id": 127,
@@ -1017,7 +1017,7 @@
       "description": "Create Footer4.tsx - similar to Footer3 with newsletter more prominent, footer links, socials",
       "from": 237,
       "to": 241,
-      "done": false
+      "done": true
     },
     {
       "id": 128,
@@ -1025,7 +1025,7 @@
       "description": "Create Footer4.stories.tsx with Default, MobileView, prominent newsletter demo",
       "from": 237,
       "to": 241,
-      "done": false
+      "done": true
     },
     {
       "id": 129,
@@ -1033,7 +1033,7 @@
       "description": "Add Footer4 import and registration to registry.ts under footer category variant 4",
       "from": 237,
       "to": 241,
-      "done": false
+      "done": true
     },
     {
       "id": 130,
@@ -1041,7 +1041,7 @@
       "description": "Update schemas/index.ts to export about, testimonials, faq, services, and footer schemas",
       "from": 327,
       "to": 335,
-      "done": false
+      "done": true
     },
     {
       "id": 131,
@@ -1049,7 +1049,7 @@
       "description": "Use Playwriter MCP to test ImageUploadField and LinkSelectorField on localhost:3000/pages/create",
       "from": 341,
       "to": 347,
-      "done": false
+      "done": true
     },
     {
       "id": 132,
@@ -1057,6 +1057,230 @@
       "description": "Use Playwriter MCP to verify all 25 components appear in marketplace and can be dragged to canvas",
       "from": 349,
       "to": 356,
+      "done": true
+    },
+    {
+      "id": 133,
+      "title": "Comprehensive test Hero1 component",
+      "description": "Use Playwriter MCP on localhost:3000/pages/create: Add Hero1 to canvas, edit title text, edit description, toggle LTR/RTL layout (verify image position changes), click Button 1 in canvas, edit button text, switch to Mobile view (verify stacked layout), delete component. Skip image testing. Fix any bugs found.",
+      "from": 357,
+      "to": 365,
+      "done": false
+    },
+    {
+      "id": 134,
+      "title": "Comprehensive test Hero2 component",
+      "description": "Use Playwriter MCP: Add Hero2 to canvas (should have image on LEFT by default), edit title and description, toggle LTR/RTL layout, test buttons, test Mobile view, delete component. Skip image testing. Fix any bugs found.",
+      "from": 367,
+      "to": 373,
+      "done": false
+    },
+    {
+      "id": 135,
+      "title": "Comprehensive test Hero3 component",
+      "description": "Use Playwriter MCP: Add Hero3 to canvas (centered text-only hero), edit badge text, edit title and description, test both CTA buttons, test Mobile view, delete component. Skip image testing. Fix any bugs found.",
+      "from": 375,
+      "to": 381,
+      "done": false
+    },
+    {
+      "id": 136,
+      "title": "Comprehensive test Hero4 component",
+      "description": "Use Playwriter MCP: Add Hero4 to canvas (bordered sections), edit title and description, test single CTA button, test Mobile view, delete component. Skip image testing. Fix any bugs found.",
+      "from": 383,
+      "to": 388,
+      "done": false
+    },
+    {
+      "id": 137,
+      "title": "Comprehensive test About1 component",
+      "description": "Use Playwriter MCP: Add About1 to canvas, edit title, edit description1/description2/description3 fields, test Mobile view, delete component. Skip image testing. Fix any bugs found.",
+      "from": 392,
+      "to": 397,
+      "done": false
+    },
+    {
+      "id": 138,
+      "title": "Comprehensive test About2 component",
+      "description": "Use Playwriter MCP: Add About2 to canvas (2-column layout), edit title and description, edit section title and section description, test Mobile view, delete component. Skip image testing. Fix any bugs found.",
+      "from": 399,
+      "to": 404,
+      "done": false
+    },
+    {
+      "id": 139,
+      "title": "Comprehensive test About3 component",
+      "description": "Use Playwriter MCP: Add About3 to canvas, edit title/description1/description2, toggle LTR/RTL direction, test Mobile view, delete component. Skip image testing. Fix any bugs found.",
+      "from": 406,
+      "to": 411,
+      "done": false
+    },
+    {
+      "id": 140,
+      "title": "Comprehensive test About4 component",
+      "description": "Use Playwriter MCP: Add About4 to canvas (flipped About3), edit all text fields, toggle direction, test Mobile view, delete component. Skip image testing. Fix any bugs found.",
+      "from": 413,
+      "to": 418,
+      "done": false
+    },
+    {
+      "id": 141,
+      "title": "Comprehensive test Testimonials1 component",
+      "description": "Use Playwriter MCP: Add Testimonials1 to canvas, edit title, expand testimonials array, edit first testimonial quote text, edit author name, test navigation dots, test Mobile view, delete component. Skip image testing. Fix any bugs found.",
+      "from": 422,
+      "to": 430,
+      "done": false
+    },
+    {
+      "id": 142,
+      "title": "Comprehensive test Testimonials2 component",
+      "description": "Use Playwriter MCP: Add Testimonials2 to canvas (2-column), edit title and description, edit CTA button text, edit testimonial content, toggle LTR/RTL direction, test Mobile view, delete component. Skip image testing. Fix any bugs found.",
+      "from": 432,
+      "to": 439,
+      "done": false
+    },
+    {
+      "id": 143,
+      "title": "Comprehensive test Testimonials3 component",
+      "description": "Use Playwriter MCP: Add Testimonials3 to canvas (large centered quote), edit title, edit testimonial quote, test navigation dots, test Mobile view, delete component. Skip image testing. Fix any bugs found.",
+      "from": 441,
+      "to": 447,
+      "done": false
+    },
+    {
+      "id": 144,
+      "title": "Comprehensive test Testimonials4 component",
+      "description": "Use Playwriter MCP: Add Testimonials4 to canvas (overlapping avatars), edit title, edit testimonial quote, test navigation, test Mobile view, delete component. Skip image testing. Fix any bugs found.",
+      "from": 449,
+      "to": 455,
+      "done": false
+    },
+    {
+      "id": 145,
+      "title": "Comprehensive test Faq1 component with accordion",
+      "description": "Use Playwriter MCP: Add Faq1 to canvas, edit title, expand questions array, edit first question/answer text, CLICK accordion item in canvas to verify expand/collapse, test Mobile view, delete component. Fix any bugs found.",
+      "from": 459,
+      "to": 467,
+      "done": false
+    },
+    {
+      "id": 146,
+      "title": "Comprehensive test Faq2 component with accordion",
+      "description": "Use Playwriter MCP: Add Faq2 to canvas (2-column with CTA), edit title and description, edit CTA button text, edit FAQ items, test accordion expand/collapse in canvas, toggle LTR/RTL direction, test Mobile view, delete component. Fix any bugs found.",
+      "from": 469,
+      "to": 477,
+      "done": false
+    },
+    {
+      "id": 147,
+      "title": "Comprehensive test Faq3 component (grid layout)",
+      "description": "Use Playwriter MCP: Add Faq3 to canvas (2-column grid, no accordion), edit title, edit question/answer pairs, verify answers are always visible (not accordion), test Mobile view, delete component. Fix any bugs found.",
+      "from": 479,
+      "to": 485,
+      "done": false
+    },
+    {
+      "id": 148,
+      "title": "Comprehensive test Faq4 component (bordered rows)",
+      "description": "Use Playwriter MCP: Add Faq4 to canvas (bordered rows), edit title, edit questions and answers, test Mobile view, delete component. Fix any bugs found.",
+      "from": 487,
+      "to": 492,
+      "done": false
+    },
+    {
+      "id": 149,
+      "title": "Comprehensive test Services1 component",
+      "description": "Use Playwriter MCP: Add Services1 to canvas (2x2 grid), edit title and description, edit CTA button, expand services array, edit first service title/description, toggle LTR/RTL direction, test Mobile view, delete component. Skip image testing. Fix any bugs found.",
+      "from": 496,
+      "to": 504,
+      "done": false
+    },
+    {
+      "id": 150,
+      "title": "Comprehensive test Services2 component with carousel",
+      "description": "Use Playwriter MCP: Add Services2 to canvas (carousel), edit title, edit service items, test navigation controls, test Mobile view, delete component. Skip image testing. Fix any bugs found.",
+      "from": 506,
+      "to": 512,
+      "done": false
+    },
+    {
+      "id": 151,
+      "title": "Comprehensive test Services3 component",
+      "description": "Use Playwriter MCP: Add Services3 to canvas (large cards with checkmarks), edit title, edit service titles and descriptions, test Mobile view, delete component. Skip image testing. Fix any bugs found.",
+      "from": 514,
+      "to": 519,
+      "done": false
+    },
+    {
+      "id": 152,
+      "title": "Comprehensive test Services4 component",
+      "description": "Use Playwriter MCP: Add Services4 to canvas (text-only list), edit title, edit service items, test Mobile view, delete component. Skip image testing. Fix any bugs found.",
+      "from": 521,
+      "to": 526,
+      "done": false
+    },
+    {
+      "id": 153,
+      "title": "Comprehensive test Navbar1 component with mobile menu",
+      "description": "Use Playwriter MCP: Add Navbar1 to canvas, edit logo text, expand links array, edit first link text and URL, edit button text, switch to Mobile view and verify hamburger menu appears, delete component. Skip image testing. Fix any bugs found.",
+      "from": 530,
+      "to": 537,
+      "done": false
+    },
+    {
+      "id": 154,
+      "title": "Comprehensive test Navbar2 component with mobile menu",
+      "description": "Use Playwriter MCP: Add Navbar2 to canvas (floating centered), edit links and button, test Mobile view with hamburger menu, delete component. Skip image testing. Fix any bugs found.",
+      "from": 539,
+      "to": 543,
+      "done": false
+    },
+    {
+      "id": 155,
+      "title": "Comprehensive test Navbar3 component with mobile menu",
+      "description": "Use Playwriter MCP: Add Navbar3 to canvas (rounded container), edit links and buttons, test Mobile view with hamburger menu, delete component. Skip image testing. Fix any bugs found.",
+      "from": 545,
+      "to": 549,
+      "done": false
+    },
+    {
+      "id": 156,
+      "title": "Comprehensive test Navbar4 component with mobile menu",
+      "description": "Use Playwriter MCP: Add Navbar4 to canvas (simple bar), edit links and button, test Mobile view with hamburger menu, delete component. Skip image testing. Fix any bugs found.",
+      "from": 551,
+      "to": 555,
+      "done": false
+    },
+    {
+      "id": 157,
+      "title": "Comprehensive test Footer1 component",
+      "description": "Use Playwriter MCP: Add Footer1 to canvas, edit logo, edit description, expand link columns array, edit link column title and links, edit social links, edit copyright text, test Mobile view, delete component. Skip image testing. Fix any bugs found.",
+      "from": 559,
+      "to": 569,
+      "done": false
+    },
+    {
+      "id": 158,
+      "title": "Comprehensive test Footer2 component",
+      "description": "Use Playwriter MCP: Add Footer2 to canvas (centered bottom), edit all fields similar to Footer1, verify socials and copyright are centered, test Mobile view, delete component. Skip image testing. Fix any bugs found.",
+      "from": 571,
+      "to": 576,
+      "done": false
+    },
+    {
+      "id": 159,
+      "title": "Comprehensive test Footer3 component with newsletter",
+      "description": "Use Playwriter MCP: Add Footer3 to canvas (with newsletter), edit newsletter title, edit newsletter placeholder text, edit newsletter button text, edit standard footer fields, test Mobile view, delete component. Skip image testing. Fix any bugs found.",
+      "from": 578,
+      "to": 585,
+      "done": false
+    },
+    {
+      "id": 160,
+      "title": "Comprehensive test Footer4 component with newsletter",
+      "description": "Use Playwriter MCP: Add Footer4 to canvas (prominent newsletter), test newsletter section, edit all other fields, test Mobile view, delete component. Skip image testing. Fix any bugs found.",
+      "from": 587,
+      "to": 592,
       "done": false
     }
   ]

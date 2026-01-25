@@ -336,6 +336,263 @@ After implementing each component:
 
 ---
 
+## Phase 5: Comprehensive Component Testing (Playwriter)
+
+After all components are implemented, perform comprehensive testing using Playwriter MCP on `http://localhost:3000/pages/create`. **Skip image-related testing.** If bugs are found, fix them immediately.
+
+### Testing Protocol for Each Component
+
+1. **Add component to canvas** - Click component in marketplace
+2. **Verify component renders** - Check canvas shows component correctly
+3. **Test text editing** - Edit title, description, and other text fields in properties panel
+4. **Test toggles** - Test direction toggles (LTR/RTL) where applicable
+5. **Test buttons/links** - Click buttons in canvas, verify link editing works
+6. **Test responsive views** - Switch between Desktop, Tablet, Mobile views
+7. **Test accordions** - For FAQ components, expand/collapse accordion items
+8. **Test navigation** - For carousel components, test navigation dots/arrows
+9. **Delete component** - Clean up for next test
+
+### Hero Components Testing
+
+#### Test Hero1
+- Add Hero1 to canvas
+- Edit title text → verify canvas updates
+- Edit description text → verify canvas updates
+- Toggle LTR/RTL layout → verify image position changes
+- Click Button 1 in canvas → verify interaction
+- Edit button text in properties panel
+- Switch to Mobile view → verify stacked layout
+- Delete component
+
+#### Test Hero2
+- Add Hero2 to canvas (should have image on LEFT by default)
+- Edit title and description
+- Toggle LTR/RTL layout
+- Test buttons
+- Test Mobile view
+- Delete component
+
+#### Test Hero3
+- Add Hero3 to canvas (centered text-only hero)
+- Edit badge text
+- Edit title and description
+- Test both CTA buttons
+- Test Mobile view
+- Delete component
+
+#### Test Hero4
+- Add Hero4 to canvas (bordered sections)
+- Edit title and description
+- Test single CTA button
+- Test Mobile view
+- Delete component
+
+### About Components Testing
+
+#### Test About1
+- Add About1 to canvas
+- Edit title
+- Edit description1, description2, description3 fields
+- Test Mobile view
+- Delete component
+
+#### Test About2
+- Add About2 to canvas (2-column layout)
+- Edit title and description
+- Edit section title and section description
+- Test Mobile view
+- Delete component
+
+#### Test About3
+- Add About3 to canvas
+- Edit title, description1, description2
+- Toggle LTR/RTL direction
+- Test Mobile view
+- Delete component
+
+#### Test About4
+- Add About4 to canvas (flipped About3)
+- Edit all text fields
+- Toggle direction
+- Test Mobile view
+- Delete component
+
+### Testimonials Components Testing
+
+#### Test Testimonials1
+- Add Testimonials1 to canvas
+- Edit title
+- Expand testimonials array in properties panel
+- Edit first testimonial quote text
+- Edit testimonial author name
+- Test navigation dots (if interactive)
+- Test Mobile view
+- Delete component
+
+#### Test Testimonials2
+- Add Testimonials2 to canvas (2-column)
+- Edit title and description
+- Edit CTA button text
+- Edit testimonial content
+- Toggle LTR/RTL direction
+- Test Mobile view
+- Delete component
+
+#### Test Testimonials3
+- Add Testimonials3 to canvas (large centered quote)
+- Edit title
+- Edit testimonial quote
+- Test navigation dots
+- Test Mobile view
+- Delete component
+
+#### Test Testimonials4
+- Add Testimonials4 to canvas (overlapping avatars)
+- Edit title
+- Edit testimonial quote
+- Test navigation
+- Test Mobile view
+- Delete component
+
+### FAQ Components Testing
+
+#### Test Faq1
+- Add Faq1 to canvas
+- Edit title
+- Expand questions array
+- Edit first question text
+- Edit first answer text
+- **Click accordion item in canvas** → verify expand/collapse
+- Test Mobile view
+- Delete component
+
+#### Test Faq2
+- Add Faq2 to canvas (2-column with CTA)
+- Edit title and description
+- Edit CTA button text
+- Edit FAQ items
+- Test accordion functionality
+- Toggle LTR/RTL direction
+- Test Mobile view
+- Delete component
+
+#### Test Faq3
+- Add Faq3 to canvas (2-column grid, no accordion)
+- Edit title
+- Edit question/answer pairs
+- Verify answers are always visible (not accordion)
+- Test Mobile view
+- Delete component
+
+#### Test Faq4
+- Add Faq4 to canvas (bordered rows)
+- Edit title
+- Edit questions and answers
+- Test Mobile view
+- Delete component
+
+### Services Components Testing
+
+#### Test Services1
+- Add Services1 to canvas (2x2 grid)
+- Edit title and description
+- Edit CTA button
+- Expand services array
+- Edit first service title and description
+- Toggle LTR/RTL direction
+- Test Mobile view
+- Delete component
+
+#### Test Services2
+- Add Services2 to canvas (carousel)
+- Edit title
+- Edit service items
+- Test navigation controls
+- Test Mobile view
+- Delete component
+
+#### Test Services3
+- Add Services3 to canvas (large cards with checkmarks)
+- Edit title
+- Edit service titles and descriptions
+- Test Mobile view
+- Delete component
+
+#### Test Services4
+- Add Services4 to canvas (text-only list)
+- Edit title
+- Edit service items
+- Test Mobile view
+- Delete component
+
+### Navbar Components Testing
+
+#### Test Navbar1
+- Add Navbar1 to canvas
+- Edit logo text (if applicable)
+- Expand links array
+- Edit first link text and URL
+- Edit button text
+- Switch to Mobile view → verify hamburger menu appears
+- Delete component
+
+#### Test Navbar2
+- Add Navbar2 to canvas (floating centered)
+- Edit links and button
+- Test Mobile view
+- Delete component
+
+#### Test Navbar3
+- Add Navbar3 to canvas (rounded container)
+- Edit links and buttons
+- Test Mobile view (hamburger menu)
+- Delete component
+
+#### Test Navbar4
+- Add Navbar4 to canvas (simple bar)
+- Edit links and button
+- Test Mobile view
+- Delete component
+
+### Footer Components Testing
+
+#### Test Footer1
+- Add Footer1 to canvas
+- Edit logo
+- Edit description
+- Expand link columns array
+- Edit link column title
+- Edit links within column
+- Edit social links
+- Edit copyright text
+- Test Mobile view
+- Delete component
+
+#### Test Footer2
+- Add Footer2 to canvas (centered bottom)
+- Edit all fields similar to Footer1
+- Verify socials and copyright are centered
+- Test Mobile view
+- Delete component
+
+#### Test Footer3
+- Add Footer3 to canvas (with newsletter)
+- Edit newsletter title
+- Edit newsletter placeholder text
+- Edit newsletter button text
+- Edit standard footer fields
+- Test Mobile view
+- Delete component
+
+#### Test Footer4
+- Add Footer4 to canvas (prominent newsletter)
+- Test newsletter section
+- Edit all other fields
+- Test Mobile view
+- Delete component
+
+---
+
 ## Success Criteria
 
 ### Phase 0: Properties Panel
@@ -353,7 +610,16 @@ After implementing each component:
 - [ ] All component props are editable via properties panel
 - [ ] All components are responsive (mobile/tablet/desktop)
 - [ ] All components follow existing code patterns
-- [ ] Playwriter tests pass on localhost:3000/pages/create
+
+### Phase 5: Comprehensive Testing
+- [ ] All Hero components tested (Hero1-4)
+- [ ] All About components tested (About1-4)
+- [ ] All Testimonials components tested (Testimonials1-4)
+- [ ] All FAQ components tested with accordion functionality (Faq1-4)
+- [ ] All Services components tested (Services1-4)
+- [ ] All Navbar components tested with mobile menu (Navbar1-4)
+- [ ] All Footer components tested including newsletter (Footer1-4)
+- [ ] All bugs found during testing are fixed
 
 ---
 

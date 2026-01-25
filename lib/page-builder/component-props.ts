@@ -537,6 +537,14 @@ export type About3Props = {
   };
 };
 
+/**
+ * About 4 Props
+ *
+ * Flipped version of About 3.
+ * Same structure, different default direction (text left, image right).
+ */
+export type About4Props = About3Props;
+
 // ============================================================================
 // TESTIMONIAL COMPONENT PROPS
 // ============================================================================
@@ -657,6 +665,40 @@ export type Testimonial3Props = {
 
   /**
    * Navigation arrow styling.
+   */
+  navigation: NavigationStyle;
+};
+
+/**
+ * Testimonial 4 Props
+ *
+ * Centered testimonial with overlapping avatars at top.
+ * Shows all avatars stacked at top, single quote below.
+ */
+export type Testimonial4Props = {
+  /**
+   * General configuration.
+   */
+  config: {
+    /** Section background color */
+    bgColor: HexColor;
+  };
+
+  /**
+   * Section title.
+   */
+  title: {
+    /** Title text */
+    label: string;
+  };
+
+  /**
+   * Testimonial items with images (avatars shown overlapping).
+   */
+  testimonials: TestimonialWithImageItem[];
+
+  /**
+   * Navigation dot styling.
    */
   navigation: NavigationStyle;
 };
@@ -959,6 +1001,87 @@ export type Footer1Props = {
   };
 };
 
+/**
+ * Footer 2 Props
+ *
+ * Same as Footer1 but with centered bottom section.
+ */
+export type Footer2Props = Footer1Props;
+
+/**
+ * Footer 3 Props
+ *
+ * Footer with newsletter section at top.
+ */
+export type Footer3Props = {
+  /**
+   * General configuration.
+   */
+  config: {
+    /** Section background color */
+    bgColor: HexColor;
+  };
+
+  /**
+   * Newsletter section.
+   */
+  newsletter: {
+    /** Newsletter section title */
+    title: string;
+    /** Input placeholder text */
+    placeholder: string;
+    /** Subscribe button text */
+    buttonText: string;
+  };
+
+  /**
+   * Logo configuration.
+   */
+  logo: {
+    /** Logo image URL */
+    url: string;
+    /** Logo display width */
+    width: number;
+    /** Logo display height */
+    height: number;
+  };
+
+  /**
+   * Footer description/tagline.
+   */
+  description: {
+    /** Description text */
+    content: string;
+  };
+
+  /**
+   * Footer link columns.
+   */
+  links: {
+    /** Link text color */
+    color: HexColor;
+    /** Array of link items */
+    items: LinkItem[];
+  };
+
+  /**
+   * Copyright text.
+   */
+  copyright: {
+    /** Copyright text */
+    text: string;
+    /** Text color */
+    color: HexColor;
+  };
+};
+
+/**
+ * Footer 4 Props
+ *
+ * Same as Footer3 with prominent newsletter variation.
+ */
+export type Footer4Props = Footer3Props;
+
 // ============================================================================
 // PROPS TYPE MAP
 // ============================================================================
@@ -994,6 +1117,7 @@ export type ComponentPropsMap = {
     1: Testimonial1Props;
     2: Testimonial2Props;
     3: Testimonial3Props;
+    4: Testimonial4Props;
   };
   faq: {
     1: Faq1Props;
@@ -1008,6 +1132,9 @@ export type ComponentPropsMap = {
   };
   footer: {
     1: Footer1Props;
+    2: Footer2Props;
+    3: Footer3Props;
+    4: Footer4Props;
   };
 };
 
@@ -1031,6 +1158,7 @@ export type AnyComponentProps =
   | Testimonial1Props
   | Testimonial2Props
   | Testimonial3Props
+  | Testimonial4Props
   | Faq1Props
   | Faq2Props
   | Faq3Props
@@ -1038,4 +1166,7 @@ export type AnyComponentProps =
   | Services2Props
   | Services3Props
   | Services4Props
-  | Footer1Props;
+  | Footer1Props
+  | Footer2Props
+  | Footer3Props
+  | Footer4Props;
