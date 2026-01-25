@@ -1,95 +1,159 @@
 /**
  * Footer 2 Component
  *
- * Same as Footer1 but with centered bottom section (copyright centered).
+ * Modern footer layout with:
+ * - Top left: Logo (circle) + brand name
+ * - Top right: 4 link columns (header + links each)
+ * - Divider line
+ * - Bottom: Centered social icons + copyright
  *
  * Uses CSS Container Queries (@container) for responsiveness based on
- * parent container width, not browser viewport. This is essential for
- * the page builder preview to work correctly at different viewport sizes.
+ * parent container width, not browser viewport.
  */
 
 "use client";
 
 import Image from "next/image";
 import Link from "next/link";
+import {
+  Twitter,
+  Linkedin,
+  Facebook,
+  Instagram,
+  Github,
+  Youtube,
+  Music2,
+  MessageCircle,
+  Dribbble,
+  Palette,
+  type LucideIcon,
+} from "lucide-react";
 
-import type { Footer1Props } from "@/lib/page-builder/component-props";
+import type { Footer2Props } from "@/lib/page-builder/component-props";
+
+/**
+ * Map of social platform identifiers to their icons
+ */
+const socialIcons: Record<string, LucideIcon> = {
+  twitter: Twitter,
+  linkedin: Linkedin,
+  facebook: Facebook,
+  instagram: Instagram,
+  github: Github,
+  youtube: Youtube,
+  tiktok: Music2,
+  discord: MessageCircle,
+  dribbble: Dribbble,
+  behance: Palette,
+};
 
 export function Footer2({
   config,
   logo,
-  description,
-  links,
+  brandName,
+  linkColumns,
+  socials,
   copyright,
-}: Footer1Props) {
+}: Footer2Props) {
   return (
     <footer
       style={{ backgroundColor: config.bgColor }}
       className="@container px-6 py-12 @3xl:py-16"
     >
       <div className="max-w-6xl mx-auto">
-        {/* Main content - logo/description and links */}
-        <div className="flex flex-col gap-10 @3xl:flex-row @3xl:justify-between @3xl:items-start mb-12">
-          {/* Logo and description */}
-          <div className="@3xl:max-w-sm">
-            {/* Logo */}
-            <div className="mb-4">
+        {/* Main content: Logo/brand left + Link columns right */}
+        <div className="flex flex-col @3xl:flex-row gap-12 @3xl:gap-8 mb-12">
+          {/* Left side: Logo + Brand name */}
+          <div className="@3xl:w-1/5 flex flex-col gap-2">
+            {/* Circular logo */}
+            <div
+              className="rounded-full bg-primary/10 overflow-hidden flex items-center justify-center"
+              style={{ width: logo.width, height: logo.height }}
+            >
               {logo.url ? (
                 <Image
                   src={logo.url}
-                  alt="Logo"
+                  alt={brandName.label || "Logo"}
                   width={logo.width}
                   height={logo.height}
-                  className="object-contain"
+                  className="object-cover w-full h-full"
                 />
               ) : (
-                <div
-                  className="bg-muted/20 rounded flex items-center justify-center"
-                  style={{ width: logo.width, height: logo.height }}
-                >
-                  <svg
-                    className="w-8 h-8 text-muted-foreground/30"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={1.5}
-                      d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                    />
-                  </svg>
-                </div>
+                <div className="w-full h-full bg-primary/20" />
               )}
             </div>
 
-            {/* Description */}
-            <p
-              className="text-sm leading-relaxed"
-              style={{ color: copyright.color }}
-            >
-              {description.content}
-            </p>
+            {/* Brand name */}
+            <span className="text-sm font-medium text-foreground">
+              {brandName.label}
+            </span>
           </div>
 
-          {/* Navigation links */}
-          <nav className="flex flex-wrap gap-x-8 gap-y-3">
-            {links.items.map((link, index) => (
-              <Link
-                key={index}
-                href={link.url}
-                style={{ color: links.color }}
-                className="text-sm hover:opacity-80 transition-opacity"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
+          {/* Right side: Link columns */}
+          {linkColumns && linkColumns.length > 0 && (
+            <div
+              className={`flex-1 grid gap-8 ${
+                linkColumns.length === 1
+                  ? "grid-cols-1"
+                  : linkColumns.length === 2
+                  ? "grid-cols-2"
+                  : linkColumns.length === 3
+                  ? "grid-cols-2 @xl:grid-cols-3"
+                  : "grid-cols-2 @xl:grid-cols-4"
+              }`}
+            >
+              {linkColumns.map((column, columnIndex) => (
+                <div key={columnIndex}>
+                  <h4 className="font-semibold text-foreground mb-4">
+                    {column.heading}
+                  </h4>
+                  {column.links && column.links.length > 0 && (
+                    <ul className="space-y-3">
+                      {column.links.map((link, linkIndex) => (
+                        <li key={linkIndex}>
+                          <Link
+                            href={link.href}
+                            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                          >
+                            {link.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
-        {/* Bottom section - centered copyright */}
-        <div className="border-t border-white/10 pt-8 text-center">
+        {/* Divider */}
+        <div className="border-t border-border mb-8" />
+
+        {/* Bottom: Social icons + Copyright (centered) */}
+        <div className="flex flex-col items-center gap-4">
+          {/* Social icons */}
+          {socials && socials.length > 0 && (
+            <div className="flex gap-2">
+              {socials.map((social, index) => {
+                const Icon = socialIcons[social.platform];
+                if (!Icon) return null;
+                return (
+                  <a
+                    key={index}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="h-9 w-9 rounded-full bg-primary/10 flex items-center justify-center text-foreground hover:bg-primary/20 transition-colors"
+                  >
+                    <Icon className="h-4 w-4" />
+                  </a>
+                );
+              })}
+            </div>
+          )}
+
+          {/* Copyright */}
           <p className="text-sm" style={{ color: copyright.color }}>
             {copyright.text}
           </p>

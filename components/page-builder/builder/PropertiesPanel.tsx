@@ -14,7 +14,7 @@ import {
   isArrayGroup,
 } from "@/lib/page-builder";
 import { getSchema } from "@/lib/page-builder/registry";
-import type { Field, Group, ArrayGroup, FieldGroup } from "@/lib/page-builder/types";
+import type { Field, Group, ArrayGroup, FieldGroup, SelectField } from "@/lib/page-builder/types";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -32,6 +32,7 @@ import ActionDialog from "@/components/shared/action-dialog";
 import { ChevronDown, ChevronUp, Trash2, Plus, ExternalLink } from "lucide-react";
 import { ImageUploadField } from "./ImageUploadField";
 import { LinkSelectorField } from "./LinkSelectorField";
+import { SocialSelectField } from "./SocialSelectField";
 
 export function PropertiesPanel() {
   const selectedComponent = usePageBuilderStore(selectSelectedComponent);
@@ -461,6 +462,18 @@ function FieldRenderer({
             </button>
           </div>
         );
+
+      case "select": {
+        const selectField = field as SelectField;
+        return (
+          <SocialSelectField
+            value={(value as string) || ""}
+            onChange={(val) => onChange(val)}
+            options={selectField.options}
+            placeholder={selectField.placeholder}
+          />
+        );
+      }
 
       default:
         return <div className="text-xs text-muted-foreground">Unknown field type</div>;

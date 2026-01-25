@@ -4,6 +4,7 @@
  * Testimonial carousel with smooth horizontal scrolling.
  * Shows 3 cards on desktop, 2 on tablet, 1 on mobile.
  * Navigation arrows scroll the carousel with animation.
+ * Auto-scrolls with configurable interval.
  *
  * Uses CSS Container Queries (@container) for responsiveness based on
  * parent container width, not browser viewport.
@@ -11,7 +12,7 @@
 
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -26,7 +27,7 @@ export function Testimonials1({
 }: Testimonial1Props) {
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  const scroll = (direction: "left" | "right") => {
+  const scroll = useCallback((direction: "left" | "right") => {
     if (!scrollRef.current) return;
     const container = scrollRef.current;
     const cardWidth = container.querySelector("div")?.offsetWidth || 300;
@@ -37,7 +38,28 @@ export function Testimonials1({
       left: direction === "left" ? -scrollAmount : scrollAmount,
       behavior: "smooth",
     });
-  };
+  }, []);
+
+  // Auto-play scroll
+  useEffect(() => {
+    if (!config.autoPlayInterval || config.autoPlayInterval <= 0) return;
+    if (testimonials.length <= 1) return;
+
+    const interval = setInterval(() => {
+      if (!scrollRef.current) return;
+      const container = scrollRef.current;
+      const maxScroll = container.scrollWidth - container.clientWidth;
+
+      // If at the end, scroll back to start
+      if (container.scrollLeft >= maxScroll - 10) {
+        container.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        scroll("right");
+      }
+    }, config.autoPlayInterval * 1000);
+
+    return () => clearInterval(interval);
+  }, [config.autoPlayInterval, testimonials.length, scroll]);
 
   return (
     <section

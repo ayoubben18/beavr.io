@@ -2,24 +2,29 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Footer1 } from "./Footer1";
 
 /**
- * Footer1 is a classic footer layout with logo and description on the left,
- * navigation links on the right, and copyright at the bottom.
+ * Footer1 is a modern footer layout with:
+ * - Left: Logo (circle) + brand name + tagline + social icons
+ * - Right: Dynamic link columns (1-4)
+ * - Bottom: Divider + copyright + legal links
  *
  * ## Features
- * - Logo with customizable dimensions
- * - Company description text
- * - Horizontal navigation links
- * - Copyright text with customizable color
+ * - Circular logo placeholder
+ * - Brand name and tagline
+ * - Social media icons (Twitter, LinkedIn, GitHub, etc.)
+ * - Dynamic link columns (1-4 columns)
+ * - Legal links in footer bottom
  * - CSS Container Queries for responsiveness
- * - Dark theme by default
  *
  * ## Props Structure
  * ```typescript
  * {
  *   config: { bgColor: string },
  *   logo: { url: string, width: number, height: number },
+ *   brandName: { label: string },
  *   description: { content: string },
- *   links: { color: string, items: { label: string, url: string }[] },
+ *   socials: Array<{ platform: string, url: string }>,
+ *   linkColumns: Array<{ heading: string, links: Array<{ label: string, href: string }> }>,
+ *   legalLinks: Array<{ label: string, href: string }>,
  *   copyright: { text: string, color: string }
  * }
  * ```
@@ -43,131 +48,172 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 /**
- * Default dark footer with logo placeholder, description, links, and copyright.
+ * Default footer with brand, socials, and 3 link columns.
  */
 export const Default: Story = {
   args: {
     config: {
-      bgColor: "#141414",
+      bgColor: "#ffffff",
     },
     logo: {
       url: "",
-      width: 120,
+      width: 40,
       height: 40,
     },
+    brandName: {
+      label: "Company",
+    },
     description: {
-      content:
-        "Building the future of digital experiences with innovative solutions and cutting-edge technology.",
+      content: "Building amazing digital experiences.",
     },
-    links: {
-      color: "#ffffff",
-      items: [
-        { label: "Home", url: "/" },
-        { label: "About", url: "/about" },
-        { label: "Services", url: "/services" },
-        { label: "Contact", url: "/contact" },
-        { label: "Privacy Policy", url: "/privacy" },
-        { label: "Terms of Service", url: "/terms" },
-      ],
-    },
+    socials: [
+      { platform: "twitter", url: "https://twitter.com" },
+      { platform: "linkedin", url: "https://linkedin.com" },
+      { platform: "github", url: "https://github.com" },
+    ],
+    linkColumns: [
+      {
+        heading: "Products",
+        links: [
+          { label: "Features", href: "/features" },
+          { label: "Pricing", href: "/pricing" },
+          { label: "Integrations", href: "/integrations" },
+        ],
+      },
+      {
+        heading: "Company",
+        links: [
+          { label: "About", href: "/about" },
+          { label: "Blog", href: "/blog" },
+          { label: "Careers", href: "/careers" },
+        ],
+      },
+      {
+        heading: "Resources",
+        links: [
+          { label: "Documentation", href: "/docs" },
+          { label: "Help Center", href: "/help" },
+          { label: "Contact", href: "/contact" },
+        ],
+      },
+    ],
+    legalLinks: [
+      { label: "Terms of Service", href: "/terms" },
+      { label: "Privacy Policy", href: "/privacy" },
+    ],
     copyright: {
-      text: "© 2024 Company Name. All rights reserved.",
+      text: "© 2024 Company. All rights reserved.",
       color: "#8d8d8d",
     },
   },
 };
 
 /**
- * Light background variant.
+ * Dark background variant.
  */
-export const LightBackground: Story = {
-  args: {
-    config: {
-      bgColor: "#f5f5f5",
-    },
-    logo: {
-      url: "",
-      width: 120,
-      height: 40,
-    },
-    description: {
-      content:
-        "Empowering businesses with innovative digital solutions that drive growth and success.",
-    },
-    links: {
-      color: "#141414",
-      items: [
-        { label: "Home", url: "/" },
-        { label: "About", url: "/about" },
-        { label: "Services", url: "/services" },
-        { label: "Contact", url: "/contact" },
-      ],
-    },
-    copyright: {
-      text: "© 2024 Company Name. All rights reserved.",
-      color: "#666666",
-    },
-  },
-};
-
-/**
- * Brand-colored background.
- */
-export const BrandBackground: Story = {
-  args: {
-    config: {
-      bgColor: "#692e0e",
-    },
-    logo: {
-      url: "",
-      width: 120,
-      height: 40,
-    },
-    description: {
-      content:
-        "Your trusted partner for digital transformation and business growth.",
-    },
-    links: {
-      color: "#ffffff",
-      items: [
-        { label: "Home", url: "/" },
-        { label: "Services", url: "/services" },
-        { label: "Portfolio", url: "/portfolio" },
-        { label: "Blog", url: "/blog" },
-        { label: "Contact", url: "/contact" },
-      ],
-    },
-    copyright: {
-      text: "© 2024 Brand Co. All rights reserved.",
-      color: "#ffffff99",
-    },
-  },
-};
-
-/**
- * Minimal footer with fewer links.
- */
-export const MinimalLinks: Story = {
+export const DarkBackground: Story = {
   args: {
     config: {
       bgColor: "#141414",
     },
     logo: {
       url: "",
-      width: 100,
-      height: 32,
+      width: 40,
+      height: 40,
+    },
+    brandName: {
+      label: "TechCorp",
     },
     description: {
-      content: "Simple. Elegant. Effective.",
+      content: "Innovating the future of technology.",
     },
-    links: {
-      color: "#ffffff",
-      items: [
-        { label: "Home", url: "/" },
-        { label: "About", url: "/about" },
-        { label: "Contact", url: "/contact" },
-      ],
+    socials: [
+      { platform: "twitter", url: "https://twitter.com" },
+      { platform: "linkedin", url: "https://linkedin.com" },
+      { platform: "github", url: "https://github.com" },
+      { platform: "youtube", url: "https://youtube.com" },
+    ],
+    linkColumns: [
+      {
+        heading: "Products",
+        links: [
+          { label: "Features", href: "/features" },
+          { label: "Pricing", href: "/pricing" },
+          { label: "Enterprise", href: "/enterprise" },
+        ],
+      },
+      {
+        heading: "Resources",
+        links: [
+          { label: "Blog", href: "/blog" },
+          { label: "Docs", href: "/docs" },
+          { label: "API", href: "/api" },
+        ],
+      },
+      {
+        heading: "Company",
+        links: [
+          { label: "About", href: "/about" },
+          { label: "Careers", href: "/careers" },
+          { label: "Contact", href: "/contact" },
+        ],
+      },
+    ],
+    legalLinks: [
+      { label: "Terms", href: "/terms" },
+      { label: "Privacy", href: "/privacy" },
+      { label: "Cookies", href: "/cookies" },
+    ],
+    copyright: {
+      text: "© 2024 TechCorp Inc. All rights reserved.",
+      color: "#666666",
     },
+  },
+};
+
+/**
+ * Minimal with 2 columns.
+ */
+export const TwoColumns: Story = {
+  args: {
+    config: {
+      bgColor: "#f5f5f5",
+    },
+    logo: {
+      url: "",
+      width: 36,
+      height: 36,
+    },
+    brandName: {
+      label: "Minimal",
+    },
+    description: {
+      content: "Simple. Clean. Effective.",
+    },
+    socials: [
+      { platform: "twitter", url: "https://twitter.com" },
+      { platform: "instagram", url: "https://instagram.com" },
+    ],
+    linkColumns: [
+      {
+        heading: "Products",
+        links: [
+          { label: "Features", href: "/features" },
+          { label: "Pricing", href: "/pricing" },
+        ],
+      },
+      {
+        heading: "Support",
+        links: [
+          { label: "Help", href: "/help" },
+          { label: "Contact", href: "/contact" },
+        ],
+      },
+    ],
+    legalLinks: [
+      { label: "Terms", href: "/terms" },
+      { label: "Privacy", href: "/privacy" },
+    ],
     copyright: {
       text: "© 2024 Minimal Co.",
       color: "#8d8d8d",
@@ -176,41 +222,77 @@ export const MinimalLinks: Story = {
 };
 
 /**
- * Extended links list.
+ * Full 4 columns layout.
  */
-export const ManyLinks: Story = {
+export const FourColumns: Story = {
   args: {
     config: {
-      bgColor: "#1a1a1a",
+      bgColor: "#ffffff",
     },
     logo: {
       url: "",
-      width: 140,
-      height: 45,
+      width: 44,
+      height: 44,
+    },
+    brandName: {
+      label: "Enterprise",
     },
     description: {
-      content:
-        "A comprehensive platform for all your digital needs. From design to development, we've got you covered.",
+      content: "The complete platform for growing businesses.",
     },
-    links: {
-      color: "#ffffff",
-      items: [
-        { label: "Home", url: "/" },
-        { label: "Products", url: "/products" },
-        { label: "Solutions", url: "/solutions" },
-        { label: "Pricing", url: "/pricing" },
-        { label: "Resources", url: "/resources" },
-        { label: "Blog", url: "/blog" },
-        { label: "Support", url: "/support" },
-        { label: "Contact", url: "/contact" },
-        { label: "Careers", url: "/careers" },
-        { label: "Privacy", url: "/privacy" },
-        { label: "Terms", url: "/terms" },
-      ],
-    },
+    socials: [
+      { platform: "twitter", url: "https://twitter.com" },
+      { platform: "linkedin", url: "https://linkedin.com" },
+      { platform: "github", url: "https://github.com" },
+      { platform: "youtube", url: "https://youtube.com" },
+      { platform: "discord", url: "https://discord.com" },
+    ],
+    linkColumns: [
+      {
+        heading: "Products",
+        links: [
+          { label: "Features", href: "/features" },
+          { label: "Pricing", href: "/pricing" },
+          { label: "Enterprise", href: "/enterprise" },
+          { label: "Integrations", href: "/integrations" },
+        ],
+      },
+      {
+        heading: "Resources",
+        links: [
+          { label: "Documentation", href: "/docs" },
+          { label: "API Reference", href: "/api" },
+          { label: "Blog", href: "/blog" },
+          { label: "Guides", href: "/guides" },
+        ],
+      },
+      {
+        heading: "Company",
+        links: [
+          { label: "About", href: "/about" },
+          { label: "Careers", href: "/careers" },
+          { label: "Press", href: "/press" },
+          { label: "Partners", href: "/partners" },
+        ],
+      },
+      {
+        heading: "Legal",
+        links: [
+          { label: "Terms", href: "/terms" },
+          { label: "Privacy", href: "/privacy" },
+          { label: "Security", href: "/security" },
+          { label: "Compliance", href: "/compliance" },
+        ],
+      },
+    ],
+    legalLinks: [
+      { label: "Terms of Service", href: "/terms" },
+      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Cookie Policy", href: "/cookies" },
+    ],
     copyright: {
-      text: "© 2024 Enterprise Corp. All rights reserved. Made with love.",
-      color: "#666666",
+      text: "© 2024 Enterprise Inc. All rights reserved.",
+      color: "#8d8d8d",
     },
   },
 };

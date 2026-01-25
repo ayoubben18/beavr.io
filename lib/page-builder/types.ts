@@ -104,6 +104,7 @@ export const CATEGORY_LABELS: Record<ComponentCategory, string> = {
  * - image: Image upload (device) or URL paste (web)
  * - url: URL input with validation
  * - direction: LTR/RTL toggle switch
+ * - select: Dropdown selection from predefined options
  */
 export type FieldType =
   | "text"
@@ -112,7 +113,8 @@ export type FieldType =
   | "number"
   | "image"
   | "url"
-  | "direction";
+  | "direction"
+  | "select";
 
 // ============================================================================
 // SCHEMA FIELD DEFINITIONS
@@ -242,6 +244,30 @@ export type DirectionField = BaseField & {
 };
 
 /**
+ * Option for select fields.
+ */
+export type SelectOption = {
+  /** Value stored in props */
+  value: string;
+  /** Display label in dropdown */
+  label: string;
+};
+
+/**
+ * Dropdown selection field.
+ *
+ * Used for: selecting from predefined options (e.g., social platforms).
+ * Renders as a searchable combobox in the sidebar.
+ *
+ * @example
+ * { type: "select", label: "Platform", options: [{ value: "twitter", label: "Twitter" }] }
+ */
+export type SelectField = BaseField & {
+  type: "select";
+  options: SelectOption[];
+};
+
+/**
  * Union of all possible field types.
  *
  * Used when defining schema groups to allow any field type.
@@ -253,7 +279,8 @@ export type Field =
   | NumberField
   | ImageField
   | UrlField
-  | DirectionField;
+  | DirectionField
+  | SelectField;
 
 // ============================================================================
 // SCHEMA GROUP DEFINITIONS

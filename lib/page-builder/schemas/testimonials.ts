@@ -126,6 +126,11 @@ export const testimonial1Schema: ComponentSchema<Testimonial1Props> = {
           type: "color",
           label: "Background",
         },
+        autoPlayInterval: {
+          type: "number",
+          label: "Auto-play (seconds)",
+          placeholder: "0 to disable",
+        },
       },
     },
 
@@ -150,6 +155,7 @@ export const testimonial1Schema: ComponentSchema<Testimonial1Props> = {
   defaults: {
     config: {
       bgColor: "#ffffff",
+      autoPlayInterval: 5,
     },
     title: {
       label: "What Our Clients Say",
@@ -332,6 +338,11 @@ export const testimonial3Schema: ComponentSchema<Testimonial3Props> = {
           type: "color",
           label: "Background",
         },
+        autoPlayInterval: {
+          type: "number",
+          label: "Auto-play (seconds)",
+          placeholder: "0 to disable",
+        },
       },
     },
 
@@ -349,13 +360,12 @@ export const testimonial3Schema: ComponentSchema<Testimonial3Props> = {
     },
 
     testimonials: testimonialsWithImageArrayGroup,
-
-    navigation: navigationGroup,
   },
 
   defaults: {
     config: {
       bgColor: "#ffffff",
+      autoPlayInterval: 5,
     },
     title: {
       label: "Customer Stories",
@@ -377,11 +387,6 @@ export const testimonial3Schema: ComponentSchema<Testimonial3Props> = {
           "A truly transformative experience. Our company has never been more efficient or productive.",
       },
     ],
-    navigation: {
-      bgColor: "#ffffff",
-      iconColor: "#141414",
-      borderColor: "#e3e3e3",
-    },
   },
 };
 
@@ -414,52 +419,68 @@ export const testimonial4Schema: ComponentSchema<Testimonial4Props> = {
       },
     },
 
+    avatars: {
+      kind: "group",
+      label: "Avatars",
+      collapsible: true,
+      fields: {
+        image1: {
+          type: "image",
+          label: "Avatar 1",
+        },
+        image2: {
+          type: "image",
+          label: "Avatar 2",
+        },
+        image3: {
+          type: "image",
+          label: "Avatar 3",
+        },
+      },
+    },
+
     title: {
       kind: "group",
-      label: "Title",
+      label: "Badge Title",
       collapsible: true,
       fields: {
         label: {
           type: "text",
           label: "Text",
-          placeholder: "Enter title...",
+          placeholder: "Enter badge text...",
         },
       },
     },
 
-    testimonials: testimonialsWithImageArrayGroup,
-
-    navigation: navigationGroup,
+    description: {
+      kind: "group",
+      label: "Quote",
+      collapsible: true,
+      fields: {
+        content: {
+          type: "textarea",
+          label: "Text",
+          placeholder: "Enter quote...",
+        },
+      },
+    },
   },
 
   defaults: {
     config: {
-      bgColor: "#ffffff",
+      bgColor: "#f5f5f5",
+    },
+    avatars: {
+      image1: "",
+      image2: "",
+      image3: "",
     },
     title: {
-      label: "Loved by Customers",
+      label: "Trusted by visionary designers",
     },
-    testimonials: [
-      {
-        image: "",
-        description:
-          "An incredible experience from start to finish. The team truly understands what businesses need to succeed.",
-      },
-      {
-        image: "",
-        description:
-          "We've tried many solutions, but this one stands head and shoulders above the rest. Absolutely recommend!",
-      },
-      {
-        image: "",
-        description:
-          "The attention to detail and quality of service is unmatched. A true partner in our growth.",
-      },
-    ],
-    navigation: {
-      bgColor: "#ffffff",
-      iconColor: "#141414",
-      borderColor: "#e3e3e3",
+    description: {
+      content:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Elig doloremque mollitia fugiat omnis! Porro facilis quo animi consequatur. Explicabo.",
     },
   },
 };

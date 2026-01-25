@@ -47,6 +47,8 @@ export type {
   ImageField,
   UrlField,
   DirectionField,
+  SelectField,
+  SelectOption,
 
   // Group types
   Group,
@@ -121,6 +123,11 @@ export type {
 
   // Footer props
   Footer1Props,
+  Footer2Props,
+  Footer3Props,
+  Footer4Props,
+  SocialItem,
+  LinkColumn,
 
   // Type maps
   ComponentPropsMap,

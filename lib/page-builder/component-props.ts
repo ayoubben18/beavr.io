@@ -572,6 +572,8 @@ export type Testimonial1Props = {
   config: {
     /** Section background color */
     bgColor: HexColor;
+    /** Auto-play interval in seconds (0 to disable) */
+    autoPlayInterval: number;
   };
 
   /**
@@ -658,6 +660,8 @@ export type Testimonial3Props = {
   config: {
     /** Section background color */
     bgColor: HexColor;
+    /** Auto-play interval in seconds (0 to disable) */
+    autoPlayInterval: number;
   };
 
   /**
@@ -669,14 +673,9 @@ export type Testimonial3Props = {
   };
 
   /**
-   * Testimonial items with images.
+   * Testimonial items with avatar image.
    */
   testimonials: TestimonialWithImageItem[];
-
-  /**
-   * Navigation arrow styling.
-   */
-  navigation: NavigationStyle;
 };
 
 /**
@@ -695,7 +694,19 @@ export type Testimonial4Props = {
   };
 
   /**
-   * Section title.
+   * Three avatar images displayed in overlapping pill.
+   */
+  avatars: {
+    /** First avatar image URL */
+    image1: string;
+    /** Second avatar image URL */
+    image2: string;
+    /** Third avatar image URL */
+    image3: string;
+  };
+
+  /**
+   * Badge/pill title text next to avatars.
    */
   title: {
     /** Title text */
@@ -703,14 +714,12 @@ export type Testimonial4Props = {
   };
 
   /**
-   * Testimonial items with images (avatars shown overlapping).
+   * Quote/description text.
    */
-  testimonials: TestimonialWithImageItem[];
-
-  /**
-   * Navigation dot styling.
-   */
-  navigation: NavigationStyle;
+  description: {
+    /** Quote content */
+    content: string;
+  };
 };
 
 // ============================================================================
@@ -874,6 +883,8 @@ export type Services2Props = {
   config: {
     /** Section background color */
     bgColor: HexColor;
+    /** Auto-play interval in seconds (0 to disable) */
+    autoPlayInterval: number;
   };
 
   /**
@@ -956,10 +967,32 @@ export type Services4Props = {
 // ============================================================================
 
 /**
+ * Social media link item for footers.
+ */
+export type SocialItem = {
+  /** Platform identifier (e.g., "twitter", "linkedin") */
+  platform: string;
+  /** URL to social profile */
+  url: string;
+};
+
+/**
+ * Link column for footer navigation.
+ */
+export type LinkColumn = {
+  /** Column heading */
+  heading: string;
+  /** Links in this column */
+  links: LinkItem[];
+};
+
+/**
  * Footer 1 Props
  *
- * Standard footer with logo, links, and social.
- * (Define based on your Figma design)
+ * Modern footer layout with:
+ * - Left: Logo + brand name + tagline + social icons
+ * - Right: Dynamic link columns (1-4)
+ * - Bottom: Divider + copyright + legal links
  */
 export type Footer1Props = {
   /**
@@ -983,6 +1016,14 @@ export type Footer1Props = {
   };
 
   /**
+   * Brand name displayed below logo.
+   */
+  brandName: {
+    /** Brand name text */
+    label: string;
+  };
+
+  /**
    * Footer description/tagline.
    */
   description: {
@@ -991,14 +1032,19 @@ export type Footer1Props = {
   };
 
   /**
-   * Footer link columns.
+   * Social media links.
    */
-  links: {
-    /** Link text color */
-    color: HexColor;
-    /** Array of link items */
-    items: LinkItem[];
-  };
+  socials: SocialItem[];
+
+  /**
+   * Dynamic link columns (1-4 columns).
+   */
+  linkColumns: LinkColumn[];
+
+  /**
+   * Legal links at bottom (Terms, Privacy, etc.).
+   */
+  legalLinks: LinkItem[];
 
   /**
    * Copyright text.
@@ -1014,9 +1060,61 @@ export type Footer1Props = {
 /**
  * Footer 2 Props
  *
- * Same as Footer1 but with centered bottom section.
+ * Modern footer with:
+ * - Top left: Logo (circle) + brand name
+ * - Top right: 4 link columns (header + links each)
+ * - Divider line
+ * - Bottom: Centered social icons + copyright
  */
-export type Footer2Props = Footer1Props;
+export type Footer2Props = {
+  /**
+   * General configuration.
+   */
+  config: {
+    /** Section background color */
+    bgColor: HexColor;
+  };
+
+  /**
+   * Logo configuration (displayed as circle).
+   */
+  logo: {
+    /** Logo image URL */
+    url: string;
+    /** Logo display width */
+    width: number;
+    /** Logo display height */
+    height: number;
+  };
+
+  /**
+   * Brand name displayed below logo.
+   */
+  brandName: {
+    /** Brand name text */
+    label: string;
+  };
+
+  /**
+   * Dynamic link columns (1-4 columns).
+   */
+  linkColumns: LinkColumn[];
+
+  /**
+   * Social media links (centered in bottom section).
+   */
+  socials: SocialItem[];
+
+  /**
+   * Copyright text.
+   */
+  copyright: {
+    /** Copyright text */
+    text: string;
+    /** Text color */
+    color: HexColor;
+  };
+};
 
 /**
  * Footer 3 Props

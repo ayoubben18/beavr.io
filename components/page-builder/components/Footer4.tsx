@@ -115,7 +115,7 @@ export function Footer4({
             {links.items.map((link, index) => (
               <Link
                 key={index}
-                href={link.url}
+                href={link.href}
                 style={{ color: links.color }}
                 className="text-sm hover:opacity-80 transition-opacity"
               >

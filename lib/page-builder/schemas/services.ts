@@ -256,6 +256,11 @@ export const services2Schema: ComponentSchema<Services2Props> = {
           type: "color",
           label: "Background",
         },
+        autoPlayInterval: {
+          type: "number",
+          label: "Auto-play (seconds)",
+          placeholder: "0 to disable",
+        },
       },
     },
 
@@ -272,14 +277,15 @@ export const services2Schema: ComponentSchema<Services2Props> = {
       },
     },
 
-    services: servicesArrayGroup,
-
     navigation: navigationGroup,
+
+    services: servicesArrayGroup,
   },
 
   defaults: {
     config: {
       bgColor: "#ffffff",
+      autoPlayInterval: 5,
     },
     title: {
       label: "What We Offer",

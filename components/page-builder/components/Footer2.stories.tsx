@@ -2,24 +2,28 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Footer2 } from "./Footer2";
 
 /**
- * Footer2 is similar to Footer1 but with a centered bottom section.
- * The copyright text is centered instead of left-aligned.
+ * Footer2 is a modern footer layout with:
+ * - Top left: Circular logo + brand name
+ * - Top right: Link columns (1-4 columns with header + links)
+ * - Divider line
+ * - Bottom: Centered social icons + copyright text
  *
  * ## Features
- * - Logo with customizable dimensions
- * - Company description text
- * - Horizontal navigation links
- * - Centered copyright text at bottom
+ * - Circular logo placeholder
+ * - Brand name below logo
+ * - Dynamic 1-4 link columns
+ * - Social media icons (centered)
+ * - Centered copyright text
  * - CSS Container Queries for responsiveness
- * - Dark theme by default
  *
  * ## Props Structure
  * ```typescript
  * {
  *   config: { bgColor: string },
  *   logo: { url: string, width: number, height: number },
- *   description: { content: string },
- *   links: { color: string, items: { label: string, url: string }[] },
+ *   brandName: { label: string },
+ *   linkColumns: { heading: string, links: { label: string, href: string }[] }[],
+ *   socials: { platform: string, url: string }[],
  *   copyright: { text: string, color: string }
  * }
  * ```
@@ -27,8 +31,8 @@ import { Footer2 } from "./Footer2";
  * ## Responsive Behavior
  * | Breakpoint | Layout |
  * |------------|--------|
- * | Default | Stacked layout |
- * | @3xl (1024px) | Side by side layout |
+ * | Default | Stacked: logo/brand, then columns, then socials/copyright |
+ * | @3xl (1024px) | Side by side: logo/brand left, columns right |
  */
 const meta = {
   title: "Page Builder/Footer/Footer2",
@@ -43,68 +47,224 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 /**
- * Default dark footer with centered copyright.
+ * Default light footer with 4 link columns and centered social icons.
  */
 export const Default: Story = {
   args: {
     config: {
-      bgColor: "#141414",
+      bgColor: "#ffffff",
     },
     logo: {
       url: "",
-      width: 120,
+      width: 40,
       height: 40,
     },
-    description: {
-      content:
-        "Empowering businesses with innovative digital solutions that drive growth and success.",
+    brandName: {
+      label: "Company",
     },
-    links: {
-      color: "#ffffff",
-      items: [
-        { label: "Home", url: "/" },
-        { label: "About", url: "/about" },
-        { label: "Services", url: "/services" },
-        { label: "Blog", url: "/blog" },
-        { label: "Contact", url: "/contact" },
-      ],
-    },
+    linkColumns: [
+      {
+        heading: "Products",
+        links: [
+          { label: "Features", href: "/features" },
+          { label: "Pricing", href: "/pricing" },
+          { label: "Integrations", href: "/integrations" },
+        ],
+      },
+      {
+        heading: "Company",
+        links: [
+          { label: "About", href: "/about" },
+          { label: "Blog", href: "/blog" },
+          { label: "Careers", href: "/careers" },
+        ],
+      },
+      {
+        heading: "Resources",
+        links: [
+          { label: "Documentation", href: "/docs" },
+          { label: "Help Center", href: "/help" },
+          { label: "Contact", href: "/contact" },
+        ],
+      },
+      {
+        heading: "Legal",
+        links: [
+          { label: "Privacy", href: "/privacy" },
+          { label: "Terms", href: "/terms" },
+          { label: "Cookies", href: "/cookies" },
+        ],
+      },
+    ],
+    socials: [
+      { platform: "twitter", url: "https://twitter.com" },
+      { platform: "linkedin", url: "https://linkedin.com" },
+      { platform: "github", url: "https://github.com" },
+    ],
     copyright: {
-      text: "© 2024 Company Name. All rights reserved.",
+      text: "© 2024 Company. All rights reserved.",
       color: "#8d8d8d",
     },
   },
 };
 
 /**
- * Light background variant with centered copyright.
+ * Dark background variant with 4 columns.
  */
-export const LightBackground: Story = {
+export const DarkBackground: Story = {
+  args: {
+    config: {
+      bgColor: "#141414",
+    },
+    logo: {
+      url: "",
+      width: 40,
+      height: 40,
+    },
+    brandName: {
+      label: "DarkCo",
+    },
+    linkColumns: [
+      {
+        heading: "Products",
+        links: [
+          { label: "Features", href: "/features" },
+          { label: "Pricing", href: "/pricing" },
+          { label: "API", href: "/api" },
+        ],
+      },
+      {
+        heading: "Company",
+        links: [
+          { label: "About", href: "/about" },
+          { label: "Blog", href: "/blog" },
+          { label: "Careers", href: "/careers" },
+        ],
+      },
+      {
+        heading: "Resources",
+        links: [
+          { label: "Docs", href: "/docs" },
+          { label: "Support", href: "/support" },
+          { label: "Status", href: "/status" },
+        ],
+      },
+      {
+        heading: "Legal",
+        links: [
+          { label: "Privacy", href: "/privacy" },
+          { label: "Terms", href: "/terms" },
+          { label: "Security", href: "/security" },
+        ],
+      },
+    ],
+    socials: [
+      { platform: "twitter", url: "https://twitter.com" },
+      { platform: "linkedin", url: "https://linkedin.com" },
+      { platform: "github", url: "https://github.com" },
+      { platform: "discord", url: "https://discord.com" },
+    ],
+    copyright: {
+      text: "© 2024 DarkCo. All rights reserved.",
+      color: "#666666",
+    },
+  },
+};
+
+/**
+ * Two columns variant - minimal layout.
+ */
+export const TwoColumns: Story = {
   args: {
     config: {
       bgColor: "#f5f5f5",
     },
     logo: {
       url: "",
-      width: 120,
+      width: 40,
       height: 40,
     },
-    description: {
-      content:
-        "Building the future of digital experiences with innovative solutions.",
+    brandName: {
+      label: "MinimalCo",
     },
-    links: {
-      color: "#141414",
-      items: [
-        { label: "Home", url: "/" },
-        { label: "About", url: "/about" },
-        { label: "Services", url: "/services" },
-        { label: "Contact", url: "/contact" },
-      ],
-    },
+    linkColumns: [
+      {
+        heading: "Company",
+        links: [
+          { label: "About", href: "/about" },
+          { label: "Blog", href: "/blog" },
+          { label: "Contact", href: "/contact" },
+        ],
+      },
+      {
+        heading: "Legal",
+        links: [
+          { label: "Privacy", href: "/privacy" },
+          { label: "Terms", href: "/terms" },
+        ],
+      },
+    ],
+    socials: [
+      { platform: "twitter", url: "https://twitter.com" },
+      { platform: "linkedin", url: "https://linkedin.com" },
+    ],
     copyright: {
-      text: "© 2024 Company Name. All rights reserved.",
-      color: "#666666",
+      text: "© 2024 MinimalCo.",
+      color: "#8d8d8d",
+    },
+  },
+};
+
+/**
+ * Three columns variant.
+ */
+export const ThreeColumns: Story = {
+  args: {
+    config: {
+      bgColor: "#ffffff",
+    },
+    logo: {
+      url: "",
+      width: 40,
+      height: 40,
+    },
+    brandName: {
+      label: "TripleCo",
+    },
+    linkColumns: [
+      {
+        heading: "Products",
+        links: [
+          { label: "Features", href: "/features" },
+          { label: "Pricing", href: "/pricing" },
+          { label: "Enterprise", href: "/enterprise" },
+        ],
+      },
+      {
+        heading: "Company",
+        links: [
+          { label: "About", href: "/about" },
+          { label: "Careers", href: "/careers" },
+          { label: "Press", href: "/press" },
+        ],
+      },
+      {
+        heading: "Support",
+        links: [
+          { label: "Help Center", href: "/help" },
+          { label: "Contact", href: "/contact" },
+          { label: "Status", href: "/status" },
+        ],
+      },
+    ],
+    socials: [
+      { platform: "twitter", url: "https://twitter.com" },
+      { platform: "linkedin", url: "https://linkedin.com" },
+      { platform: "instagram", url: "https://instagram.com" },
+    ],
+    copyright: {
+      text: "© 2024 TripleCo. All rights reserved.",
+      color: "#8d8d8d",
     },
   },
 };
@@ -119,97 +279,53 @@ export const BrandBackground: Story = {
     },
     logo: {
       url: "",
-      width: 120,
+      width: 40,
       height: 40,
     },
-    description: {
-      content:
-        "Your trusted partner for digital transformation and business growth.",
+    brandName: {
+      label: "BrandCo",
     },
-    links: {
-      color: "#ffffff",
-      items: [
-        { label: "Home", url: "/" },
-        { label: "Services", url: "/services" },
-        { label: "Portfolio", url: "/portfolio" },
-        { label: "Blog", url: "/blog" },
-        { label: "Contact", url: "/contact" },
-      ],
-    },
+    linkColumns: [
+      {
+        heading: "Products",
+        links: [
+          { label: "Solutions", href: "/solutions" },
+          { label: "Pricing", href: "/pricing" },
+          { label: "Demo", href: "/demo" },
+        ],
+      },
+      {
+        heading: "Company",
+        links: [
+          { label: "About", href: "/about" },
+          { label: "Team", href: "/team" },
+          { label: "Blog", href: "/blog" },
+        ],
+      },
+      {
+        heading: "Support",
+        links: [
+          { label: "Help", href: "/help" },
+          { label: "FAQ", href: "/faq" },
+          { label: "Contact", href: "/contact" },
+        ],
+      },
+      {
+        heading: "Legal",
+        links: [
+          { label: "Privacy", href: "/privacy" },
+          { label: "Terms", href: "/terms" },
+        ],
+      },
+    ],
+    socials: [
+      { platform: "twitter", url: "https://twitter.com" },
+      { platform: "facebook", url: "https://facebook.com" },
+      { platform: "instagram", url: "https://instagram.com" },
+    ],
     copyright: {
-      text: "© 2024 Brand Co. All rights reserved.",
+      text: "© 2024 BrandCo. All rights reserved.",
       color: "#ffffff99",
-    },
-  },
-};
-
-/**
- * Minimal footer with fewer links.
- */
-export const MinimalLinks: Story = {
-  args: {
-    config: {
-      bgColor: "#141414",
-    },
-    logo: {
-      url: "",
-      width: 100,
-      height: 32,
-    },
-    description: {
-      content: "Simple. Elegant. Effective.",
-    },
-    links: {
-      color: "#ffffff",
-      items: [
-        { label: "Home", url: "/" },
-        { label: "About", url: "/about" },
-        { label: "Contact", url: "/contact" },
-      ],
-    },
-    copyright: {
-      text: "© 2024 Minimal Co.",
-      color: "#8d8d8d",
-    },
-  },
-};
-
-/**
- * Extended links list demonstrating centered copyright with many links.
- */
-export const ManyLinks: Story = {
-  args: {
-    config: {
-      bgColor: "#1a1a1a",
-    },
-    logo: {
-      url: "",
-      width: 140,
-      height: 45,
-    },
-    description: {
-      content:
-        "A comprehensive platform for all your digital needs. From design to development.",
-    },
-    links: {
-      color: "#ffffff",
-      items: [
-        { label: "Home", url: "/" },
-        { label: "Products", url: "/products" },
-        { label: "Solutions", url: "/solutions" },
-        { label: "Pricing", url: "/pricing" },
-        { label: "Resources", url: "/resources" },
-        { label: "Blog", url: "/blog" },
-        { label: "Support", url: "/support" },
-        { label: "Contact", url: "/contact" },
-        { label: "Careers", url: "/careers" },
-        { label: "Privacy", url: "/privacy" },
-        { label: "Terms", url: "/terms" },
-      ],
-    },
-    copyright: {
-      text: "© 2024 Enterprise Corp. All rights reserved. Made with love.",
-      color: "#666666",
     },
   },
 };

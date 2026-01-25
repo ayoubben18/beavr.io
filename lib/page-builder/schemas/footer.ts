@@ -8,11 +8,27 @@
  */
 
 import type { ComponentSchema } from "../types";
-import type { Footer1Props, Footer3Props } from "../component-props";
+import type { Footer1Props, Footer2Props, Footer3Props } from "../component-props";
 
 // ============================================================================
 // SHARED FIELD DEFINITIONS
 // ============================================================================
+
+/**
+ * Social platform options for select field.
+ */
+const socialPlatformOptions = [
+  { value: "twitter", label: "Twitter / X" },
+  { value: "linkedin", label: "LinkedIn" },
+  { value: "facebook", label: "Facebook" },
+  { value: "instagram", label: "Instagram" },
+  { value: "github", label: "GitHub" },
+  { value: "youtube", label: "YouTube" },
+  { value: "tiktok", label: "TikTok" },
+  { value: "discord", label: "Discord" },
+  { value: "dribbble", label: "Dribbble" },
+  { value: "behance", label: "Behance" },
+];
 
 /**
  * Link items array group for footer navigation columns.
@@ -31,7 +47,7 @@ const linksArrayGroup = {
       label: "Label",
       placeholder: "Link text...",
     },
-    url: {
+    href: {
       type: "url" as const,
       label: "URL",
       placeholder: "https://...",
@@ -46,8 +62,10 @@ const linksArrayGroup = {
 /**
  * Footer 1 Schema
  *
- * Classic footer layout with logo/description on the left,
- * navigation link columns on the right, and copyright at the bottom.
+ * Modern footer layout with:
+ * - Left: Logo + brand name + tagline + social icons
+ * - Right: Dynamic link columns (1-4)
+ * - Bottom: Divider + copyright + legal links
  */
 export const footer1Schema: ComponentSchema<Footer1Props> = {
   type: "footer",
@@ -80,7 +98,7 @@ export const footer1Schema: ComponentSchema<Footer1Props> = {
         width: {
           type: "number",
           label: "Width",
-          placeholder: "120",
+          placeholder: "40",
         },
         height: {
           type: "number",
@@ -90,25 +108,91 @@ export const footer1Schema: ComponentSchema<Footer1Props> = {
       },
     },
 
+    brandName: {
+      kind: "group",
+      label: "Brand",
+      collapsible: true,
+      fields: {
+        label: {
+          type: "text",
+          label: "Name",
+          placeholder: "Company name...",
+        },
+      },
+    },
+
     description: {
       kind: "group",
-      label: "Description",
+      label: "Tagline",
       collapsible: true,
       fields: {
         content: {
           type: "textarea",
           label: "Text",
-          placeholder: "Company description...",
+          placeholder: "Company tagline...",
         },
       },
     },
 
-    links: {
-      ...linksArrayGroup,
-      fields: {
-        color: {
-          type: "color",
-          label: "Link Color",
+    socials: {
+      kind: "array",
+      label: "Social Media",
+      collapsible: true,
+      itemLabel: "Social",
+      minItems: 0,
+      maxItems: 6,
+      addLabel: "Add social",
+      itemFields: {
+        platform: {
+          type: "select",
+          label: "Platform",
+          options: socialPlatformOptions,
+        },
+        url: {
+          type: "url",
+          label: "URL",
+          placeholder: "https://...",
+        },
+      },
+    },
+
+    linkColumns: {
+      kind: "array",
+      label: "Link Columns",
+      collapsible: true,
+      itemLabel: "Column",
+      minItems: 1,
+      maxItems: 4,
+      addLabel: "Add column",
+      itemFields: {
+        heading: {
+          type: "text",
+          label: "Heading",
+          placeholder: "Column title...",
+        },
+        // Note: links array is managed within the component
+        // For now, links can be edited through default values
+      },
+    },
+
+    legalLinks: {
+      kind: "array",
+      label: "Legal Links",
+      collapsible: true,
+      itemLabel: "Link",
+      minItems: 0,
+      maxItems: 4,
+      addLabel: "Add link",
+      itemFields: {
+        label: {
+          type: "text",
+          label: "Label",
+          placeholder: "Link text...",
+        },
+        href: {
+          type: "url",
+          label: "URL",
+          placeholder: "https://...",
         },
       },
     },
@@ -133,30 +217,56 @@ export const footer1Schema: ComponentSchema<Footer1Props> = {
 
   defaults: {
     config: {
-      bgColor: "#141414",
+      bgColor: "#ffffff",
     },
     logo: {
       url: "",
-      width: 120,
+      width: 40,
       height: 40,
     },
+    brandName: {
+      label: "Company",
+    },
     description: {
-      content:
-        "Building the future of digital experiences with innovative solutions and cutting-edge technology.",
+      content: "Building amazing digital experiences.",
     },
-    links: {
-      color: "#ffffff",
-      items: [
-        { label: "Home", url: "/" },
-        { label: "About", url: "/about" },
-        { label: "Services", url: "/services" },
-        { label: "Contact", url: "/contact" },
-        { label: "Privacy Policy", url: "/privacy" },
-        { label: "Terms of Service", url: "/terms" },
-      ],
-    },
+    socials: [
+      { platform: "twitter", url: "https://twitter.com" },
+      { platform: "linkedin", url: "https://linkedin.com" },
+      { platform: "github", url: "https://github.com" },
+    ],
+    linkColumns: [
+      {
+        heading: "Products",
+        links: [
+          { label: "Features", href: "/features" },
+          { label: "Pricing", href: "/pricing" },
+          { label: "Integrations", href: "/integrations" },
+        ],
+      },
+      {
+        heading: "Company",
+        links: [
+          { label: "About", href: "/about" },
+          { label: "Blog", href: "/blog" },
+          { label: "Careers", href: "/careers" },
+        ],
+      },
+      {
+        heading: "Resources",
+        links: [
+          { label: "Documentation", href: "/docs" },
+          { label: "Help Center", href: "/help" },
+          { label: "Contact", href: "/contact" },
+        ],
+      },
+    ],
+    legalLinks: [
+      { label: "Terms of Service", href: "/terms" },
+      { label: "Privacy Policy", href: "/privacy" },
+    ],
     copyright: {
-      text: "© 2024 Company Name. All rights reserved.",
+      text: "© 2024 Company. All rights reserved.",
       color: "#8d8d8d",
     },
   },
@@ -169,9 +279,13 @@ export const footer1Schema: ComponentSchema<Footer1Props> = {
 /**
  * Footer 2 Schema
  *
- * Same as Footer1 but with socials and copyright centered at the bottom.
+ * Modern footer layout with:
+ * - Top left: Logo (circle) + brand name
+ * - Top right: 4 link columns (header + links each)
+ * - Divider line
+ * - Bottom: Centered social icons + copyright
  */
-export const footer2Schema: ComponentSchema<Footer1Props> = {
+export const footer2Schema: ComponentSchema<Footer2Props> = {
   type: "footer",
   variant: 2,
   label: "Footer 2",
@@ -202,7 +316,7 @@ export const footer2Schema: ComponentSchema<Footer1Props> = {
         width: {
           type: "number",
           label: "Width",
-          placeholder: "120",
+          placeholder: "40",
         },
         height: {
           type: "number",
@@ -212,25 +326,54 @@ export const footer2Schema: ComponentSchema<Footer1Props> = {
       },
     },
 
-    description: {
+    brandName: {
       kind: "group",
-      label: "Description",
+      label: "Brand",
       collapsible: true,
       fields: {
-        content: {
-          type: "textarea",
-          label: "Text",
-          placeholder: "Company description...",
+        label: {
+          type: "text",
+          label: "Name",
+          placeholder: "Company name...",
         },
       },
     },
 
-    links: {
-      ...linksArrayGroup,
-      fields: {
-        color: {
-          type: "color",
-          label: "Link Color",
+    socials: {
+      kind: "array",
+      label: "Social Media",
+      collapsible: true,
+      itemLabel: "Social",
+      minItems: 0,
+      maxItems: 6,
+      addLabel: "Add social",
+      itemFields: {
+        platform: {
+          type: "select",
+          label: "Platform",
+          options: socialPlatformOptions,
+        },
+        url: {
+          type: "url",
+          label: "URL",
+          placeholder: "https://...",
+        },
+      },
+    },
+
+    linkColumns: {
+      kind: "array",
+      label: "Link Columns",
+      collapsible: true,
+      itemLabel: "Column",
+      minItems: 1,
+      maxItems: 4,
+      addLabel: "Add column",
+      itemFields: {
+        heading: {
+          type: "text",
+          label: "Heading",
+          placeholder: "Column title...",
         },
       },
     },
@@ -255,29 +398,57 @@ export const footer2Schema: ComponentSchema<Footer1Props> = {
 
   defaults: {
     config: {
-      bgColor: "#141414",
+      bgColor: "#ffffff",
     },
     logo: {
       url: "",
-      width: 120,
+      width: 40,
       height: 40,
     },
-    description: {
-      content:
-        "Empowering businesses with innovative digital solutions that drive growth and success.",
+    brandName: {
+      label: "Company",
     },
-    links: {
-      color: "#ffffff",
-      items: [
-        { label: "Home", url: "/" },
-        { label: "About", url: "/about" },
-        { label: "Services", url: "/services" },
-        { label: "Blog", url: "/blog" },
-        { label: "Contact", url: "/contact" },
-      ],
-    },
+    socials: [
+      { platform: "twitter", url: "https://twitter.com" },
+      { platform: "linkedin", url: "https://linkedin.com" },
+      { platform: "github", url: "https://github.com" },
+    ],
+    linkColumns: [
+      {
+        heading: "Products",
+        links: [
+          { label: "Features", href: "/features" },
+          { label: "Pricing", href: "/pricing" },
+          { label: "Integrations", href: "/integrations" },
+        ],
+      },
+      {
+        heading: "Company",
+        links: [
+          { label: "About", href: "/about" },
+          { label: "Blog", href: "/blog" },
+          { label: "Careers", href: "/careers" },
+        ],
+      },
+      {
+        heading: "Resources",
+        links: [
+          { label: "Documentation", href: "/docs" },
+          { label: "Help Center", href: "/help" },
+          { label: "Contact", href: "/contact" },
+        ],
+      },
+      {
+        heading: "Legal",
+        links: [
+          { label: "Privacy", href: "/privacy" },
+          { label: "Terms", href: "/terms" },
+          { label: "Cookies", href: "/cookies" },
+        ],
+      },
+    ],
     copyright: {
-      text: "© 2024 Company Name. All rights reserved.",
+      text: "© 2024 Company. All rights reserved.",
       color: "#8d8d8d",
     },
   },
@@ -371,7 +542,7 @@ export const footer3Schema: ComponentSchema<Footer3Props> = {
 
     links: {
       ...linksArrayGroup,
-      fields: {
+      sharedFields: {
         color: {
           type: "color",
           label: "Link Color",
@@ -417,10 +588,10 @@ export const footer3Schema: ComponentSchema<Footer3Props> = {
     links: {
       color: "#ffffff",
       items: [
-        { label: "Home", url: "/" },
-        { label: "About", url: "/about" },
-        { label: "Services", url: "/services" },
-        { label: "Contact", url: "/contact" },
+        { label: "Home", href: "/" },
+        { label: "About", href: "/about" },
+        { label: "Services", href: "/services" },
+        { label: "Contact", href: "/contact" },
       ],
     },
     copyright: {
@@ -518,7 +689,7 @@ export const footer4Schema: ComponentSchema<Footer3Props> = {
 
     links: {
       ...linksArrayGroup,
-      fields: {
+      sharedFields: {
         color: {
           type: "color",
           label: "Link Color",
@@ -564,9 +735,9 @@ export const footer4Schema: ComponentSchema<Footer3Props> = {
     links: {
       color: "#141414",
       items: [
-        { label: "Home", url: "/" },
-        { label: "About", url: "/about" },
-        { label: "Contact", url: "/contact" },
+        { label: "Home", href: "/" },
+        { label: "About", href: "/about" },
+        { label: "Contact", href: "/contact" },
       ],
     },
     copyright: {

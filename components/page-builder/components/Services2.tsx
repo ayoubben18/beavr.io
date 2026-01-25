@@ -1,23 +1,22 @@
 /**
  * Services 2 Component
  *
- * Services carousel with title centered and cards in a row.
- * Each card displays a service image/icon, title, and description.
- * Navigation arrows allow cycling through services.
+ * Services carousel with smooth horizontal scrolling.
+ * Shows 4 cards on desktop, 3 on tablet, 2 on small tablet, 1 on mobile.
+ * Navigation arrows scroll the carousel with animation.
+ * Auto-scrolls with configurable interval.
  *
  * Uses CSS Container Queries (@container) for responsiveness based on
- * parent container width, not browser viewport. This is essential for
- * the page builder preview to work correctly at different viewport sizes.
+ * parent container width, not browser viewport.
  */
 
 "use client";
 
-import { useState } from "react";
+import { useRef, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import type { Services2Props } from "@/lib/page-builder/component-props";
-import { cn } from "@/lib/utils";
 
 export function Services2({
   config,
@@ -25,20 +24,41 @@ export function Services2({
   navigation,
   services,
 }: Services2Props) {
-  const [currentPage, setCurrentPage] = useState(0);
-  const itemsPerPage = 4;
-  const totalPages = Math.ceil(services.length / itemsPerPage);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
-  const startIndex = currentPage * itemsPerPage;
-  const visibleServices = services.slice(startIndex, startIndex + itemsPerPage);
+  const scroll = useCallback((direction: "left" | "right") => {
+    if (!scrollRef.current) return;
+    const container = scrollRef.current;
+    const cardWidth = container.querySelector("div")?.offsetWidth || 300;
+    const gap = 24; // gap-6 = 1.5rem = 24px
+    const scrollAmount = cardWidth + gap;
 
-  const handlePrev = () => {
-    setCurrentPage((prev) => (prev > 0 ? prev - 1 : totalPages - 1));
-  };
+    container.scrollBy({
+      left: direction === "left" ? -scrollAmount : scrollAmount,
+      behavior: "smooth",
+    });
+  }, []);
 
-  const handleNext = () => {
-    setCurrentPage((prev) => (prev < totalPages - 1 ? prev + 1 : 0));
-  };
+  // Auto-play scroll
+  useEffect(() => {
+    if (!config.autoPlayInterval || config.autoPlayInterval <= 0) return;
+    if (services.length <= 1) return;
+
+    const interval = setInterval(() => {
+      if (!scrollRef.current) return;
+      const container = scrollRef.current;
+      const maxScroll = container.scrollWidth - container.clientWidth;
+
+      // If at the end, scroll back to start
+      if (container.scrollLeft >= maxScroll - 10) {
+        container.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        scroll("right");
+      }
+    }, config.autoPlayInterval * 1000);
+
+    return () => clearInterval(interval);
+  }, [config.autoPlayInterval, services.length, scroll]);
 
   return (
     <section
@@ -53,51 +73,48 @@ export function Services2({
           </h2>
 
           {/* Navigation arrows */}
-          {totalPages > 1 && (
-            <div className="flex items-center justify-center gap-2">
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={handlePrev}
-                className="rounded-full h-10 w-10"
-                style={{
-                  backgroundColor: navigation.bgColor,
-                  borderColor: navigation.borderColor,
-                  color: navigation.textColor,
-                }}
-              >
-                <ChevronLeft className="h-5 w-5" />
-                <span className="sr-only">Previous</span>
-              </Button>
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={handleNext}
-                className="rounded-full h-10 w-10"
-                style={{
-                  backgroundColor: navigation.bgColor,
-                  borderColor: navigation.borderColor,
-                  color: navigation.textColor,
-                }}
-              >
-                <ChevronRight className="h-5 w-5" />
-                <span className="sr-only">Next</span>
-              </Button>
-            </div>
-          )}
+          <div className="flex items-center justify-center gap-2">
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={() => scroll("left")}
+              className="rounded-full h-10 w-10"
+              style={{
+                backgroundColor: navigation.bgColor,
+                borderColor: navigation.borderColor,
+                color: navigation.textColor,
+              }}
+            >
+              <ChevronLeft className="h-5 w-5" />
+              <span className="sr-only">Previous</span>
+            </Button>
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={() => scroll("right")}
+              className="rounded-full h-10 w-10"
+              style={{
+                backgroundColor: navigation.bgColor,
+                borderColor: navigation.borderColor,
+                color: navigation.textColor,
+              }}
+            >
+              <ChevronRight className="h-5 w-5" />
+              <span className="sr-only">Next</span>
+            </Button>
+          </div>
         </div>
 
-        {/* Service cards */}
+        {/* Service cards - horizontal scroll */}
         <div
-          className={cn(
-            "grid gap-6",
-            "@xl:grid-cols-2 @3xl:grid-cols-3 @5xl:grid-cols-4"
-          )}
+          ref={scrollRef}
+          className="flex gap-6 overflow-x-auto scroll-smooth scrollbar-hide snap-x snap-mandatory"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
-          {visibleServices.map((service, index) => (
+          {services.map((service, index) => (
             <div
-              key={`${service.title}-${startIndex + index}`}
-              className="bg-muted/30 border border-border rounded-xl p-6 @3xl:p-8"
+              key={`${service.title}-${index}`}
+              className="flex-shrink-0 w-full @xl:w-[calc(50%-12px)] @3xl:w-[calc(33.333%-16px)] @5xl:w-[calc(25%-18px)] bg-muted/30 border border-border rounded-xl p-6 @3xl:p-8 snap-start"
             >
               {/* Service icon/image */}
               <div className="h-12 w-12 rounded-lg bg-muted/50 border border-border mb-4 flex items-center justify-center overflow-hidden">
@@ -136,25 +153,6 @@ export function Services2({
             </div>
           ))}
         </div>
-
-        {/* Pagination dots */}
-        {totalPages > 1 && (
-          <div className="flex items-center justify-center gap-2 mt-8">
-            {Array.from({ length: totalPages }).map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => setCurrentPage(idx)}
-                className={cn(
-                  "h-2 rounded-full transition-all",
-                  currentPage === idx
-                    ? "w-8 bg-foreground"
-                    : "w-2 bg-muted-foreground/30"
-                )}
-                aria-label={`Go to page ${idx + 1}`}
-              />
-            ))}
-          </div>
-        )}
       </div>
     </section>
   );
